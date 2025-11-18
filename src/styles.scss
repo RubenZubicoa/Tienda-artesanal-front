@@ -31,6 +31,10 @@ body { margin: 0; font-family: system-ui, sans-serif; }
   color: variables.$text-color;
 }
 
+.section-container {
+  padding: 10px;
+}
+
 .tienda-primary-button {
   background-color: variables.$primary-color;
   color: variables.$white-color;

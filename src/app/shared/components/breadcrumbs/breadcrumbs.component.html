@@ -1,0 +1,13 @@
+<section class="breadcrumbs">
+  <ng-container
+    *ngFor="let breadcrumb of breadcrumbs; let last = last; let first = first"
+  >
+    <mat-icon *ngIf="!first">keyboard_arrow_right</mat-icon>
+    <button class="text-bradcrums button-link" *ngIf="!last; else lastBreadcrumb" (click)="navigate(breadcrumb.url)">
+      {{ breadcrumb.label }}
+    </button>
+    <ng-template #lastBreadcrumb>
+      <span class="text-bradcrums" [class.active]="true">{{ breadcrumb.label }}</span>
+    </ng-template>
+  </ng-container>
+</section>

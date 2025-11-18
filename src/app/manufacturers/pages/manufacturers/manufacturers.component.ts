@@ -5,10 +5,11 @@ import { MANUFACTURERS_LIST } from '../../../core/data/manufacturers';
 import { Manufacturer } from '../../../core/models/Manufacturer';
 import { CardData, mapManufacturerToCardData } from '../../../shared/components/card/card.models';
 import { Router } from '@angular/router';
+import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'app-manufacturers',
-  imports: [CardComponent, CommonModule],
+  imports: [CardComponent, CommonModule, BreadcrumbsComponent],
   templateUrl: './manufacturers.component.html',
   styleUrl: './manufacturers.component.scss'
 })

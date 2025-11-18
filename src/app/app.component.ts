@@ -11,4 +11,4 @@ import { SidenavComponent } from './layout/components/sidenav/sidenav.component'
 })
 export class AppComponent {
   title = 'tienda';
-}
+} 

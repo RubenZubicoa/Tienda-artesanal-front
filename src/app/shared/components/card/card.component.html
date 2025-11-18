@@ -6,7 +6,9 @@
         }
         <div class="card-header-title">
             <mat-card-title class="tienda-title">{{ cardData.title }}</mat-card-title>
-            <mat-card-subtitle class="tienda-subtitle">{{ cardData.subtitle }}</mat-card-subtitle>
+            @if (cardData.subtitle) {
+                <mat-card-subtitle class="tienda-subtitle">{{ cardData.subtitle }}</mat-card-subtitle>
+            }
         </div>
     </div>
     <div class="card-content">

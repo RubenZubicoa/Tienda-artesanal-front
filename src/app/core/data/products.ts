@@ -1,4 +1,5 @@
 import { Product } from "../models/Product";
+import { MANUFACTURERS_LIST } from "./manufacturers";
 
 export const PRODUCTS_LIST: Product[] = [
     {
@@ -7,7 +8,8 @@ export const PRODUCTS_LIST: Product[] = [
         name: 'Miel milflores',
         price: 8,
         image: 'https://picsum.photos/300/300',
-        description: 'Miel de abeja de la región de Milflores'
+        description: 'Miel de abeja de la región de Milflores',
+        manufacturer: MANUFACTURERS_LIST.find(manufacturer => manufacturer.uuid === '1'),
     },
     {
         uuid: '2',
@@ -15,7 +17,8 @@ export const PRODUCTS_LIST: Product[] = [
         name: 'Queso Ideazabal',
         price: 20.36,
         image: 'https://picsum.photos/300/300',
-        description: 'Queso de cabra de la región de Ideazabal'
+        description: 'Queso de cabra de la región de Ideazabal',
+        manufacturer: MANUFACTURERS_LIST.find(manufacturer => manufacturer.uuid === '2'),
     },
     {
         uuid: '3',
@@ -23,7 +26,8 @@ export const PRODUCTS_LIST: Product[] = [
         name: 'Queso Ideazabal',
         price: 20.36,
         image: 'https://picsum.photos/300/300',
-        description: 'Queso de cabra de la región de Ideazabal'
+        description: 'Queso de cabra de la región de Ideazabal',
+        manufacturer: MANUFACTURERS_LIST.find(manufacturer => manufacturer.uuid === '2'),
     },
     {
         uuid: '4',
@@ -31,6 +35,7 @@ export const PRODUCTS_LIST: Product[] = [
         name: 'Queso Ideazabal',
         price: 20.36,
         image: 'https://picsum.photos/300/300',
-        description: 'Queso de cabra de la región de Ideazabal'
+        description: 'Queso de cabra de la región de Ideazabal',
+        manufacturer: MANUFACTURERS_LIST.find(manufacturer => manufacturer.uuid === '2'),
     }
 ]

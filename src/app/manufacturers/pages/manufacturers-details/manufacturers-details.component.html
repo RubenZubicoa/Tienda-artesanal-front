@@ -1,4 +1,6 @@
-<div class="manufacturers-details-container">
+<div class="section-container">
+    <app-breadcrumbs></app-breadcrumbs>
     <h1 class="tienda-title">Lista de productos de {{ manufacturer().name }}</h1>
+    <h2 class="tienda-subtitle">Encuentra los mejores productos artesanales de {{ manufacturer().name }}</h2>
     <app-products-list [products]="products"></app-products-list>
 </div>

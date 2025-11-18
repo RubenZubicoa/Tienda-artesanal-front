@@ -1,25 +1,29 @@
 import { Routes } from '@angular/router';
-import { manufacturerResolver } from './manufacturers/manufacturer.resolver';
 
 export const routes: Routes = [
-    {
-        path: '',
-        redirectTo: 'products',
-        pathMatch: 'full'
+  {
+    path: '',
+    loadChildren: () => import('./home/home.routes').then(m => m.homeRoutes),
+    data: {
+      breadcrumb: 'Inicio',
     },
-    {
-        path: 'manufacturers',
-        loadComponent: () => import('./manufacturers/pages/manufacturers/manufacturers.component').then(m => m.ManufacturersComponent),
+  },
+  {
+    path: 'manufacturers',
+    loadChildren: () =>
+      import('./manufacturers/manufacturers.routes').then(
+        (m) => m.manufacturersRoutes
+      ),
+    data: {
+      breadcrumb: 'Vendedores',
     },
-    {
-        path: 'manufacturers/:manufacturerId',
-        loadComponent: () => import('./manufacturers/pages/manufacturers-details/manufacturers-details.component').then(m => m.ManufacturersDetailsComponent),
-        resolve: {
-            manufacturer: manufacturerResolver
-        }
+  },
+  {
+    path: 'products',
+    loadChildren: () =>
+      import('./products/products.routes').then((m) => m.productsRoutes),
+    data: {
+      breadcrumb: 'Productos',
     },
-    {
-        path: 'products',
-        loadComponent: () => import('./products/pages/products/products.component').then(m => m.ProductsComponent)
-    }
+  },
 ];

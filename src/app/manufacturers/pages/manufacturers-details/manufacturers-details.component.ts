@@ -5,10 +5,11 @@ import { ProductsListComponent } from '../../../shared/components/products-list/
 import { CommonModule } from '@angular/common';
 import { Product } from '../../../core/models/Product';
 import { ActivatedRoute } from '@angular/router';
+import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'app-manufacturers-details',
-  imports: [ProductsListComponent, CommonModule],
+  imports: [ProductsListComponent, CommonModule, BreadcrumbsComponent],
   templateUrl: './manufacturers-details.component.html',
   styleUrl: './manufacturers-details.component.scss'
 })

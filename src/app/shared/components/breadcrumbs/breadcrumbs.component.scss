@@ -1,0 +1,26 @@
+.breadcrumbs {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    height: 28px;
+    
+    .text-bradcrums {
+      font-size: 16px;
+    }
+
+    .button-link{
+      cursor: pointer;
+      border: none;
+      background-color: var(--primary-color-white);
+      color: rgba(53, 73, 202, 1);
+    }
+  
+    &.active {
+      color: #6c757d;
+      pointer-events: none;
+    }
+
+  }
+
+ 

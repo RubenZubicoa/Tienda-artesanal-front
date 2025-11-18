@@ -7,4 +7,5 @@ export type Product = {
     image: string;
     price: number;
     description?: string;
+    manufacturer?: Manufacturer;
 }
