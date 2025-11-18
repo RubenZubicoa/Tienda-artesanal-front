@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
@@ -14,4 +14,10 @@ export class CardComponent {
 
   public card = input.required<CardData>();
   public buttonText = input<string>('Comprar');
+
+  public buttonClick = output<CardData>();
+
+  public onButtonClick() {
+    this.buttonClick.emit(this.card());
+  }
 }

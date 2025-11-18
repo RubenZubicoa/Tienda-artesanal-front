@@ -3,7 +3,7 @@ import { Product } from "../models/Product";
 export const PRODUCTS_LIST: Product[] = [
     {
         uuid: '1',
-        manufacturerId: 'Luis Miguel',
+        manufacturerId: '1',
         name: 'Miel milflores',
         price: 8,
         image: 'https://picsum.photos/300/300',
@@ -11,7 +11,7 @@ export const PRODUCTS_LIST: Product[] = [
     },
     {
         uuid: '2',
-        manufacturerId: 'Xabi Asurmendi',
+        manufacturerId: '2',
         name: 'Queso Ideazabal',
         price: 20.36,
         image: 'https://picsum.photos/300/300',
@@ -19,7 +19,7 @@ export const PRODUCTS_LIST: Product[] = [
     },
     {
         uuid: '3',
-        manufacturerId: 'Xabi Asurmendi',
+        manufacturerId: '2',
         name: 'Queso Ideazabal',
         price: 20.36,
         image: 'https://picsum.photos/300/300',
@@ -27,7 +27,7 @@ export const PRODUCTS_LIST: Product[] = [
     },
     {
         uuid: '4',
-        manufacturerId: 'Xabi Asurmendi',
+        manufacturerId: '2',
         name: 'Queso Ideazabal',
         price: 20.36,
         image: 'https://picsum.photos/300/300',

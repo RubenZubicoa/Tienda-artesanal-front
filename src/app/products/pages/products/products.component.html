@@ -1,5 +1,1 @@
-<div class="products-container">
-  @for (card of cards(); track card.title) {
-    <app-card [card]="card"></app-card>
-  }
-</div>
+<app-products-list [products]="products()"></app-products-list>

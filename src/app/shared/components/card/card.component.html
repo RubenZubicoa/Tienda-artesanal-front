@@ -18,7 +18,7 @@
         @if (cardData.price) {
             <p class="price-text">{{ cardData.price }} €</p>
         }
-        <button class="buy-button tienda-primary-button">{{ buttonText() }}</button>
+        <button class="buy-button tienda-primary-button" (click)="onButtonClick()">{{ buttonText() }}</button>
     </div>
 
 </div>
