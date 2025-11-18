@@ -13,4 +13,5 @@ import { CardData } from './card.models';
 export class CardComponent {
 
   public card = input.required<CardData>();
+  public buttonText = input<string>('Comprar');
 }

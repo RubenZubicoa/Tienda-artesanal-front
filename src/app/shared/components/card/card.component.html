@@ -1,7 +1,9 @@
 @let cardData = card();
 <div class="card-container">
     <div class="card-header">
-        <img class="card-header-image" src="https://picsum.photos/300/300">
+        @if (cardData.perfilImage) {
+            <img class="card-header-image" [src]="cardData.perfilImage">
+        }
         <div class="card-header-title">
             <mat-card-title class="tienda-title">{{ cardData.title }}</mat-card-title>
             <mat-card-subtitle class="tienda-subtitle">{{ cardData.subtitle }}</mat-card-subtitle>
@@ -13,8 +15,10 @@
         </div>
     </div>
     <div class="card-actions">
-        <p class="price-text">{{ cardData.price }} €</p>
-        <button class="buy-button tienda-primary-button">Comprar</button>
+        @if (cardData.price) {
+            <p class="price-text">{{ cardData.price }} €</p>
+        }
+        <button class="buy-button tienda-primary-button">{{ buttonText() }}</button>
     </div>
 
 </div>

@@ -1,0 +1,17 @@
+.manufacturers-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+  }
+  
+  @media screen and (width > 768px) {
+    .manufacturers-container {
+      justify-content: start;
+    }
+  }
