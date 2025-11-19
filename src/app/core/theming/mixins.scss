@@ -1,0 +1,21 @@
+@use 'variables.scss' as variables;
+@use 'sass:color' as color;
+
+@mixin hover-effect($color: variables.$light-gray-color) {
+    &:hover {
+        cursor: pointer;
+        background-color: color.adjust($color, $lightness: -10%);
+    }
+}
+
+@mixin button($color: variables.$primary-color) {
+    background-color: $color;
+    color: variables.$white-color;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    @include hover-effect($color);
+}

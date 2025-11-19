@@ -17,9 +17,14 @@
         </div>
     </div>
     <div class="card-actions">
-        @if (cardData.price) {
-            <p class="tienda-price-text">{{ cardData.price }}</p>
+        @if (cardData.quantity) {
+            <p class="tienda-text">Cantidad: {{ cardData.quantity }}</p>
         }
-        <button class="tienda-primary-button" (click)="onButtonClick()">{{ buttonText() }}</button>
+        @if (cardData.price && cardData.quantity) {
+            <p class="tienda-price-text">Precio total: {{ cardData.price * cardData.quantity }}€</p>
+        } @else if (cardData.price) {
+            <p class="tienda-price-text">Precio: {{ cardData.price }}€</p>
+        }
+        <button [class]="buttonType() === 'warning' ? 'tienda-warning-button' : 'tienda-primary-button'" (click)="onClick()">{{ buttonText() }}</button>
     </div>
 </div>

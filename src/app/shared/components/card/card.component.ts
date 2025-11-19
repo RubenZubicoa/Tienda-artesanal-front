@@ -14,10 +14,11 @@ export class CardComponent {
 
   public card = input.required<CardData>();
   public buttonText = input<string>('Comprar');
+  public buttonType = input<'primary' | 'warning'>('primary');
 
-  public buttonClick = output<CardData>();
+  public click = output<CardData>();
 
-  public onButtonClick() {
-    this.buttonClick.emit(this.card());
+  public onClick() {
+    this.click.emit(this.card());
   }
 }

@@ -26,4 +26,12 @@ export const routes: Routes = [
       breadcrumb: 'Productos',
     },
   },
+
+  {
+    path: 'carrito',
+    loadChildren: () => import('./carrito/carrito.routes').then(m => m.carritoRoutes),
+    data: {
+      breadcrumb: 'Carrito de compras',
+    },
+  }
 ];

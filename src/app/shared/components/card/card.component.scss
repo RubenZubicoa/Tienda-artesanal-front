@@ -1,4 +1,6 @@
 @use '../../../core/theming/variables.scss' as variables;
+@use '../../../core/theming/mixins.scss' as mixins;
+
 .card-container {
   height: auto;
   padding: 10px;
@@ -9,6 +11,7 @@
   flex-direction: column;
   gap: 15px;
   width: 300px;
+  
 }
 
 .card-header {
@@ -60,13 +63,4 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-}
-
-
-
-.buy-button {
-  width: 100%;
-  padding: 10px;
-  font-size: 20px;
-  font-weight: 500;  
 }

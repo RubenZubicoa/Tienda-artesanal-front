@@ -1,5 +1,5 @@
 import { Manufacturer } from '../../../core/models/Manufacturer';
-import { Product } from '../../../core/models/Product';
+import { Product, ProductCart } from '../../../core/models/Product';
 
 export type CardData = {
   uuid: string;
@@ -8,6 +8,7 @@ export type CardData = {
   image: string;
   perfilImage?: string;
   price?: number;
+  quantity?: number;
 };
 
 export function mapProductToCardData(product: Product): CardData {
@@ -29,5 +30,17 @@ export function mapManufacturerToCardData(
     title: manufacturer.name,
     subtitle: manufacturer.city,
     image: manufacturer.image ?? '',
+  };
+}
+
+export function mapProductCartToCardData(product: ProductCart): CardData {
+  return {
+    uuid: product.uuid,
+    title: product.name,
+    subtitle: product.manufacturer?.name,
+    image: product.image,
+    perfilImage: product.manufacturerId,
+    price: product.price,
+    quantity: product.quantity,
   };
 }

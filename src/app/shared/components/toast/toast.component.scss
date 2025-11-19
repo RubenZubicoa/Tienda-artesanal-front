@@ -1,0 +1,128 @@
+@use '../../../core/theming/variables.scss' as variables;
+
+.snackbar {
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
+  grid-template-rows: 24px 24px 1fr;
+  grid-template-areas:
+    "icon title close"
+    ". message message"
+    "details details details";
+    ;
+  width: 440px;
+  padding: 16px 8px 16px 8px;
+  gap: 10px;
+  border: 1px solid;
+  border-radius: 8px;
+  z-index: 200;
+  background-color: transparent;
+}
+
+.icon-size {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-container {
+  grid-area: icon;
+}
+
+.title-container {
+  grid-area: title;
+}
+
+.close-container {
+  grid-area: close;
+}
+
+.message-container {
+  grid-area: message;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid variables.$warning-color;
+  padding: 10px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  grid-area: details;
+}
+
+.details-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  color: variables.$text-color;
+  cursor: pointer;
+}
+
+.details-arrow {
+  font-size: 14px;
+  color: variables.$text-color;
+  cursor: pointer;
+  transition: transform 100ms ease-in-out;
+  padding: 5px;
+  &.open {
+    transform: rotate(-90deg);
+  }
+  &.closed {
+    transform: rotate(90deg);
+  }
+}
+
+.details-text {
+  font-size: 11px;
+  color: variables.$text-color;
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+.success-icon {
+  color: variables.$primary-color;
+}
+
+.info-icon {
+  color: variables.$accent-color;
+}
+
+.error-icon {
+  color: variables.$warning-color;
+}
+
+.warning-icon {
+  color: variables.$warning-color;
+}
+
+.success {
+  background-color: variables.$light-gray-color;
+  color: variables.$text-color;
+  border-color: variables.$primary-color;
+}
+
+.error {
+  background-color: #fff6f3;
+  color: variables.$text-color;
+  border-color: variables.$warning-color;
+}
+
+.info {
+  background-color: #eaf1ff;
+  color: variables.$text-color;
+  border-color: variables.$accent-color;
+}
+
+.warning {
+  background-color: #fff8eb;
+  color: variables.$text-color;
+  border-color: variables.$warning-color;
+}

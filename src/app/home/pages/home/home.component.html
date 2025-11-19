@@ -8,9 +8,9 @@
 
     <div class="sections-list">
         @for (section of sections; track section.title) {
-            <div class="section">
+            <div class="section" (click)="navigateToSection(section)">
                 <div class="section-image">
-                    <img src="https://picsum.photos/300/300" />
+                    <img [src]="section.image" />
                 </div>
                 <div class="section-content">
                     <h3 class="tienda-title">{{ section.title }}</h3>

@@ -20,8 +20,8 @@ export class CarritoService {
     this._carrito.update(prev => [...prev, { ...product, quantity: quantity }]);
   }
 
-  public removeProduct(product: ProductCart) {
-    this._carrito.update(prev => prev.filter(p => p.uuid !== product.uuid));
+  public removeProduct(uuid: string) {
+    this._carrito.update(prev => prev.filter(p => p.uuid !== uuid));
   }
 
 }

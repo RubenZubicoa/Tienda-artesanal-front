@@ -21,7 +21,7 @@ export class ManufacturersComponent {
 
   public readonly router = inject(Router);
 
-  public onButtonClick(card: CardData) {
+  public goToManufacturersDetails(card: CardData) {
     this.router.navigate(['/manufacturers', card.uuid]);
   }
 

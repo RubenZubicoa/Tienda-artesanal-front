@@ -1,0 +1,61 @@
+<div
+  class="snackbar"
+  [ngClass]="{
+    success: data.type === TOAST_TYPES.SUCCESS,
+    info: data.type === TOAST_TYPES.INFO,
+    error: data.type === TOAST_TYPES.ERROR,
+    warning: data.type === TOAST_TYPES.WARNING
+  }"
+>
+  <div class="icon-container">
+    <ng-container
+      *ngTemplateOutlet="iconTemplate; context: { type: data.type }"
+    ></ng-container>
+  </div>
+  <div class="title-container">
+    <span class="adif-sub-title">{{ data.title }}</span>
+  </div>
+  <div class="close-container">
+    <mat-icon class="close" (click)="close()">close</mat-icon>
+  </div>
+  <div class="message-container">
+    <span>{{ data.message }}</span>
+  </div>
+  @if (data.details) {      
+    <ng-container
+      *ngTemplateOutlet="detailsTemplate; context: { details: data.details }"
+    ></ng-container>
+    }
+</div>
+
+<ng-template #iconTemplate let-type="type">
+  @switch (type) { @case (TOAST_TYPES.SUCCESS) {
+  <mat-icon
+    class="icon-size success-icon"
+    svgIcon="check_circle_filled"
+  ></mat-icon>
+  } @case (TOAST_TYPES.INFO) {
+  <mat-icon class="icon-size info-icon" svgIcon="info_filled"></mat-icon>
+  } @case (TOAST_TYPES.ERROR) {
+  <mat-icon class="icon-size error-icon" svgIcon="error_filled"></mat-icon>
+  } @case (TOAST_TYPES.WARNING) {
+  <mat-icon class="icon-size warning-icon" svgIcon="warning_filled"></mat-icon>
+  } }
+</ng-template>
+
+<ng-template #detailsTemplate let-details="details">
+  <div class="details-container">
+  <div class="details-title" (click)="toggleDetails()">
+    <span>Detalles</span>
+    <span
+      class="details-arrow"
+      [ngClass]="{ open: displayDetails(), closed: !displayDetails() }"
+    >
+      ❯
+    </span>
+  </div>
+  @if (displayDetails()) {
+  <span class="details-text">{{ details }}</span>
+  }
+  </div>
+</ng-template>

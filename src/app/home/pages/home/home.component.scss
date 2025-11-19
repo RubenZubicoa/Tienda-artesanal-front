@@ -1,3 +1,4 @@
+@use '../../../core/theming/mixins.scss' as mixins;
 @use '../../../core/theming/variables.scss' as variables;
 
 .section-container {
@@ -42,9 +43,7 @@
             flex: 1;
         }
 
-        &:hover {
-            cursor: pointer;
-        }
+        @include mixins.hover-effect(variables.$light-gray-color);
     }
   }
   
