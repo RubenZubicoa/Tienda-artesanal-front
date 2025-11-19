@@ -7,6 +7,11 @@
 
   </div>
   <div class="header-buttons">
-    <div>usuario</div>
+    <button class="tienda-primary-button">
+      <mat-icon>person</mat-icon>
+    </button>
+      <button class="tienda-primary-button" [matBadge]="productsSelected()" matBadgePosition="above after">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
   </div>
 </div>

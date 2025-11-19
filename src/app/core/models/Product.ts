@@ -9,3 +9,7 @@ export type Product = {
     description?: string;
     manufacturer?: Manufacturer;
 }
+
+export type ProductCart = Product & {
+    quantity: number;
+}
