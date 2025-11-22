@@ -1,7 +1,12 @@
 <section class="section-container">
     <app-breadcrumbs></app-breadcrumbs>
-    <h1 class="tienda-title">Carrito de compras</h1>
-    <h2 class="tienda-subtitle">Aquí puedes ver los productos que has agregado al carrito</h2>
+    <div class="carrito-container">
+        <div class="carrito-container-header">
+            <h1 class="tienda-title">Carrito de compras</h1>
+            <h2 class="tienda-subtitle">Aquí puedes ver los productos que has agregado al carrito</h2>
+        </div>
+        <button mat-raised-button class="tienda-primary-button complete-order-button" (click)="goToCompleteOrder()">Completar pedido</button>
+    </div>
     <div class="products-list-container">
         @for (card of cards(); track card.uuid) {
             <app-card [card]="card" [buttonText]="'Quitar del carrito'" [buttonType]="'warning'" (click)="removeProductFromCart(card)"></app-card>

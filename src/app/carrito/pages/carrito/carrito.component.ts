@@ -4,6 +4,7 @@ import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/bre
 import { CardComponent } from '../../../shared/components/card/card.component';
 import { CarritoService } from '../../services/carrito.service';
 import { CardData, mapProductCartToCardData } from '../../../shared/components/card/card.models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrito',
@@ -14,11 +15,16 @@ import { CardData, mapProductCartToCardData } from '../../../shared/components/c
 export class CarritoComponent {
 
   private readonly carritoService = inject(CarritoService);
+  private readonly router = inject(Router);
   
   public products = computed(() => this.carritoService.carrito());
   public cards = computed(() => this.products().map(mapProductCartToCardData));
 
   public removeProductFromCart(card: CardData) {
     this.carritoService.removeProduct(card.uuid);
+  }
+
+  public goToCompleteOrder() {
+    this.router.navigate(['/carrito/complete-order']);
   }
 }

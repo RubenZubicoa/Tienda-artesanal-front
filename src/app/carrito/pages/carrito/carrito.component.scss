@@ -1,0 +1,22 @@
+.carrito-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+
+.complete-order-button {
+  max-width: 200px;
+}
+
+.tienda-title {
+    display: none;
+}
+
+@media screen and (width > 768px) {
+    .tienda-title {
+        display: block;
+    }
+}
