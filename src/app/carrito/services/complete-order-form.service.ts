@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { IServiceForm } from '../../core/models/service-form.model';
+import { IServiceForm } from '../../core/models/IServiceForm';
 import { ICompleteOrderForm, CompleteOrderForm, CompleteOrderFormContent } from '../../core/models/Order';
 
 @Injectable({

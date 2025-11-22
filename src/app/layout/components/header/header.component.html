@@ -7,11 +7,8 @@
 
   </div>
   <div class="header-buttons">
-    <button class="tienda-primary-button">
-      <mat-icon>person</mat-icon>
-    </button>
-      <button class="tienda-primary-button" [matBadge]="productsSelected()" matBadgePosition="above after" routerLink="/carrito">
-        <mat-icon>shopping_cart</mat-icon>
-      </button>
+    @for (section of headerSections(); track section.title) {
+      <app-section-button [section]="section"></app-section-button>
+    }
   </div>
 </div>

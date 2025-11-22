@@ -1,4 +1,4 @@
 <div class="sidenav-container">
-  <div class="tienda-primary-button" routerLink="/manufacturers">Vendedores</div>
-  <div class="tienda-primary-button" routerLink="/products">Productos</div>
-</div>
+  @for (section of sections; track section.title) {
+    <app-section-button [section]="section"></app-section-button>
+  }</div>

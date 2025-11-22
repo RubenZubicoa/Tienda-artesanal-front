@@ -1,13 +1,13 @@
 @use "./core/theming/variables.scss" as variables;
 
 header {
-  height: variables.$header-height;
+  height: variables.$header-mobile-height;
   width: 100vw;
 }
 
 main {
   width: 100%;
-  height: calc(100vh - variables.$header-height);
+  height: calc(100vh - variables.$header-mobile-height);
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -31,13 +31,16 @@ content {
 }
 
 @media screen and (width > 768px) {
+  header {
+    height: variables.$header-desktop-height;
+  }
   nav {
       height: 100%;
-      width: 200px;
+      width: variables.$sidenav-desktop-width;
   }
 
   main {
-    height: calc(100vh - variables.$header-height);
+    height: calc(100vh - variables.$header-desktop-height);
     width: 100%;
     flex-direction: row;
   }
