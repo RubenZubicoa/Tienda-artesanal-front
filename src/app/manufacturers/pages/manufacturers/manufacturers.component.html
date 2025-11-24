@@ -1,10 +1,37 @@
 <div class="section-container">
-    <app-breadcrumbs></app-breadcrumbs>
-    <h1 class="tienda-title">Lista de vendedores</h1>
-    <h2 class="tienda-subtitle">Encuentra los mejores vendedores de productos artesanales cerca de ti</h2>
-    <div class="products-list-container">
-        @for (card of cards(); track card.title) {
-            <app-card [card]="card" [buttonText]="'Ver productos'" (click)="goToManufacturersDetails(card)"></app-card>
-        }
+  <app-breadcrumbs></app-breadcrumbs>
+
+  <div class="manufacturers-header-container">
+    <div class="carrito-container-header">
+      <h1 class="tienda-title">Lista de vendedores</h1>
+      <h2 class="tienda-subtitle">
+        Encuentra los mejores vendedores de productos artesanales cerca de ti
+      </h2>
     </div>
+    <ng-container *ngTemplateOutlet="buttonToggleGroup"></ng-container>
+  </div>
+  @if (view() === 'list') {
+  <div class="products-list-container">
+    @for (card of cards(); track card.title) {
+    <app-card
+      [card]="card"
+      [buttonText]="'Ver productos'"
+      (click)="goToManufacturersDetails(card)"
+    ></app-card>
+    }
+  </div>
+  } @else {
+  <app-map></app-map>
+  }
 </div>
+
+<ng-template #buttonToggleGroup>
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="map" (click)="toggleView('map')"
+      ><mat-icon>map</mat-icon></mat-button-toggle
+    >
+    <mat-button-toggle value="list" (click)="toggleView('list')"
+      ><mat-icon>list</mat-icon></mat-button-toggle
+    >
+  </mat-button-toggle-group>
+</ng-template>

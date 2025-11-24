@@ -4,6 +4,8 @@ export type Manufacturer  = {
     phone: string;
     email: string;
     image?: string;
+    latitude?: number;
+    longitude?: number;
     city?: string;
     description?: string;
 }

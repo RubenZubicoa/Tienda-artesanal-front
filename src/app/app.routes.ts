@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ManufacturersComponent } from './manufacturers/pages/manufacturers/manufacturers.component';
 
 export const routes: Routes = [
   {
@@ -10,10 +11,7 @@ export const routes: Routes = [
   },
   {
     path: 'manufacturers',
-    loadChildren: () =>
-      import('./manufacturers/manufacturers.routes').then(
-        (m) => m.manufacturersRoutes
-      ),
+    component: ManufacturersComponent,
     data: {
       breadcrumb: 'Vendedores',
     },
