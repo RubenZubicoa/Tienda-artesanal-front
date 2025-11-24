@@ -1,7 +1,7 @@
 @use '../../../core/theming/variables.scss' as variables;
 .map-container {
   width: 100%;
-  height: calc(100vh - variables.$header-mobile-height - variables.$sidenav-mobile-height);
+  height: 800px;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

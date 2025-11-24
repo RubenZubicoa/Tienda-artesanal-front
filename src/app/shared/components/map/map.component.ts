@@ -7,14 +7,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })
-export class MapComponent implements AfterViewInit, OnDestroy {
+export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
   @ViewChild('mapContainer', { static: true }) mapContainer!: ElementRef;
   
-  @Input() latitude: number = 40.4168; // Madrid por defecto
-  @Input() longitude: number = -3.7038;
-  @Input() zoom: number = 13;
-  @Input() height: string = '400px';
+  @Input() latitude: number = 42.976;
+  @Input() longitude: number = -2.291;
+  @Input() zoom: number = 11;
   @Input() markerTitle: string = 'Ubicación';
+  @Input() markers: { lat: number, lng: number }[] = [];
   
   @Output() mapClick = new EventEmitter<{ lat: number, lng: number }>();
   @Output() markerClick = new EventEmitter<void>();
@@ -24,11 +24,24 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.initMap();
+    this.markers.forEach(marker => {
+      this.addMarker(marker.lat, marker.lng);
+    });
+
   }
 
   ngOnDestroy(): void {
     if (this.marker) {
       this.marker.setMap(null);
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['markers']) {
+      this.initMap();
+      this.markers.forEach(marker => {
+        this.addMarker(marker.lat, marker.lng);
+      });
     }
   }
 
@@ -45,27 +58,15 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     };
 
     this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
-
-    // Agregar marcador
-    this.addMarker(this.latitude, this.longitude);
-
-    // Escuchar clics en el mapa
-    this.map.addListener('click', (event: any) => {
-      const lat = event.latLng.lat();
-      const lng = event.latLng.lng();
-      this.mapClick.emit({ lat, lng });
-      
-      // Mover el marcador al nuevo lugar
-      this.addMarker(lat, lng);
-    });
   }
 
   private addMarker(lat: number, lng: number): void {
+    console.log('Adding marker:', lat, lng);
     if (this.marker) {
       this.marker.setMap(null);
     }
 
-    this.marker = new google.maps.Marker({
+    const marker = new google.maps.Marker({
       position: { lat, lng },
       map: this.map,
       title: this.markerTitle,
@@ -73,7 +74,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     });
 
     // Escuchar clic en el marcador
-    this.marker.addListener('click', () => {
+    marker.addListener('click', () => {
       console.log('Marcador clickeado');
       this.markerClick.emit();
     });

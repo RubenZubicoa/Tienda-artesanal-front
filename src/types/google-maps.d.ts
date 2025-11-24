@@ -55,6 +55,64 @@ declare namespace google {
     class LatLngBounds {
       constructor(sw?: LatLng | LatLngLiteral, ne?: LatLng | LatLngLiteral);
     }
+
+    class Geocoder {
+      geocode(request: GeocoderRequest, callback: (results: GeocoderResult[] | null, status: GeocoderStatus) => void): void;
+    }
+
+    interface GeocoderRequest {
+      address?: string;
+      location?: LatLng | LatLngLiteral;
+      placeId?: string;
+      region?: string;
+      bounds?: LatLngBounds;
+      componentRestrictions?: GeocoderComponentRestrictions;
+    }
+
+    interface GeocoderComponentRestrictions {
+      country?: string | string[];
+      postalCode?: string;
+      route?: string;
+      locality?: string;
+      administrativeArea?: string;
+    }
+
+    interface GeocoderResult {
+      address_components: GeocoderAddressComponent[];
+      formatted_address: string;
+      geometry: GeocoderGeometry;
+      place_id: string;
+      types: string[];
+    }
+
+    interface GeocoderAddressComponent {
+      long_name: string;
+      short_name: string;
+      types: string[];
+    }
+
+    interface GeocoderGeometry {
+      location: LatLng;
+      location_type: GeocoderLocationType;
+      viewport: LatLngBounds;
+      bounds?: LatLngBounds;
+    }
+
+    enum GeocoderLocationType {
+      ROOFTOP = 'ROOFTOP',
+      RANGE_INTERPOLATED = 'RANGE_INTERPOLATED',
+      GEOMETRIC_CENTER = 'GEOMETRIC_CENTER',
+      APPROXIMATE = 'APPROXIMATE'
+    }
+
+    enum GeocoderStatus {
+      OK = 'OK',
+      ZERO_RESULTS = 'ZERO_RESULTS',
+      OVER_QUERY_LIMIT = 'OVER_QUERY_LIMIT',
+      REQUEST_DENIED = 'REQUEST_DENIED',
+      INVALID_REQUEST = 'INVALID_REQUEST',
+      UNKNOWN_ERROR = 'UNKNOWN_ERROR'
+    }
   }
 }
 
