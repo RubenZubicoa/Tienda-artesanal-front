@@ -26,7 +26,7 @@
         @if (cardData.price && cardData.quantity) {
             <p class="tienda-price-text">Precio total: {{ cardData.price * cardData.quantity }}€</p>
         } @else if (cardData.price) {
-            <p class="tienda-price-text">Precio: {{ cardData.price }}€</p>
+            <p class="tienda-price-text">Precio: {{ cardData.price.toFixed(2) }}€</p>
         }
         <button [class]="buttonType() === 'warning' ? 'tienda-warning-button' : 'tienda-primary-button'" (click)="onClick()">{{ buttonText() }}</button>
     </div>
