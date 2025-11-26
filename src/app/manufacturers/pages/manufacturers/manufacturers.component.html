@@ -21,17 +21,20 @@
     }
   </div>
   } @else {
-  <app-map [markers]="manufacturersLocations()" (markerClick)="showManufacturersDetails($event)"></app-map>
+  <app-map
+    [markers]="manufacturersLocations()"
+    (markerClick)="showManufacturersDetails($event)"
+  ></app-map>
   }
 </div>
 
 <ng-template #buttonToggleGroup>
-  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [value]="view()">
-    <mat-button-toggle value="map" (click)="toggleView('map')"
-      ><mat-icon>map</mat-icon></mat-button-toggle
-    >
-    <mat-button-toggle value="list" (click)="toggleView('list')"
-      ><mat-icon>list</mat-icon></mat-button-toggle
-    >
-  </mat-button-toggle-group>
+  <div class="button-toggle-group">
+    <button mat-icon-button (click)="toggleView('map')" [class.active]="view() === 'map'">
+      <mat-icon>map</mat-icon>
+    </button>
+    <button mat-icon-button (click)="toggleView('list')" [class.active]="view() === 'list'">
+      <mat-icon>list</mat-icon>
+    </button>
+  </div>
 </ng-template>
