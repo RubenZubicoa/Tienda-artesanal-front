@@ -1,4 +1,8 @@
 <div class="sidenav-container">
   @for (section of sections; track section.title) {
     <app-section-button [section]="section"></app-section-button>
-  }</div>
+  }
+  @for (section of manufacturersSections; track section.title) {
+    <app-section-button [section]="section"></app-section-button>
+  }
+</div>

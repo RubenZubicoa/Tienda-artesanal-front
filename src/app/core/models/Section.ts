@@ -30,3 +30,16 @@ export const HEADER_SECTIONS: Section[] = [
     route: '/carrito',
   },
 ]
+
+export const MANUFACTURERS_SECTIONS: Section[] = [
+  {
+    title: 'Pedidos',
+    icon: 'list',
+    route: '/orders',
+  },
+  {
+    title: 'Mis productos',
+    icon: 'inventory',
+    route: '/my-products',
+  },
+]
