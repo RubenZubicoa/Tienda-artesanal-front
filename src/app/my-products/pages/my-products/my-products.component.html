@@ -2,7 +2,7 @@
   <app-breadcrumbs></app-breadcrumbs>
   <div class="my-products-header-container">
     <h1 class="tienda-title">Estos son tus productos</h1>
-    <button mat-raised-button class="tienda-primary-button">
+    <button mat-raised-button class="tienda-primary-button" (click)="goToAddProduct()">
       Agregar producto
     </button>
   </div>
@@ -12,7 +12,6 @@
       [card]="card"
       [buttonText]="'Editar producto'"
       [buttonType]="'primary'"
-      (click)="goToProductDetails(card)"
     ></app-card>
     }
   </div>

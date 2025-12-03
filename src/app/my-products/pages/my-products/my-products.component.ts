@@ -8,6 +8,8 @@ import { Manufacturer } from '../../../core/models/Manufacturer';
 import { Product } from '../../../core/models/Product';
 import { CardData, mapProductToCardData } from '../../../shared/components/card/card.models';
 import { MANUFACTURERS_LIST } from '../../../core/data/manufacturers';
+import { AddProductDialogComponent } from '../../components/add-product-dialog/add-product-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-my-products',
@@ -19,6 +21,7 @@ export class MyProductsComponent {
 
   public manufacturer = signal<Manufacturer | undefined>(MANUFACTURERS_LIST.find(manufacturer => manufacturer.uuid === '1'));
   public readonly router = inject(Router);
+  public readonly dialog = inject(MatDialog);
 
 
   public products: Product[] = [];
@@ -32,6 +35,19 @@ export class MyProductsComponent {
   }
 
   public goToProductDetails(card: CardData) {
-    this.router.navigate(['/products', card.uuid]);
+    const product = PRODUCTS_LIST.find(product => product.uuid === card.uuid);
+    this.dialog.open(AddProductDialogComponent, {
+      data: {
+        product: product
+      }
+    });
+  }
+
+  public goToAddProduct() {
+    this.dialog.open(AddProductDialogComponent, {
+      data: {
+        product: undefined
+      }
+    });
   }
 }
