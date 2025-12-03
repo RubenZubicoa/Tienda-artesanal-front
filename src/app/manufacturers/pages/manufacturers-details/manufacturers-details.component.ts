@@ -17,7 +17,6 @@ import { CardData, mapProductToCardData } from '../../../shared/components/card/
 export class ManufacturersDetailsComponent {
  
   public manufacturer = input<Manufacturer>();
-  public route = inject(ActivatedRoute);
   public readonly router = inject(Router);
 
 

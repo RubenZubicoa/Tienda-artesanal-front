@@ -1,0 +1,19 @@
+<div class="section-container">
+  <app-breadcrumbs></app-breadcrumbs>
+  <div class="my-products-header-container">
+    <h1 class="tienda-title">Estos son tus productos</h1>
+    <button mat-raised-button class="tienda-primary-button">
+      Agregar producto
+    </button>
+  </div>
+  <div class="products-list-container">
+    @for (card of cards(); track card.uuid) {
+    <app-card
+      [card]="card"
+      [buttonText]="'Editar producto'"
+      [buttonType]="'primary'"
+      (click)="goToProductDetails(card)"
+    ></app-card>
+    }
+  </div>
+</div>
