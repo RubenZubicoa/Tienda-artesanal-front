@@ -1,6 +1,7 @@
 @use "../../../core/theming/variables.scss" as variables;
 table {
   width: 100%;
+  table-layout: fixed;
 }
 
 .mat-mdc-form-field {

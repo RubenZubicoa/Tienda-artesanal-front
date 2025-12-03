@@ -6,10 +6,12 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { TableColumn, TableDataWithStatus } from './table.models';
 import { DatePipe } from '@angular/common';
 import { TruncateTextDirective } from '../../directives/truncate-text.directive';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-table',
-  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, DatePipe, TruncateTextDirective],
+  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, DatePipe, TruncateTextDirective, MatIconModule, MatButtonModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
@@ -20,7 +22,7 @@ export class TableComponent<T> {
   @ViewChild(MatPaginator) public paginator!: MatPaginator;
   @ViewChild(MatSort) public sort!: MatSort;
 
-  public displayedColumns = computed(() => this.columns().map(column => column.field));
+  public displayedColumns = computed(() => this.columns().map(column => column.field).concat('actions'));
 
   public dataSource = new MatTableDataSource<T>();
 
