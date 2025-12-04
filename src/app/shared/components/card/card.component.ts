@@ -17,9 +17,9 @@ export class CardComponent {
   public buttonText = input<string>('Comprar');
   public buttonType = input<'primary' | 'warning'>('primary');
 
-  public click = output<CardData>();
+  public succesButtonClick = output<CardData>();
 
   public onClick() {
-    // this.click.emit(this.card());
+    this.succesButtonClick.emit(this.card());
   }
 }

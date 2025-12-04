@@ -46,4 +46,11 @@ export const routes: Routes = [
       breadcrumb: 'Pedidos',
     },
   },
+  {
+    path: 'analysis',
+    loadChildren: () => import('./analysis/analysis.routes').then(m => m.analysisRoutes),
+    data: {
+      breadcrumb: 'Análisis',
+    },
+  },
 ];

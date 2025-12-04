@@ -4,7 +4,7 @@ import { Manufacturer } from '../../../core/models/Manufacturer';
 import { MANUFACTURERS_LIST } from '../../../core/data/manufacturers';
 import { CardComponent } from '../../../shared/components/card/card.component';
 import { CommonModule } from '@angular/common';
-import { mapManufacturerToCardData } from '../../../shared/components/card/card.models';
+import { CardData, mapManufacturerToCardData } from '../../../shared/components/card/card.models';
 import { Router } from '@angular/router';
 
 @Component({
@@ -28,8 +28,8 @@ export class ManufacturersDialogComponent implements OnInit {
     this.manufacturer.set(MANUFACTURERS_LIST.find(manufacturer => manufacturer.uuid === this.data.manufacturerId));
   }
 
-  public goToManufacturersDetails(manufacturerId: string) {
-    this.router.navigate(['/manufacturers', manufacturerId]);
+  public goToManufacturersDetails() {
+    this.router.navigate(['/manufacturers', this.manufacturerCard()!.uuid]);
     this.dialogRef.close();
   }
 }
