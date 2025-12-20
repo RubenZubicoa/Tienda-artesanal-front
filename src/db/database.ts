@@ -14,6 +14,8 @@ const clientDB = new MongoClient(uri,  {
     }
 );
 
+const database = clientDB.db(process.env.MONGO_DB_NAME);
+
 async function connectToDatabase() {
   try {
     // Connect the client to the server (optional starting in v4.7)
@@ -29,4 +31,4 @@ async function connectToDatabase() {
   }
 }
 
-export { connectToDatabase, clientDB as client };
+export { connectToDatabase, clientDB, database };
