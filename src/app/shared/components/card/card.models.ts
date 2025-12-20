@@ -30,7 +30,7 @@ export function mapManufacturerToCardData(
   return {
     uuid: manufacturer.uuid,
     title: manufacturer.name,
-    subtitle: manufacturer.city,
+    subtitle: manufacturer.address,
     image: manufacturer.image ?? '',
     description: manufacturer.description,
   };

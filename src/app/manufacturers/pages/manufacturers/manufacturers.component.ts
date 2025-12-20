@@ -1,8 +1,6 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { CardComponent } from '../../../shared/components/card/card.component';
 import { CommonModule } from '@angular/common';
-import { MANUFACTURERS_LIST } from '../../../core/data/manufacturers';
-import { Manufacturer } from '../../../core/models/Manufacturer';
 import { mapManufacturerToCardData } from '../../../shared/components/card/card.models';
 import { Router, RouterModule } from '@angular/router';
 import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
@@ -13,6 +11,8 @@ import { getLocationFromAddress } from '../../../shared/utils/geocoder';
 import { MapMarker } from '../../../shared/components/map/map.models';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ManufacturersDialogComponent } from '../../components/manufacturers-dialog/manufacturers-dialog.component';
+import { ManufacturerService } from '../../services/manufacturer.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-manufacturers',
@@ -20,26 +20,29 @@ import { ManufacturersDialogComponent } from '../../components/manufacturers-dia
   templateUrl: './manufacturers.component.html',
   styleUrl: './manufacturers.component.scss'
 })
-export class ManufacturersComponent implements OnInit {
-
-  public manufacturers = signal<Manufacturer[]>(MANUFACTURERS_LIST);
-  public manufacturersLocations = signal<MapMarker[]>([]);
-
-  public manufacturersCards = computed(() => this.manufacturers().map(mapManufacturerToCardData));
+export class ManufacturersComponent {  
+  
   public view = signal<'map' | 'list'>('map');
-
+  
   private readonly router = inject(Router);
   private readonly dialog = inject(MatDialog);
-
+  private readonly manufacturerService = inject(ManufacturerService);
   
-  ngOnInit(): void {
-    this.manufacturers().forEach(manufacturer => {
-      getLocationFromAddress(manufacturer.city ?? '').then(location => {
-        manufacturer.latitude = location?.lat;
-        manufacturer.longitude = location?.lng;
-        this.manufacturersLocations.set([...this.manufacturersLocations(), {id: manufacturer.uuid, lat: location?.lat ?? 0, lng: location?.lng ?? 0 }]);
+  public manufacturers = toSignal(this.manufacturerService.getManufacturers());
+  public manufacturersCards = computed(() => this.manufacturers()?.map(mapManufacturerToCardData));
+  public manufacturersLocations = signal<MapMarker[]>([]);
+ 
+  constructor(){
+    effect(() => {
+      this.manufacturers()?.forEach(manufacturer => {
+        getLocationFromAddress(manufacturer.address ?? '').then(location => {
+          manufacturer.latitude = location?.lat;
+          manufacturer.longitude = location?.lng;
+          this.manufacturersLocations.set([...this.manufacturersLocations(), {id: manufacturer.uuid, lat: location?.lat ?? 0, lng: location?.lng ?? 0 }]);
+        });
       });
-    });
+    }, { allowSignalWrites: true })
+
   }
   
   public goToManufacturersDetails(manufacturerId: string) {
