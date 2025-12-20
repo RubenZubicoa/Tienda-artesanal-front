@@ -7,6 +7,7 @@ export type Manufacturer = {
     address: string;
     phone: string;
     email: string;
+    description: string;
     website?: string;
     image?: string;
     meetingPoints?: MeetingPoint[];
