@@ -3,19 +3,37 @@ import { Product } from './Product';
 
 export type Order = {
   uuid?: string;
-  userId: string;
-  name: string;
-  email: string;
-  phone: string;
+  username: string;
   address: string;
-  city: string;
-  zip: string;
-  country: string;
-  products: Product[];
+  phone: string;
+  email: string;
+  products: {
+      productId: Product['uuid'];
+      quantity: number;
+      price: number;
+  }[];
   total: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: number;
+  updatedAt?: number;
+  status: 'pending' | 'completed' | 'cancelled';
 };
+
+export type OrderDB = {
+  _id?: string;
+  username: string;
+  address: string;
+  phone: string;
+  email: string;
+  products: {
+      productId: Product['uuid'];
+      quantity: number;
+      price: number;
+  }[];
+  total: number;
+  status: string;
+  createdAt: number;
+  updatedAt?: number;
+}
 
 export interface ICompleteOrderForm {
   name: string;
@@ -38,3 +56,19 @@ export type CompleteOrderFormContent = {
 };
 
 export type CompleteOrderForm = FormGroup<CompleteOrderFormContent>;
+
+
+export function mapOrderToOrder(orderDB: OrderDB): Order {
+  return {
+    uuid: orderDB._id ?? '',
+    username: orderDB.username,
+    address: orderDB.address,
+    phone: orderDB.phone,
+    email: orderDB.email,
+    products: orderDB.products,
+    total: orderDB.total,
+    status: orderDB.status as 'pending' | 'completed' | 'cancelled',
+    createdAt: orderDB.createdAt,
+    updatedAt: orderDB.updatedAt,
+  };
+}
