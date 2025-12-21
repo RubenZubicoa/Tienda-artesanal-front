@@ -1,12 +1,13 @@
-import { Component, computed, effect, inject, input, signal } from '@angular/core';
+import { Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
 import { Manufacturer } from '../../../core/models/Manufacturer';
-import { PRODUCTS_LIST } from '../../../core/data/products';
 import { CardComponent } from '../../../shared/components/card/card.component';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../../core/models/Product';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
 import { CardData, mapProductToCardData } from '../../../shared/components/card/card.models';
+import { ProductsService } from '../../../products/services/products.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-manufacturers-details',
@@ -15,19 +16,23 @@ import { CardData, mapProductToCardData } from '../../../shared/components/card/
   styleUrl: './manufacturers-details.component.scss'
 })
 export class ManufacturersDetailsComponent {
+  private readonly productsService = inject(ProductsService);
+  private readonly destroyRef = inject(DestroyRef);
  
   public manufacturer = input<Manufacturer>();
   public readonly router = inject(Router);
-
 
   public products: Product[] = [];
   public cards = signal<CardData[]>([]);
 
   constructor(){
     effect(() => {
-      this.products = PRODUCTS_LIST.filter(product => product.manufacturerId === this.manufacturer()?.uuid);
+      this.productsService.getProductsByManufacturer(this.manufacturer()?.uuid ?? '').pipe(takeUntilDestroyed(this.destroyRef)).subscribe(products => {
+        this.products = products;
+        this.cards.set(products.map(mapProductToCardData));
+      });
       this.cards.set(this.products.map(mapProductToCardData));
-    });
+    }, { allowSignalWrites: true });
   }
 
   public goToProductDetails(card: CardData) {

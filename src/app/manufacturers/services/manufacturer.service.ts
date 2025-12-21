@@ -16,6 +16,10 @@ export class ManufacturerService {
     return this.http.get<ManufacturerDB[]>(this.url).pipe(map(manufacturers => manufacturers.map(mapManufacturerToManufacturer)));
   }
 
+  getManufacturer(manufacturerId: string): Observable<Manufacturer> {
+    return this.http.get<ManufacturerDB>(this.url + '/' + manufacturerId).pipe(map(mapManufacturerToManufacturer));
+  }
+
   createManufacturer(manufacturer: Manufacturer): Observable<void> {
     return this.http.post<void>(this.url, manufacturer);
   }

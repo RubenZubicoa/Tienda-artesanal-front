@@ -1,9 +1,10 @@
-import { ActivatedRouteSnapshot, ResolveFn } from "@angular/router";
-import { MANUFACTURERS_LIST } from "../core/data/manufacturers";
+import { ResolveFn } from "@angular/router";
 import { Manufacturer } from "../core/models/Manufacturer";
+import { inject } from "@angular/core";
+import { ManufacturerService } from "./services/manufacturer.service";
 
 export const manufacturerResolver: ResolveFn<Manufacturer | undefined> = (route, state) => {
     const id = route.params['manufacturerId'];
-    return MANUFACTURERS_LIST.find(manufacturer => manufacturer.uuid === id);
+    return inject(ManufacturerService).getManufacturer(id);
 }
 

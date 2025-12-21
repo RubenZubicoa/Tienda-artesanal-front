@@ -17,6 +17,11 @@ export class ProductsService {
     return this.http.get<ProductDB[]>(this.url).pipe(map(products => products.map(mapProductToProduct)));
   }
 
+  getProductsByManufacturer(manufacturerId: string): Observable<Product[]> {
+    const url = `${this.url}/manufacturer/${manufacturerId}`;
+    return this.http.get<ProductDB[]>(url).pipe(map(products => products.map(mapProductToProduct)));
+  }
+
   createProduct(product: Product): Observable<void> {
     return this.http.post<void>(this.url, product);
   }
