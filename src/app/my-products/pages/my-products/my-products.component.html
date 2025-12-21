@@ -1,8 +1,18 @@
 <div class="section-container">
   <app-breadcrumbs></app-breadcrumbs>
   <div class="my-products-header-container">
-    <h1 class="tienda-title">Estos son tus productos</h1>
-    <button mat-raised-button class="tienda-primary-button" (click)="goToAddProduct()">
+    <div class="my-products-header-container-title">
+      <h1 class="tienda-title">Estos son tus productos</h1>
+      <h2 class="tienda-subtitle">
+        Aquí puedes ver los productos que has agregado a la plataforma,
+        editarlos o eliminarlos.
+      </h2>
+    </div>
+    <button
+      mat-raised-button
+      class="tienda-primary-button"
+      (click)="openFormDialog()"
+    >
       Agregar producto
     </button>
   </div>
@@ -12,7 +22,19 @@
       [card]="card"
       [buttonText]="'Editar producto'"
       [buttonType]="'primary'"
+      [buttonTemplate]="editProductButton"
     ></app-card>
     }
   </div>
 </div>
+
+<ng-template #editProductButton let-uuid="uuid">
+  <div class="edit-product-buttons-container">
+    <button mat-raised-button class="tienda-primary-button" (click)="openFormDialog(uuid)">
+      Editar producto
+    </button>
+    <button mat-raised-button class="tienda-warning-button" (click)="removeProduct(uuid)">
+      Eliminar producto
+    </button>
+  </div>
+</ng-template>

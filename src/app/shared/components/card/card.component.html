@@ -24,6 +24,12 @@
         } @else if (cardData.price) {
             <p class="tienda-price-text">Precio: {{ cardData.price.toFixed(2) }}€</p>
         }
-        <button [class]="buttonType() === 'warning' ? 'tienda-warning-button' : 'tienda-primary-button'" (click)="onClick()">{{ buttonText() }}</button>
+        @let buttonTemplateRef = buttonTemplate();
+        @if (buttonTemplateRef) {
+            <ng-container *ngTemplateOutlet="buttonTemplateRef; context: { uuid: cardData.uuid }"></ng-container>
+        }
+        @else {
+            <button [class]="buttonType() === 'warning' ? 'tienda-warning-button' : 'tienda-primary-button'" (click)="onClick()">{{ buttonText() }}</button>
+        }
     </div>
 </div>

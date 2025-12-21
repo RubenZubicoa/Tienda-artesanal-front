@@ -25,6 +25,9 @@ export type ProductDB = {
     updatedAt?: number;
 }
 
+export type AddProduct = Omit<Product, 'uuid' | "manufacturer" >
+export type UpdateProduct = Omit<Product, 'uuid' | "manufacturer">
+
 export const mapProductToProduct = (productDB: ProductDB): Product => {
     return {
         uuid: productDB._id ?? '',

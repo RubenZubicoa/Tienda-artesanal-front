@@ -1,26 +1,69 @@
 <div class="add-product-dialog-container">
-  <h1 class="tienda-title">Agregar producto</h1>
-  <form class="add-product-form">
-    <div class="row">
-      <mat-form-field appearance="outline" class="form-control">
-        <mat-label>Nombre</mat-label>
-        <input matInput type="text" />
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="form-control">
-        <mat-label>Precio</mat-label>
-        <input matInput type="number" />
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="form-control">
-        <mat-label>Imagen</mat-label>
-        <input matInput type="text" />
-      </mat-form-field>
-    </div>
-    <mat-form-field appearance="outline" class="textarea-control">
-      <mat-label>Descripción</mat-label>
-      <textarea matInput type="text"></textarea>
-    </mat-form-field>
-  </form>
-  <button mat-raised-button class="tienda-primary-button">
-    Agregar producto
+  <div class="add-product-form">
+    <h1 class="tienda-title">Agregar producto</h1>
+    <ng-container *ngTemplateOutlet="formTemplate; context: { form: productForm }"></ng-container>
+  </div>
+  <button mat-raised-button class="tienda-primary-button" (click)="saveChanges()">
+    {{ isUpdateMode() ? 'Actualizar producto' : 'Agregar producto' }}
   </button>
 </div>
+
+<ng-template #imagesTemplate>
+  <div class="images-container">
+    <img
+      *ngFor="let image of images(); let i = index"
+      [src]="image"
+      alt="Image"
+    />
+  </div>
+</ng-template>
+
+<ng-template #formTemplate let-form="form">
+  <div class="row">
+    <mat-form-field appearance="outline" class="form-control">
+      <mat-label>Nombre</mat-label>
+      <input matInput type="text" [formControl]="form.controls.name"/>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-control">
+      <mat-label>Precio</mat-label>
+      <input matInput type="number" [formControl]="form.controls.price"/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-control">
+      <mat-label>Stock</mat-label>
+      <input matInput type="number" [formControl]="form.controls.stock"/>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="outline" class="form-control">
+      <mat-label>Categoría</mat-label>
+      <mat-select [formControl]="form.controls.category">
+        <mat-option
+          *ngFor="let category of categories()"
+          [value]="category.uuid"
+          >{{ category.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="outline" class="form-control">
+      <mat-label>Imagen</mat-label>
+      <input matInput type="text" #imageInput />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      class="tienda-primary-button"
+      (click)="addImage(imageInput.value)"
+    >
+      Agregar imagen
+    </button>
+  </div>
+  <div class="row">
+    <ng-container *ngTemplateOutlet="imagesTemplate"></ng-container>
+  </div>
+  <mat-form-field appearance="outline" class="textarea-control">
+    <mat-label>Descripción</mat-label>
+    <textarea matInput type="text" [formControl]="form.controls.description"></textarea>
+  </mat-form-field>
+</ng-template>

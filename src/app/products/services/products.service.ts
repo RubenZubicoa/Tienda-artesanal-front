@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from '../../core/config/api.config';
-import { Product, ProductDB, mapProductToProduct } from '../../core/models/Product';
+import { AddProduct, Product, ProductDB, UpdateProduct, mapProductToProduct } from '../../core/models/Product';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
@@ -17,17 +17,23 @@ export class ProductsService {
     return this.http.get<ProductDB[]>(this.url).pipe(map(products => products.map(mapProductToProduct)));
   }
 
+  getProduct(id: string): Observable<Product | undefined> {
+    const url = `${this.url}/${id}`;
+    return this.http.get<ProductDB>(url).pipe(map(product => mapProductToProduct(product)));
+  }
+
   getProductsByManufacturer(manufacturerId: string): Observable<Product[]> {
     const url = `${this.url}/manufacturer/${manufacturerId}`;
     return this.http.get<ProductDB[]>(url).pipe(map(products => products.map(mapProductToProduct)));
   }
 
-  createProduct(product: Product): Observable<void> {
+  createProduct(product: AddProduct): Observable<void> {
     return this.http.post<void>(this.url, product);
   }
 
-  updateProduct(product: Product): Observable<void> {
-    return this.http.put<void>(this.url, product);
+  updateProduct(uuid: Product['uuid'], product: UpdateProduct): Observable<void> {
+    const url = `${this.url}/${uuid}`;
+    return this.http.put<void>(url, product);
   }
 
   deleteProduct(productId: string): Observable<void> {

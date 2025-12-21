@@ -5,14 +5,19 @@
         <app-carrusel [images]="product().images"></app-carrusel>
       </div>
     <div class="product-details-content">
-      <div class="product-details-content-title">
-        <span class="tienda-title">{{ product().name }}</span>
-        <span class="tienda-subtitle">Vendido por: {{ product().manufacturer?.name }}</span>
+      <div class="product-details-content-header">
+        <img class="product-details-content-header-image" [src]="manufacturer()?.image">
+        <div class="product-details-content-title">
+          <span class="tienda-title">{{ product().name }}</span>
+          <span class="tienda-subtitle">Vendido por: {{ manufacturer()?.name }}</span>
+        </div>
       </div>
+      <mat-divider class="tienda-divider"></mat-divider>
       <div class="product-details-content-description">
         <span class="tienda-text">{{ product().description }}</span>
       </div>      
-      <div class="product-details-content-price">
+      <mat-divider class="tienda-divider"></mat-divider>
+      <div class="product-details-content-footer">
         <span class="tienda-price-text">Precio: {{ product().price }}€</span>
         <mat-form-field appearance="outline" class="form-control">
           <mat-label>Cantidad</mat-label>

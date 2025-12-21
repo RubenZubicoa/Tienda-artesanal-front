@@ -52,3 +52,9 @@ html,body {
 .tienda-warning-button {
   @include mixins.button(variables.$warning-color);
 }
+
+.tienda-divider {
+  width: 100%;
+  margin: 10px 0;
+  display: block;
+}
