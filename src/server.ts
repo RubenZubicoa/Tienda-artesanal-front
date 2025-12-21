@@ -15,9 +15,6 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 // Routes
-server.use('/', (req, res) => {
-    res.send('Hello World');
-});
 server.use('/api/manufacturers', manufacturerRoutes);
 server.use('/api/products', productRoutes);
 server.use('/api/orders', orderRoutes);
