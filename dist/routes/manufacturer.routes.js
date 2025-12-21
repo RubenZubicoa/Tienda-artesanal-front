@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.manufacturerRoutes = void 0;
+const express_1 = require("express");
+const manufacturer_controller_1 = require("../controllers/manufacturer.controller");
+exports.manufacturerRoutes = (0, express_1.Router)();
+exports.manufacturerRoutes.get('/', manufacturer_controller_1.getManufacturers);
+exports.manufacturerRoutes.post('/', manufacturer_controller_1.createManufacturer);
+exports.manufacturerRoutes.put('/:id', manufacturer_controller_1.updateManufacturer);
+exports.manufacturerRoutes.delete('/:id', manufacturer_controller_1.deleteManufacturer);
+exports.default = exports.manufacturerRoutes;
