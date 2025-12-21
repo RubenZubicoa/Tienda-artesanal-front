@@ -4,7 +4,7 @@ import { Manufacturer } from "../types/Manufacturer";
 export async function getManufacturers() {
     try {
         await clientDB.connect();
-        const manufacturers = await database.collection("Manufacturers").find().toArray();
+        const manufacturers = await database.collection("Manufacturers").find({ isDeleted: false }).toArray();
         await clientDB.close();
         return manufacturers;
     } catch (error) {
@@ -17,7 +17,7 @@ export async function getManufacturers() {
 export async function getManufacturerById(manufacturerId: Manufacturer['_id']) {
     try {
         await clientDB.connect();
-        const manufacturer = await database.collection("Manufacturers").findOne({ _id: manufacturerId });
+        const manufacturer = await database.collection("Manufacturers").findOne({ _id: manufacturerId, isDeleted: false });
         await clientDB.close();
         return manufacturer;
     } catch (error) {
@@ -58,7 +58,7 @@ export async function updateManufacturer(manufacturerId: Manufacturer['_id'], ma
 export async function deleteManufacturer(manufacturerId: Manufacturer['_id']) {
     try {
         await clientDB.connect();
-        const result = await database.collection("Manufacturers").deleteOne({ _id: manufacturerId });
+        const result = await database.collection("Manufacturers").updateOne({ _id: manufacturerId }, { $set: { isDeleted: true } });
         await clientDB.close();
         return result;
     } catch (error) {

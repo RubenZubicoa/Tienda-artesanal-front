@@ -4,6 +4,7 @@ import cors from 'cors';
 import manufacturerRoutes from './routes/manufacturer.routes';
 import productRoutes from './routes/product.routes';
 import orderRoutes from './routes/order.routes';
+import userRoutes from './routes/user.routes';
 
 const server: Application = express();
 
@@ -18,5 +19,6 @@ server.use(express.urlencoded({ extended: true }));
 server.use('/api/manufacturers', manufacturerRoutes);
 server.use('/api/products', productRoutes);
 server.use('/api/orders', orderRoutes);
+server.use('/api/users', userRoutes);
 
 export default server;
