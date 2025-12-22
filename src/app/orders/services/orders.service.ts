@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from '../../core/config/api.config';
 import { AddOrder, Order, OrderDB, UpdateOrder, mapOrderToOrder } from '../../core/models/Order';
 import { map, Observable } from 'rxjs';
+import { Manufacturer } from '../../core/models/Manufacturer';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,14 @@ export class OrdersService {
 
   getOrders(): Observable<Order[]> {
     return this.http.get<OrderDB[]>(this.url).pipe(map(orders => orders.map(mapOrderToOrder)));
+  }
+
+  getOrder(orderId: Order['uuid']): Observable<Order> {
+    return this.http.get<OrderDB>(this.url + '/' + orderId).pipe(map(mapOrderToOrder));
+  }
+
+  getOrdersByManufacturer(manufacturerId: Manufacturer['uuid']): Observable<Order[]> {
+    return this.http.get<OrderDB[]>(this.url + '/manufacturer/' + manufacturerId).pipe(map(orders => orders.map(mapOrderToOrder)));
   }
 
   createOrder(order: AddOrder): Observable<void> {

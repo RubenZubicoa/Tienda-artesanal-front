@@ -1,4 +1,4 @@
-import { Component, computed, effect, input, ViewChild } from '@angular/core';
+import { Component, computed, effect, input, output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -19,6 +19,8 @@ export class TableComponent<T> {
 
   public columns = input<TableColumn[]>([]);
   public data = input<TableDataWithStatus<T>[]>([]);
+  public detailsClick = output<T>();
+  
   @ViewChild(MatPaginator) public paginator!: MatPaginator;
   @ViewChild(MatSort) public sort!: MatSort;
 
@@ -34,5 +36,9 @@ export class TableComponent<T> {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+  }
+
+  public details(element: T) {
+    this.detailsClick.emit(element);
   }
 }

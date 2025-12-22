@@ -16,6 +16,7 @@ export const ORDERS_COLUMNS: TableColumn[] = [
   {
     header: 'Total',
     field: 'total',
+    type: 'currency',
   },
   {
     header: 'Fecha de creación',
