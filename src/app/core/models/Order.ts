@@ -1,5 +1,5 @@
-import { FormControl, FormGroup } from '@angular/forms';
 import { Product } from './Product';
+import { Manufacturer } from './Manufacturer';
 
 export type Order = {
   uuid?: string;
@@ -12,7 +12,7 @@ export type Order = {
       quantity: number;
       price: number;
   }[];
-  total: number;
+  manufacturerId: Manufacturer['uuid'];
   createdAt: number;
   updatedAt?: number;
   status: 'pending' | 'completed' | 'cancelled';
@@ -29,33 +29,14 @@ export type OrderDB = {
       quantity: number;
       price: number;
   }[];
-  total: number;
+  manufacturerId: Manufacturer['uuid'];
   status: string;
   createdAt: number;
   updatedAt?: number;
 }
 
-export interface ICompleteOrderForm {
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  city: string;
-  zip: string;
-  country: string;
-}
-
-export type CompleteOrderFormContent = {
-  name: FormControl<string | null>;
-  email: FormControl<string | null>;
-  phone: FormControl<string | null>;
-  address: FormControl<string | null>;
-  city: FormControl<string | null>;
-  zip: FormControl<string | null>;
-  country: FormControl<string | null>;
-};
-
-export type CompleteOrderForm = FormGroup<CompleteOrderFormContent>;
+export type AddOrder = Omit<Order, 'uuid' | 'createdAt' | 'updatedAt' | 'status'>;
+export type UpdateOrder = Omit<Order, 'uuid' | 'createdAt' | 'updatedAt'>;
 
 
 export function mapOrderToOrder(orderDB: OrderDB): Order {
@@ -66,7 +47,7 @@ export function mapOrderToOrder(orderDB: OrderDB): Order {
     phone: orderDB.phone,
     email: orderDB.email,
     products: orderDB.products,
-    total: orderDB.total,
+    manufacturerId: orderDB.manufacturerId,
     status: orderDB.status as 'pending' | 'completed' | 'cancelled',
     createdAt: orderDB.createdAt,
     updatedAt: orderDB.updatedAt,

@@ -3,14 +3,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    padding: 10px;
     form {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        gap: 20px;
+        gap: 10px;
         width: 100%;
         padding: 10px;
     }

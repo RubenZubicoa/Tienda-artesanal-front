@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from '../../core/config/api.config';
-import { Order, OrderDB, mapOrderToOrder } from '../../core/models/Order';
+import { AddOrder, Order, OrderDB, UpdateOrder, mapOrderToOrder } from '../../core/models/Order';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
@@ -16,15 +16,15 @@ export class OrdersService {
     return this.http.get<OrderDB[]>(this.url).pipe(map(orders => orders.map(mapOrderToOrder)));
   }
 
-  createOrder(order: Order): Observable<void> {
+  createOrder(order: AddOrder): Observable<void> {
     return this.http.post<void>(this.url, order);
   }
 
-  updateOrder(order: Order): Observable<void> {
+  updateOrder(order: UpdateOrder): Observable<void> {
     return this.http.put<void>(this.url, order);
   }
 
-  deleteOrder(orderId: string): Observable<void> {
+  deleteOrder(orderId: Order['uuid']): Observable<void> {
     return this.http.delete<void>(this.url + '/' + orderId);
   }
 }

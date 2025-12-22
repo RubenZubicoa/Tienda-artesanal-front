@@ -2,31 +2,19 @@
     <form [formGroup]="form">
         <mat-form-field appearance="outline">
             <mat-label>Nombre</mat-label>
-            <input matInput formControlName="name">
+            <input matInput formControlName="name" placeholder="Nombre">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email">
+            <input matInput formControlName="email" placeholder="Email">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Teléfono</mat-label>
-            <input matInput formControlName="phone">
+            <input matInput formControlName="phone" placeholder="Teléfono">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Dirección</mat-label>
-            <input matInput formControlName="address">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Ciudad</mat-label>
-            <input matInput formControlName="city">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Código postal</mat-label>
-            <input matInput formControlName="zip">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>País</mat-label>
-            <input matInput formControlName="country">
+            <input matInput formControlName="address" placeholder="Dirección">
         </mat-form-field>
     </form>
     <button class="tienda-primary-button complete-order-button" (click)="completeOrder()">Completar pedido</button>
