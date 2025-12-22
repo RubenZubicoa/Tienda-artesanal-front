@@ -16,6 +16,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
   @Input() zoom: number = 11;
   @Input() markerTitle: string = 'Ubicación';
   @Input() markers: MapMarker[] = [];
+  @Input() height: string = '70vh';
   
   @Output() mapClick = new EventEmitter<{ lat: number, lng: number }>();
   @Output() markerClick = new EventEmitter<string>();

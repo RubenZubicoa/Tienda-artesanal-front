@@ -1,0 +1,16 @@
+.order-meeting-point-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: start;
+    align-items: start;
+}
+
+.map-container {
+    width: 100%;
+    height: 100%;
+    display: block;
+}

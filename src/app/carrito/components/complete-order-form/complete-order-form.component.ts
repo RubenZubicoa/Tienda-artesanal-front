@@ -10,6 +10,7 @@ import { ToastTypes } from '../../../shared/components/toast/toastData';
 import { CarritoService } from '../../services/carrito.service';
 import { AddOrder, Order } from '../../../core/models/Order';
 import { OrdersService } from '../../../orders/services/orders.service';
+import { ProductCart } from '../../../core/models/Product';
 
 @Component({
   selector: 'app-complete-order-form',
@@ -33,21 +34,28 @@ export class CompleteOrderFormComponent {
       const products = productsByManufacturer[manufacturer];
       const order: AddOrder = {
         manufacturerId: manufacturer,
-        products: products.map(product => ({ productId: product.uuid, quantity: product.quantity, price: product.price })),
+        products: this.getProducts(products),
         username: formData.name,
         address: formData.address,
         phone: formData.phone,
         email: formData.email,
       };
-      this.ordersService.createOrder(order).subscribe({
-        next: () => {
-          this.toasterService.showMessage(ToastTypes.SUCCESS, 'Pedido completado', 'El pedido ha sido completado correctamente');
-        },
-        error: () => {
-          this.toasterService.showMessage(ToastTypes.ERROR, 'Error al completar pedido', 'El pedido no ha sido completado correctamente');
-        }
-      });
+      this.createOrder(order);      
     }
   }
 
+  private getProducts(products: ProductCart[]){
+    return products.map(product => ({ productId: product.uuid, name: product.name, quantity: product.quantity, price: product.price }))
+  }
+
+  private createOrder(order: AddOrder): void {
+    this.ordersService.createOrder(order).subscribe({
+      next: () => {
+        this.toasterService.showMessage(ToastTypes.SUCCESS, 'Pedido completado', 'El pedido ha sido completado correctamente');
+      },
+      error: () => {
+        this.toasterService.showMessage(ToastTypes.ERROR, 'Error al completar pedido', 'El pedido no ha sido completado correctamente');
+      }
+    });
+  }
 }

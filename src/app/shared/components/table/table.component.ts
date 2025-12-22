@@ -19,19 +19,18 @@ export class TableComponent<T> {
 
   public columns = input<TableColumn[]>([]);
   public data = input<TableDataWithStatus<T>[]>([]);
+  public showActions = input<boolean>(true);
   public detailsClick = output<T>();
   
   @ViewChild(MatPaginator) public paginator!: MatPaginator;
   @ViewChild(MatSort) public sort!: MatSort;
 
-  public displayedColumns = computed(() => this.columns().map(column => column.field).concat('actions'));
+  public displayedColumns = computed(() => this.columns().map(column => column.field).concat(this.showActions() ? 'actions' : []));
 
   public dataSource = new MatTableDataSource<T>();
 
   constructor() {
     effect(() => {
-      console.log(this.data());
-      console.log(this.displayedColumns());
       this.dataSource = new MatTableDataSource<T>(this.data());
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

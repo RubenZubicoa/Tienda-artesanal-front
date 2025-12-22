@@ -1,0 +1,83 @@
+@use '../../../core/theming/variables.scss' as variables;
+.section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    height: 100%;
+}
+
+.breadcrumbs-container {
+    width: 100%;
+}
+
+.order-data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    flex: 1;
+    background-color: variables.$light-primary-color-10;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.order-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    flex: 4;
+}
+
+.order-products-list-container {
+    flex: 1;
+    background-color: variables.$light-primary-color-10;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.order-meeting-point-container {
+    flex: 1;
+    background-color: variables.$light-primary-color-10;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@media screen and (width > 768px) {
+    .order-details-container {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: start;
+        align-items: start;
+        width: 100%;
+        flex: 4;
+    }
+
+    .order-products-list-container {
+        flex: 1;
+        height: 100%;
+    }
+
+    .order-meeting-point-container {
+        flex: 1;
+        height: 100%;
+    }
+}
+
+@media screen and (width < 768px) {
+
+    .order-products-list-container {
+        width: 100%;
+    }
+
+    .order-meeting-point-container {
+        width: 100%;
+    }
+}

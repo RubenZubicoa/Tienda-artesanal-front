@@ -9,6 +9,7 @@ export type Order = {
   email: string;
   products: {
       productId: Product['uuid'];
+      name: string;
       quantity: number;
       price: number;
   }[];
@@ -26,6 +27,7 @@ export type OrderDB = {
   email: string;
   products: {
       productId: Product['uuid'];
+      name: string;
       quantity: number;
       price: number;
   }[];
