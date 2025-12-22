@@ -30,7 +30,7 @@ export async function getProductById(productId: Product['_id']) {
 export async function getProductsByManufacturerId(manufacturerId: string) {
     try {
         await clientDB.connect();
-        const products = await database.collection("Products").find({ manufacturerId: manufacturerId }).toArray();
+        const products = await database.collection("Products").find({ manufacturerId: manufacturerId, isDeleted: false }).toArray();
         await clientDB.close();
         return products;
     } catch (error) {

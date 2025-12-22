@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getOrders as getOrdersModel, insertOrder as insertOrderModel, updateOrder as updateOrderModel, deleteOrder as deleteOrderModel } from "../models/order.model";
-import { isOrder, Order } from "../types/Order";
+import { AddOrder, isAddOrder, isOrder, Order } from "../types/Order";
 import { ObjectId } from "mongodb";
 
 export async function getOrders(req: Request, res: Response) {
@@ -13,9 +13,9 @@ export async function getOrders(req: Request, res: Response) {
     }
 }
 
-export async function createOrder(req: Request<{}, {}, Order>, res: Response) {
-    const order: Order = req.body;
-    if (!isOrder(order)) {
+export async function createOrder(req: Request<{}, {}, AddOrder>, res: Response) {
+    const order: AddOrder = req.body;
+    if (!isAddOrder(order)) {
         return res.status(400).json({ message: "Datos de orden inválidos" });
     }
     try {

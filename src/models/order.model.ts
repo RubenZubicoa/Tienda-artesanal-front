@@ -1,5 +1,5 @@
 import { clientDB, database } from "../db/database";
-import { Order } from "../types/Order";
+import { AddOrder, Order } from "../types/Order";
 
 export async function getOrders() {
     try {
@@ -14,11 +14,11 @@ export async function getOrders() {
     }
 }
 
-export async function insertOrder(order: Order) {
+export async function insertOrder(order: AddOrder) {
     try {
         await clientDB.connect();
-        order.createdAt = Date.now();
-        const result = await database.collection("Orders").insertOne(order);
+        const newOrder: Order = {...order, createdAt: Date.now(), status: "pending"};
+        const result = await database.collection("Orders").insertOne(newOrder);
         await clientDB.close();
         return result;
     } catch (error) {
