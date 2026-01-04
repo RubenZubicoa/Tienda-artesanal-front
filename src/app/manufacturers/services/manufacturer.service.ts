@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { API_CONFIG } from '../../core/config/api.config';
 import { from, map, Observable, switchMap } from 'rxjs';
 import { Manufacturer, ManufacturerDB, mapManufacturerToManufacturer } from '../../core/models/Manufacturer';
+import { InsertOneResult } from '../../core/models/InsertOneResult';
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class ManufacturerService {
     return this.http.get<ManufacturerDB>(this.url + '/' + manufacturerId).pipe(map(mapManufacturerToManufacturer));
   }
 
-  createManufacturer(manufacturer: Manufacturer): Observable<void> {
-    return this.http.post<void>(this.url, manufacturer);
+  createManufacturer(manufacturer: Manufacturer): Observable<InsertOneResult> {
+    return this.http.post<InsertOneResult>(this.url, manufacturer);
   }
 
   updateManufacturer(manufacturer: Manufacturer): Observable<void> {

@@ -1,0 +1,102 @@
+<div class="register-container">
+  <div class="register-header">
+    <h1 class="tienda-title">Registro</h1>
+  </div>
+
+  <form [formGroup]="form" class="register-form">
+    <!-- Sección de Usuario -->
+    <div class="form-section">
+      <h2 class="section-title">Datos de Usuario</h2>
+      <div class="form-fields">
+        <mat-form-field appearance="outline" class="tienda-f-width">
+          <mat-label>Nombre completo</mat-label>
+          <input matInput type="text" [formControl]="form.controls.name" placeholder="Introduce tu nombre completo" />
+          <mat-error *ngIf="form.controls.name.hasError('required') && form.controls.name.touched">
+            El nombre es requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="tienda-f-width">
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput type="email" [formControl]="form.controls.email" placeholder="Introduce tu correo electrónico" />
+          <mat-error *ngIf="form.controls.email.hasError('required') && form.controls.email.touched">
+            El correo electrónico es requerido
+          </mat-error>
+          <mat-error *ngIf="form.controls.email.hasError('email') && form.controls.email.touched">
+            El correo electrónico no es válido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="tienda-f-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" [formControl]="form.controls.password" placeholder="Introduce tu contraseña" />
+          <mat-error *ngIf="form.controls.password.hasError('required') && form.controls.password.touched">
+            La contraseña es requerida
+          </mat-error>
+          <mat-error *ngIf="form.controls.password.hasError('minlength') && form.controls.password.touched">
+            La contraseña debe tener al menos 6 caracteres
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="tienda-f-width">
+          <mat-label>Confirmar contraseña</mat-label>
+          <input matInput type="password" [formControl]="form.controls.confirmPassword" placeholder="Confirma tu contraseña" />
+          <mat-error *ngIf="form.controls.confirmPassword.hasError('required') && form.controls.confirmPassword.touched">
+            Debes confirmar la contraseña
+          </mat-error>
+          <mat-error *ngIf="form.hasError('passwordMismatch') && form.controls.confirmPassword.touched && !form.controls.confirmPassword.hasError('required')">
+            Las contraseñas no coinciden
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Checkbox para activar sección de artesano -->
+    <div class="manufacturer-toggle">
+      <mat-checkbox [formControl]="form.controls.isManufacturer">
+        ¿Eres artesano? Registra tu negocio (opcional)
+      </mat-checkbox>
+    </div>
+
+    <!-- Sección de Artesano (opcional) -->
+    <div class="form-section" *ngIf="isManufacturer">
+      <h2 class="section-title">Datos del Artesano</h2>
+      <div class="form-fields">
+        <mat-form-field appearance="outline" class="tienda-f-width">
+          <mat-label>Nombre del negocio</mat-label>
+          <input matInput type="text" [formControl]="form.controls.manufacturerName" placeholder="Introduce el nombre de tu negocio" />
+          <mat-error *ngIf="form.controls.manufacturerName.hasError('required') && form.controls.manufacturerName.touched">
+            El nombre del negocio es requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="tienda-f-width">
+          <mat-label>Teléfono</mat-label>
+          <input matInput type="tel" [formControl]="form.controls.manufacturerPhone" placeholder="Introduce tu número de teléfono" />
+          <mat-error *ngIf="form.controls.manufacturerPhone.hasError('required') && form.controls.manufacturerPhone.touched">
+            El teléfono es requerido
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="tienda-f-width">
+          <mat-label>Dirección</mat-label>
+          <input matInput type="text" [formControl]="form.controls.manufacturerAddress" placeholder="Introduce la dirección de tu negocio" />
+          <mat-error *ngIf="form.controls.manufacturerAddress.hasError('required') && form.controls.manufacturerAddress.touched">
+            La dirección es requerida
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="tienda-f-width">
+          <mat-label>Descripción (opcional)</mat-label>
+          <textarea matInput [formControl]="form.controls.manufacturerDescription" placeholder="Describe tu negocio" rows="4"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="register-footer">
+      <button type="button" class="tienda-primary-button" (click)="register()">
+        Registrarse
+      </button>
+    </div>
+  </form>
+</div>

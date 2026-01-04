@@ -12,7 +12,7 @@
     <div class="header-buttons-menu">
       @if (!currentUser()) {
         <button class="tienda-primary-button" (click)="openMenu()">Iniciar sesión</button>
-        <button class="tienda-primary-button">Registrarse</button>
+        <button class="tienda-primary-button" routerLink="/register">Registrarse</button>
       }@else if (currentUser()) {
         <button class="tienda-primary-button" (click)="logout()">Cerrar sesión</button>
       }

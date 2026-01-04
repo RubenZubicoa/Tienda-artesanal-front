@@ -33,6 +33,13 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'register',
+    loadChildren: () => import('./register/register.routes').then(m => m.registerRoutes),
+    data: {
+      breadcrumb: 'Registrarse',
+    },
+  },
+  {
     path: 'my-products',
     loadChildren: () => import('./my-products/my-products.routes').then(m => m.myProductsRoutes),
     data: {
