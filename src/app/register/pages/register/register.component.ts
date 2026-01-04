@@ -10,6 +10,7 @@ import { RegisterFormService } from '../../services/register-form.service';
 import { RegisterService } from '../../services/register.service';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 import { ToastTypes } from '../../../shared/components/toast/toastData';
+import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,8 @@ import { ToastTypes } from '../../../shared/components/toast/toastData';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    BreadcrumbsComponent
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
@@ -37,20 +39,25 @@ export class RegisterComponent {
   }
 
   public register(): void {
-    console.log(this.form.valid);
-    // if (this.form.invalid) {
-    //   this.form.markAllAsTouched();
-    //   this.toastService.showMessage(
-    //     ToastTypes.ERROR,
-    //     'Error de validación',
-    //     'Por favor, completa todos los campos requeridos correctamente'
-    //   );
-    //   return;
-    // }
+    if (this.form.invalid) {
+      if (this.form.errors?.['passwordMismatch']) {
+        this.toastService.showMessage(
+          ToastTypes.ERROR,
+          'Error de validación',
+          'Las contraseñas no coinciden'
+        );
+        return;
+      }
+      this.form.markAllAsTouched();
+      this.toastService.showMessage(
+        ToastTypes.ERROR,
+        'Error de validación',
+        'Por favor, completa todos los campos requeridos correctamente'
+      );
+      return;
+    }
 
     const formData = this.registerFormService.obtenerDatos(this.form);
-
-    console.log(formData);
 
     const registerData = {
       name: formData.name,
@@ -75,13 +82,6 @@ export class RegisterComponent {
         );
         this.router.navigate(['/']);
       },
-      error: () => {
-        this.toastService.showMessage(
-          ToastTypes.ERROR,
-          'Error al registrarse',
-          'No se pudo completar el registro. Por favor, intenta nuevamente'
-        );
-      }
     });
   }
 }
