@@ -40,5 +40,19 @@
   flex: 1;
   padding: 10px;
   box-sizing: border-box;
+  gap: 5px;
 }
 
+.header-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.manufacturer-image {
+  height: 50px;
+  width: 50px;
+  background-size: cover;
+  object-fit: cover;
+  border-radius: 100%;
+}

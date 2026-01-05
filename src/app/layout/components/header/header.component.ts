@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { SectionButtonComponent } from '../../../shared/components/section-button/section-button.component';
 import { HEADER_SECTIONS, Section } from '../../../core/models/Section';
 import { MatMenuModule } from '@angular/material/menu';
+import { CurrentUserService } from '../../../core/services/current-user.service';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +19,11 @@ import { MatMenuModule } from '@angular/material/menu';
 export class HeaderComponent {
 
   private readonly carritoService = inject(CarritoService);
+  private readonly currentUserService = inject(CurrentUserService);
 
+  public readonly currentUser = this.currentUserService.currentUser;
+
+  public readonly manufacturerImage = computed(() => this.currentUserService.currentManufacturer()?.image);
   public readonly productsSelected = computed(() => this.carritoService.carrito().length);
   
   public readonly headerSections = computed(() => HEADER_SECTIONS.map((section) => {

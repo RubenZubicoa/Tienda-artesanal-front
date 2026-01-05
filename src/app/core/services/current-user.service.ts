@@ -36,6 +36,8 @@ export class CurrentUserService {
             this.manufacturer.set(manufacturer);
           });
         }
+      }else{
+        this.manufacturer.set(undefined);
       }
     });
   }

@@ -5,6 +5,12 @@
   </div>
   <div class="header-search"></div>
   <div class="header-buttons">
+    <div class="header-user-info">
+      @if (manufacturerImage()) {
+        <img [src]="manufacturerImage()" class="manufacturer-image" />
+      }
+      <span class="tienda-subtitle">{{currentUser()?.name}}</span>
+    </div>
     @let sections = headerSections();
     @for (section of sections; track section.title) {
       <app-section-button [section]="section" [displayMenu]="section.menu ?? false"></app-section-button>
