@@ -1,7 +1,28 @@
 import { Request, Response } from "express";
-import { getUserByEmail as getUserByEmailModel, insertUser as insertUserModel, updateUser as updateUserModel, deleteUser as deleteUserModel } from "../models/user.model";
-import { isUser, User } from "../types/User";
+import { getUserByEmail as getUserByEmailModel, insertUser as insertUserModel, updateUser as updateUserModel, deleteUser as deleteUserModel, getUsers as getUsersModel, getUserById as getUserByIdModel } from "../models/user.model";
+import { isUser, isUserUpdate, User, UserUpdate } from "../types/User";
 import { ObjectId } from "mongodb";
+
+export async function getUsers(req: Request, res: Response) {
+    try {
+        const users = await getUsersModel();
+        res.status(200).json(users);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error al obtener los usuarios", error: error });
+    }
+}
+
+export async function getUserById(req: Request<{ id: string }>, res: Response) {
+    const userId = req.params.id;
+    try {
+        const user = await getUserByIdModel(userId);
+        res.status(200).json(user);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error al obtener el usuario", error: error });
+    }
+}
 
 export async function getUserByEmail(req: Request, res: Response) {
     try {
@@ -18,6 +39,10 @@ export async function createUser(req: Request<{}, {}, User>, res: Response) {
     if (!isUser(user)) {
         return res.status(400).json({ message: "Datos de usuario inválidos" });
     }
+    const searchUser = await getUserByEmailModel(user.email);
+    if (searchUser) {
+        return res.status(400).json({ message: "El usuario ya existe" });
+    }
     try {
         const result = await insertUserModel(user);
         res.status(201).json(result);
@@ -28,9 +53,9 @@ export async function createUser(req: Request<{}, {}, User>, res: Response) {
 }
 
 export async function updateUser(req: Request<{ id: string }, {}, User>, res: Response) {
-    const userId = new ObjectId(req.params.id);
+    const userId = req.params.id;
     const user: User = req.body;
-    if (!isUser(user)) {
+    if (!isUserUpdate(user)) {
         return res.status(400).json({ message: "Datos de usuario inválidos" });
     }
     try {

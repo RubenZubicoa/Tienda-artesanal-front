@@ -11,6 +11,8 @@ export type User = {
     isDeleted?: boolean;
 }
 
+export type UserUpdate = Omit<User, '_id' | 'password' | 'createdAt' | 'updatedAt' | 'isDeleted'>;
+
 export function isUser(user: unknown): user is User {
     return (
         user !== undefined &&
@@ -19,5 +21,15 @@ export function isUser(user: unknown): user is User {
         "name" in user &&
         "email" in user &&
         "password" in user
+    );
+}
+
+export function isUserUpdate(user: unknown): user is UserUpdate {
+    return (
+        user !== undefined &&
+        user !== null &&
+        typeof user === "object" &&
+        "name" in user &&
+        "email" in user
     );
 }
