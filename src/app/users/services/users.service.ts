@@ -11,9 +11,12 @@ export class UsersService {
   private readonly url = API_CONFIG.BASE_URL + API_CONFIG.USERS_URL;
   private readonly http = inject(HttpClient);
 
+  getUserById(userId: string): Observable<User> {
+    return this.http.get<UserDB>(this.url + '/' + userId).pipe(map(mapUserToUser));
+  }
   
   getUserByEmail(email: string): Observable<User> {
-    return this.http.get<UserDB>(this.url + '/' + email).pipe(map(mapUserToUser));
+    return this.http.get<UserDB>(this.url + '/email/' + email).pipe(map(mapUserToUser));
   }
 
   createUser(user: User): Observable<void> {

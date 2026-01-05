@@ -87,7 +87,7 @@ export class RegisterFormService implements IServiceForm<RegisterFormInput, Regi
     return form;
   }
 
-  actualizarFormulario(form: RegisterForm, inputData: RegisterFormInput): void {
+  actualizarFormulario(form: RegisterForm, inputData: Partial<RegisterFormInput>): void {
     form.patchValue(inputData);
   }
 

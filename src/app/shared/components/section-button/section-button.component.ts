@@ -1,6 +1,6 @@
 import { Component, inject, input, TemplateRef } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Section } from '../../../core/models/Section';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -22,6 +22,7 @@ export class SectionButtonComponent {
   private readonly dialog = inject(MatDialog);
   private readonly currentUserService = inject(CurrentUserService);
   private readonly toastService = inject(ToastService);
+  private readonly router = inject(Router);
 
   public currentUser = this.currentUserService.currentUser;
 
@@ -38,5 +39,9 @@ export class SectionButtonComponent {
   public logout() {
     this.currentUserService.setCurrentUser(undefined);
     this.toastService.showMessage(ToastTypes.SUCCESS, 'Cierre de sesión exitoso', 'Has cerrado sesión correctamente');
+  }
+
+  public navigateToRegister() {
+    this.router.navigate(['/register']);
   }
 }

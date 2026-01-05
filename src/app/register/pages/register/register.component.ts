@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, DestroyRef, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -6,11 +6,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
-import { RegisterFormService } from '../../services/register-form.service';
-import { RegisterService } from '../../services/register.service';
+import { RegisterFormInput, RegisterFormService } from '../../services/register-form.service';
+import { RegisterData, RegisterService } from '../../services/register.service';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 import { ToastTypes } from '../../../shared/components/toast/toastData';
 import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
+import { ManufacturerService } from '../../../manufacturers/services/manufacturer.service';
+import { CurrentUserService } from '../../../core/services/current-user.service';
+import { Manufacturer } from '../../../core/models/Manufacturer';
+import { User } from '../../../core/models/User';
 
 @Component({
   selector: 'app-register',
@@ -31,11 +35,45 @@ export class RegisterComponent {
   private readonly registerService = inject(RegisterService);
   private readonly router = inject(Router);
   private readonly toastService = inject(ToastService);
+  private readonly manufacturerService = inject(ManufacturerService);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly currentUserService = inject(CurrentUserService);
+
+  public user = this.currentUserService.currentUser;
+  public manufacturer = this.currentUserService.currentManufacturer;
+  public isUpdateMode = computed(() => this.user() !== undefined);
+
 
   public form = this.registerFormService.crearFormulario();
 
   public get isManufacturer(): boolean {
     return this.form.get('isManufacturer')?.value ?? false;
+  }
+
+  constructor() {
+    effect(() => {
+      const user = this.user();
+      const manufacturer = this.manufacturer();
+      if (user) {
+        const formInput: RegisterFormInput = {
+          name: user.name,
+          email: user.email,
+          password: user.password,
+          confirmPassword: user.password,
+          isManufacturer: user.manufacturerId !== undefined,
+        };
+        if (manufacturer) {
+          formInput.manufacturerName = manufacturer.name;
+          formInput.manufacturerPhone = manufacturer.phone;
+          formInput.manufacturerAddress = manufacturer.address;
+          formInput.manufacturerDescription = manufacturer.description;
+          formInput.manufacturerImage = manufacturer.image;
+        }
+        this.registerFormService.actualizarFormulario(this.form, formInput);
+      } else{
+        this.registerFormService.reset(this.form);
+      }
+    });
   }
 
   public register(): void {
@@ -73,6 +111,14 @@ export class RegisterComponent {
       } : undefined
     };
 
+    if (this.isUpdateMode()) {
+      this.update(this.user()!.uuid, this.manufacturer()!.uuid!, registerData);
+    } else {
+      this.create(registerData);
+    }
+  }
+
+  private create(registerData: RegisterData){
     this.registerService.register(registerData).subscribe({
       next: () => {
         this.toastService.showMessage(
@@ -83,5 +129,11 @@ export class RegisterComponent {
         this.router.navigate(['/']);
       },
     });
+  }
+
+  private update(userId: User['uuid'], manufacturerId: Manufacturer['uuid'], registerData: RegisterData){
+    delete (registerData as any).password;
+    delete (registerData as any).confirmPassword;
+    this.registerService.update(userId, manufacturerId, registerData, this.destroyRef);
   }
 }

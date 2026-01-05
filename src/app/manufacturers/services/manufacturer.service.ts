@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { API_CONFIG } from '../../core/config/api.config';
 import { from, map, Observable, switchMap } from 'rxjs';
-import { Manufacturer, ManufacturerDB, mapManufacturerToManufacturer } from '../../core/models/Manufacturer';
+import { AddManufacturerDB, Manufacturer, ManufacturerDB, mapManufacturerToManufacturer, UpdateManufacturerDB } from '../../core/models/Manufacturer';
 import { InsertOneResult } from '../../core/models/InsertOneResult';
 
 @Injectable({
@@ -21,12 +21,12 @@ export class ManufacturerService {
     return this.http.get<ManufacturerDB>(this.url + '/' + manufacturerId).pipe(map(mapManufacturerToManufacturer));
   }
 
-  createManufacturer(manufacturer: Manufacturer): Observable<InsertOneResult> {
+  createManufacturer(manufacturer: AddManufacturerDB): Observable<InsertOneResult> {
     return this.http.post<InsertOneResult>(this.url, manufacturer);
   }
 
-  updateManufacturer(manufacturer: Manufacturer): Observable<void> {
-    return this.http.put<void>(this.url, manufacturer);
+  updateManufacturer(manufacturerId: string, manufacturer: UpdateManufacturerDB): Observable<void> {
+    return this.http.put<void>(this.url + '/' + manufacturerId, manufacturer);
   }
 
   deleteManufacturer(manufacturerId: string): Observable<void> {

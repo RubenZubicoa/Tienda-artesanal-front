@@ -27,6 +27,9 @@ export type ManufacturerDB = {
     isDeleted?: boolean;
 }
 
+export type AddManufacturerDB = Omit<ManufacturerDB, '_id' | 'createdAt' | 'updatedAt' | 'isDeleted'>;
+export type UpdateManufacturerDB = Omit<ManufacturerDB, '_id' | 'createdAt' | 'updatedAt' | 'isDeleted'>;
+
 export const mapManufacturerToManufacturer = (manufacturerDB: ManufacturerDB): Manufacturer => {
     return {
         uuid: manufacturerDB._id ?? '',
