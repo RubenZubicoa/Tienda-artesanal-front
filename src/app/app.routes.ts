@@ -64,6 +64,14 @@ export const routes: Routes = [
     },
     canActivate: [userGuard],
   },
+  {
+    path: 'meeting-points',
+    loadChildren: () => import('./meeting-points/meeting-points.routes').then(m => m.meetingPointsRoutes),
+    data: {
+      breadcrumb: 'Puntos de encuentro',
+    },
+    canActivate: [manufacturerGuard],
+  },
   // {
   //   path: 'analysis',
   //   loadChildren: () => import('./analysis/analysis.routes').then(m => m.analysisRoutes),

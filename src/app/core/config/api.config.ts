@@ -7,4 +7,5 @@ export const API_CONFIG = {
   USERS_URL: '/users',
   CATEGORIES_URL: '/categories',
   LOGIN_URL: '/login',
+  MEETING_POINTS_URL: '/meeting-points',
 }

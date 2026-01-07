@@ -1,0 +1,11 @@
+<section class="section-container">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="meeting-points-header-container">
+        <div class="meeting-points-header-container-title">
+            <h1 class="tienda-title">Puntos de encuentro</h1>
+            <h2 class="tienda-subtitle">Aquí puedes ver tus puntos de encuentro para que los usuarios puedan encontrarte físicamente y realizar el pago de sus pedidos.</h2>
+        </div>
+        <button mat-raised-button class="tienda-primary-button">Agregar punto de encuentro</button>
+    </div>
+    <app-table [columns]="columns" [data]="meetingPoints()"></app-table>
+</section>

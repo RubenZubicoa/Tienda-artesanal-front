@@ -45,6 +45,11 @@ export const MANUFACTURERS_SECTIONS: Section[] = [
     route: '/my-products',
   },
   {
+    title: 'Puntos de encuentro',
+    icon: 'location_on',
+    route: '/meeting-points',
+  },
+  {
     title: 'Análisis',
     icon: 'analytics',
     route: '/analysis',
