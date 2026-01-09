@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API_CONFIG } from '../../core/config/api.config';
-import { AddOrder, Order, OrderDB, UpdateOrder, mapOrderToOrder } from '../../core/models/Order';
+import { AddOrder, Order, OrderDB, OrderFilters, UpdateOrder, mapOrderToOrder } from '../../core/models/Order';
 import { map, Observable } from 'rxjs';
 import { Manufacturer } from '../../core/models/Manufacturer';
 
@@ -15,6 +15,10 @@ export class OrdersService {
 
   getOrders(): Observable<Order[]> {
     return this.http.get<OrderDB[]>(this.url).pipe(map(orders => orders.map(mapOrderToOrder)));
+  }
+
+  getOrdersByFilters(filters: OrderFilters): Observable<Order[]> {
+    return this.http.post<OrderDB[]>(this.url + '/criteria', filters).pipe(map(orders => orders.map(mapOrderToOrder)));
   }
 
   getOrder(orderId: Order['uuid']): Observable<Order> {

@@ -1,0 +1,44 @@
+<button
+  mat-fab
+  matTooltip="Filtrar datos"
+  cdkOverlayOrigin
+  #trigger="cdkOverlayOrigin"
+  aria-label="Filtro"
+  class="button-filter"
+  (click)="openMenu(trigger)"
+>
+  <mat-icon>filter_alt</mat-icon>
+</button>
+<ng-template #menuTemplate>
+  <div class="filters-menu" [class.open]="isMenuOpen()" [class.closed]="!isMenuOpen()">
+    <div class="header" (click)="closeMenu()">
+      <div class="icon" (click)="closeMenu()">
+        <mat-icon>arrow_forward</mat-icon>
+      </div>
+      <div class="title">
+        <span>Filtros</span>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="footer">
+      <button mat-flat-button style="width: 100%" (click)="applyFiltersClick()">
+        <mat-icon>filter_alt</mat-icon>Aplicar filtros
+      </button>
+      <button
+        mat-stroked-button
+        style="width: 100%"
+        (click)="clearFiltersClick()"
+      >
+        <mat-icon>close</mat-icon>Limpiar filtros
+      </button>
+    </div>
+  </div>
+</ng-template>

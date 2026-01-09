@@ -1,0 +1,16 @@
+<div class="adif-filters-container">
+  <app-filter-chips
+    [filters]="filters()"
+    [chips]="chips()"
+    (removeChip)="removeFilter($event)"
+    (clearFilters)="clearFiltersClick()"
+  />
+  <app-filter-button
+    (clearFilters)="clearFiltersClick()"
+    (applyFilters)="applyFiltersClick()"
+  >
+    <div class="adif-filters-form">
+      <ng-content></ng-content>
+    </div>
+  </app-filter-button>
+</div>

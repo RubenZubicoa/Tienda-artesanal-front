@@ -1,0 +1,13 @@
+.clear-chip {
+  cursor: pointer;
+  background-color: var(--primary-color-white);
+  outline: 1px solid black;
+  font-size: 16px !important;
+  padding: 0px !important;
+  margin: 0px 0px 0px 8px !important;
+  text-wrap: auto;
+
+  .text-clear-chip {
+    color: #348466;
+  }
+}

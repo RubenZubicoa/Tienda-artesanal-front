@@ -6,10 +6,6 @@ export const ORDERS_COLUMNS: TableColumn[] = [
     field: 'username',
   },   
   {
-    header: 'Dirección',
-    field: 'address',
-  },
-  {
     header: 'Teléfono',
     field: 'phone',
   },

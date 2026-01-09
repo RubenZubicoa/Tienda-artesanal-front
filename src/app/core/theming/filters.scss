@@ -1,0 +1,54 @@
+.adif-filters-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: end;
+  gap: 16px;
+}
+
+.adif-menu {
+  background-color: var(--primary-color-white) !important;
+}
+
+.mat-mdc-dialog-panel {
+  border-radius: 12px;
+}
+
+.mat-mdc-select-panel-above div.mat-mdc-select-panel {
+  background-color: var(--primary-color-white) !important;
+}
+
+.mat-mdc-select-panel {
+  background-color: var(--primary-color-white) !important;
+}
+
+.cdk-overlay-pane {
+  position: absolute;
+  z-index: 9;
+}
+
+.cdk-overlay-backdrop {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 9;
+}
+
+.mat-mdc-tooltip-panel {
+  border-radius: 8px;
+}
+
+.adif-filters-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;  
+  padding: 18px 16px;
+  gap: 24px;
+  box-sizing: border-box;
+
+  .form-control{
+      width: 100%;
+  }
+}

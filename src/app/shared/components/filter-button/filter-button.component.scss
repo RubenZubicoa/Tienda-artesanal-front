@@ -1,0 +1,80 @@
+@use '../../../core/theming/animations.scss' as animations;
+.button-filter {
+  width: 44px;
+  height: 44px;
+  border-radius: 77px;
+  background-color: #bfefd5;
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+}
+
+.filters-menu {
+  padding: 0px;
+  box-shadow: 0px 1px 3px 0px #0000004d;
+  box-shadow: 0px 4px 8px 3px #00000026;
+  background-color: var(--primary-color-white);
+  width: 400px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  max-height: 70vh;
+  @include animations.translate-animation();
+  
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: Fixed (52px) px;
+    padding: 4px 56px 4px 10px !important;
+    gap: 10px;
+    opacity: 0px;
+    cursor: pointer;
+    
+
+    .icon{
+      display: flex;
+      align-items: center;
+      width: Fixed (48px)px;
+      height: Fixed (48px)px;
+      gap: 10px;
+      opacity: 0px;
+      cursor: pointer;
+      
+    }
+
+    .title {
+      height: 44px;
+      gap: 10px;
+      opacity: 0px;
+      font-family: "inter";
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: 0.15px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+    }
+  }
+
+  .content {
+    width: Fill (360px) px;
+    flex: 1;
+    overflow: auto;
+    box-sizing: border-box;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: Fill (360px) px;
+    height: Hug (144px) px;
+    padding: 20px;
+    gap: 20px;
+    opacity: 0px;
+  }
+}

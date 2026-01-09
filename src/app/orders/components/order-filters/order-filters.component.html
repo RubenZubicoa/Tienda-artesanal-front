@@ -1,0 +1,38 @@
+<app-filters-container
+  [filters]="filters"
+  [chips]="chips"
+  (removeChip)="removeFilter($event)"
+  (clearFilters)="clearFiltersClick()"
+  (applyFilters)="applyFiltersClick()"
+>
+    <ng-container *ngTemplateOutlet="filtersContent; context: { form: formService.form }"></ng-container>
+</app-filters-container>
+
+<ng-template #filtersContent let-form="form">
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="username" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Teléfono</mat-label>
+            <input matInput formControlName="phone" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select formControlName="status">
+                @for (status of statuses; track status) {
+                    <mat-option [value]="status">{{ status }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Fecha de creación</mat-label>
+            <input matInput formControlName="createdAt" />
+        </mat-form-field>
+    </form>
+</ng-template>

@@ -1,0 +1,24 @@
+$default-animation-duration: 100ms;
+$scale-factor: 1.05;
+
+@mixin scale-item($scale-factor: $scale-factor) {
+  scale: $scale-factor;
+}
+
+@mixin add-animation($property: all, $animation: $default-animation-duration) {
+  transition: $property $animation ease-in-out;
+}
+
+@mixin translate-animation($animation: $default-animation-duration) {
+  @starting-style {
+    transform: translateX(100%);
+  }
+  transition: transform $animation ease-in-out;
+  &.open {
+    transform: translateX(0);
+  }
+
+  &.closed {
+    transform: translateX(100%);
+  }
+}

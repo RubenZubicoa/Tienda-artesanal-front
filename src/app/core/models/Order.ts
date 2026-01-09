@@ -1,7 +1,26 @@
 import { Product } from './Product';
 import { Manufacturer } from './Manufacturer';
 
-export type OrderStatus = 'pending' | 'completed' | 'cancelled' | 'shipped' | 'delivered' | 'returned';
+export enum OrderStatus {
+  PENDING = 'pending',
+  COMPLETED = 'completed',
+  CANCELLED = 'cancelled',
+  SHIPPED = 'shipped',
+  DELIVERED = 'delivered',
+  RETURNED = 'returned',
+}
+
+export type OrderFilters = {
+  username?: string;
+  phone?: string;
+  email?: string;
+  status?: OrderStatus;
+  createdAt?: {
+      start?: number;
+      end?: number;
+  }
+  manufacturerId?: Manufacturer['uuid'];
+}
 
 export type Order = {
   uuid?: string;

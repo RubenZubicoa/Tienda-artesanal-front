@@ -1,0 +1,36 @@
+@let f = filters();
+<mat-chip-set *ngIf="!isFiltersEmpty()">
+  @for (chip of chips(); track $index) {
+    @if (chip.rangeDate) {
+      <ng-container
+        *ngTemplateOutlet="rangeDateTemplate; context: { filters: f, chip }"
+      ></ng-container>
+    } @else {
+    <ng-container
+        *ngTemplateOutlet="chipTemplate; context: { filters: f, chip }"
+      ></ng-container>
+    }
+  }
+  <mat-chip-row (removed)="clearFiltersClick()" matChipRemove class="clear-chip">
+    <span class="text-clear-chip">Limpiar filtros</span>
+  </mat-chip-row>
+
+</mat-chip-set>
+
+<ng-template #chipTemplate let-filters="filters" let-chip="chip">
+  <mat-chip (removed)="remove(chip.property)" *ngIf="filters[chip.property]" class="adif-chip">
+      {{chip.title}}: <span appTruncateText matTooltip>{{ filters[chip.property] }}</span>
+      <button matChipRemove>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-chip>
+</ng-template>
+
+<ng-template #rangeDateTemplate let-filters="filters" let-chip="chip">
+  <mat-chip (removed)="remove(chip.rangeDate)" *ngIf="filters[chip.rangeDate?.startProperty] && filters[chip.rangeDate?.endProperty]" class="adif-chip">
+      {{chip.title}}: <span appTruncateText matTooltip>{{ filters[chip.rangeDate.startProperty] | date: 'dd/MM/yyyy' }} - {{ filters[chip.rangeDate.endProperty] | date: 'dd/MM/yyyy' }}</span>
+      <button matChipRemove>
+        <mat-icon>close</mat-icon>
+      </button>
+  </mat-chip>
+</ng-template>

@@ -4,8 +4,10 @@
 @use "./app/core/theming/mixins.scss" as mixins;
 @use "./app/core/theming/snackbar.scss" as snackbar;
 @use "./app/core/theming/product-list.scss" as product-list;
+@use "./app/core/theming/filters.scss";
 // Supports weights 300-800
 @import '@fontsource-variable/open-sans';
+@import "@angular/cdk/overlay-prebuilt.css";
 
 html,body {
   margin: 0;
