@@ -16,6 +16,7 @@
       Agregar producto
     </button>
   </div>
+  <app-products-filters [maxPrice]="0" (applyFilters)="applyFilters($event)"></app-products-filters>
   <div class="products-list-container">
     @for (card of cards(); track card.uuid) {
     <app-card

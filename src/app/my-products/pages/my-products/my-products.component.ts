@@ -3,7 +3,7 @@ import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/bre
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../../../shared/components/card/card.component';
 import { PRODUCTS_LIST } from '../../../core/data/products';
-import { Product } from '../../../core/models/Product';
+import { Product, ProductFilters } from '../../../core/models/Product';
 import { CardData, mapProductToCardData } from '../../../shared/components/card/card.models';
 import { AddProductDialogComponent } from '../../components/add-product-dialog/add-product-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,10 +12,11 @@ import { ProductsService } from '../../../products/services/products.service';
 import { ToastTypes } from '../../../shared/components/toast/toastData';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 import { CurrentUserService } from '../../../core/services/current-user.service';
+import { ProductsFiltersComponent } from '../../../products/components/products-filters/products-filters.component';
 
 @Component({
   selector: 'app-my-products',
-  imports: [CommonModule, BreadcrumbsComponent, CardComponent],
+  imports: [CommonModule, BreadcrumbsComponent, CardComponent, ProductsFiltersComponent],
   templateUrl: './my-products.component.html',
   styleUrl: './my-products.component.scss'
 })
@@ -29,6 +30,7 @@ export class MyProductsComponent implements OnInit {
 
   public products = signal<Product[]>([]);
   public cards = computed(() => this.products().map(mapProductToCardData));
+  public filters = signal<ProductFilters>({});
 
   ngOnInit(): void {
     if (this.currentUserService.isManufacturer()) {
@@ -39,7 +41,9 @@ export class MyProductsComponent implements OnInit {
   }
 
   public getProducts() {
-    this.productsService.getProductsByManufacturer(this.currentUserService.currentUser()?.manufacturerId ?? '').pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    const filters = this.filters();
+    filters.manufacturerId = this.currentUserService.currentUser()?.manufacturerId;
+    this.productsService.getProductsByFilters(filters).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (products) => {
         this.products.set(products);
       },
@@ -74,5 +78,10 @@ export class MyProductsComponent implements OnInit {
           this.toastService.showMessage(ToastTypes.ERROR, 'Error al eliminar producto', 'No se ha podido eliminar el producto');
         }
       });
+  }
+
+  public applyFilters(filters: ProductFilters) {
+    this.filters.set(filters);
+    this.getProducts();
   }
 }
