@@ -11,7 +11,11 @@
 <ng-template #filtersContent let-form="form">
     <form [formGroup]="form">
         <mat-form-field class="tienda-f-width" appearance="outline">
-            <mat-label>Distancia</mat-label>
+            <mat-label>Dirección</mat-label>
+            <input matInput formControlName="address" />
+        </mat-form-field>
+        <mat-form-field class="tienda-f-width" appearance="outline">
+            <mat-label>Distancia (km)</mat-label>
             <input matInput type="number" formControlName="maxDistance" />
         </mat-form-field>
     </form>

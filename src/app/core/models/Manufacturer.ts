@@ -33,6 +33,8 @@ export type ManufacturerWithLocation = Manufacturer & {
 }
 
 export type ManufacturerFilters = {
+    address?: string;
+    location?: { lat: number, lng: number };
     maxDistance?: number;
 }
 

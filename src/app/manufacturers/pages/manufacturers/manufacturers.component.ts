@@ -48,6 +48,7 @@ export class ManufacturersComponent {
   );
   public currentLocation = signal<{ lat: number, lng: number } | null>(null);
   public filters = signal<ManufacturerFilters>({ maxDistance: 20 });
+  public mapLocation = computed(() => this.filters().location ?? this.currentLocation());
 
   constructor() {
     getCurrentLocation().then(currentLocation => {
@@ -89,11 +90,12 @@ export class ManufacturersComponent {
 
   private getManufacturerLocations(filters: ManufacturerFilters) {
     const maxDistance = filters.maxDistance ?? 20;
+    const mapLocation = filters.location ?? this.currentLocation();
     this.manufacturersLocations.set([]);
         this.manufacturers()?.forEach((manufacturer) => {
           getLocationFromAddress(manufacturer.address ?? '').then(
             (location) => {
-              const distance = getDistanceBetweenCoordinates(this.currentLocation() ?? { lat: 0, lng: 0 }, location ?? { lat: 0, lng: 0 });
+              const distance = getDistanceBetweenCoordinates(mapLocation ?? { lat: 0, lng: 0 }, location ?? { lat: 0, lng: 0 });
               console.log(distance, maxDistance);
               if (distance <= maxDistance) {
                 manufacturer.latitude = location?.lat;

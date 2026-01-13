@@ -26,6 +26,9 @@
   } @else {
   <app-map
     [markers]="markers()"
+    [latitude]="mapLocation()?.lat ?? 0"
+    [longitude]="mapLocation()?.lng ?? 0"
+    [zoom]="17"
     (markerClick)="showManufacturersDetails($event)"
   ></app-map>
   }

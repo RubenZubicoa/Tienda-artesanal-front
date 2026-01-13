@@ -26,14 +26,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
   private marker: any = null;
 
   ngAfterViewInit(): void {
-    getCurrentLocation().then(currentLocation => {
-      this.initMap(currentLocation ?? { lat: this.latitude, lng: this.longitude });  
-
-      this.markers.forEach(marker => {
-        this.addMarker(marker);
-      });
-    });
-
+    this.configureMap();
   }
 
   ngOnDestroy(): void {
@@ -44,15 +37,22 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['markers']) {
-      getCurrentLocation().then(currentLocation => {
-        this.initMap(currentLocation ?? { lat: this.latitude, lng: this.longitude });  
-        this.markers.forEach(marker => {
-          const distance = getDistanceBetweenCoordinates(currentLocation ?? { lat: this.latitude, lng: this.longitude }, marker);
-          console.log('distance', distance);
-          this.addMarker(marker);
-        });
-      });
+      this.configureMap();
     }
+  }
+
+  private configureMap(){
+    if (this.isInputLocationValid()) {
+      this.initMap({ lat: this.latitude, lng: this.longitude });
+      this.markers.forEach(marker => {
+        this.addMarker(marker);
+      });
+      return;
+    }
+    getCurrentLocation().then(currentLocation => {
+      this.initMap(currentLocation ?? { lat: this.latitude, lng: this.longitude });  
+      this.addMarkers();
+    });
   }
 
   private initMap(location: { lat: number, lng: number }): void {
@@ -100,5 +100,14 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
     return null;
   }
 
+  private isInputLocationValid(){
+    return this.latitude !== 0 && this.longitude !== 0;
+  }
+
+  private addMarkers(){
+    this.markers.forEach(marker => {
+      this.addMarker(marker);
+    });
+  }
 
 }

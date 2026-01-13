@@ -8,6 +8,7 @@ import { ManufacturerFilters } from '../../../core/models/Manufacturer';
 import { ManufacturersFormFiltersService } from '../../services/manufacturers-form-filters.service';
 import { MANUFACTURERS_CHIPS } from '../../models/manufacturers-chips';
 import { FilterChip } from '../../../shared/components/filter-chips/filter-chip';
+import { getLocationFromAddress } from '../../../shared/utils/geocoder';
 
 @Component({
   selector: 'app-manufacturers-filters',
@@ -20,7 +21,7 @@ export class ManufacturersFiltersComponent {
   
   public applyFilters = output<ManufacturerFilters>(); 
 
-  public filters: ManufacturerFilters | undefined = undefined;
+  public filters: ManufacturerFilters = {};
   public readonly chips: FilterChip[] = MANUFACTURERS_CHIPS;
 
   ngOnInit(): void {
@@ -29,12 +30,19 @@ export class ManufacturersFiltersComponent {
 
   applyFiltersClick() {
     this.filters = this.formService.obtenerDatos(this.formService.form);
+    if ( this.filters && this.filters.address) {
+      getLocationFromAddress(this.filters.address).then(location => {
+        this.filters.location = location ?? undefined;
+        this.applyFilters.emit(this.filters);
+      });
+      return;
+    }
     this.applyFilters.emit(this.filters);
   }
 
   clearFiltersClick() {
     this.formService.reset(this.formService.form);
-    this.filters = undefined;
+    this.filters = {};
     this.applyFilters.emit({});
   }
 
