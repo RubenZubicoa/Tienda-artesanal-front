@@ -32,9 +32,6 @@ export class FilterChipsComponent<T> {
     const filters = this.filters();
     if (filters !== undefined) {
       const hasValues = Object.entries(filters as unknown as object).some(([key, value]) => {
-        if (key === 'serieEquals' || key === 'serieNotEquals') { //TODO: ver la forma de quitar estos filtros de la lógica
-          return false;
-        }
         if (value === undefined && value === null) {
           return false;
         }
@@ -43,6 +40,9 @@ export class FilterChipsComponent<T> {
         }
           if (typeof value === 'string'  ) {
           return value.trim() !== '';
+        }
+        if (typeof value === 'number') {
+          return value > 0;
         }
         if (value instanceof Date) {
           return true

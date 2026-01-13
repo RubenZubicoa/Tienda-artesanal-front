@@ -46,11 +46,12 @@ export class ManufacturersFiltersComponent {
     this.applyFilters.emit({});
   }
 
-  removeFilter(filters: ManufacturerFilters | undefined) {
-    if (filters !== undefined) {
+  removeFilter(filters: ManufacturerFilters) {
+      if (filters.address === undefined || filters.address === null) {
+        delete filters.location;
+      }
       this.filters = filters;
       this.formService.actualizarFormulario(this.formService.form, filters);
       this.applyFiltersClick();
-    }
   }
 }

@@ -33,9 +33,14 @@ export type ManufacturerWithLocation = Manufacturer & {
 }
 
 export type ManufacturerFilters = {
+    name?: string;
     address?: string;
     location?: { lat: number, lng: number };
     maxDistance?: number;
+}
+
+export type ManufacturerFiltersDB = {
+    name?: string;
 }
 
 export type AddManufacturerDB = Omit<ManufacturerDB, '_id' | 'createdAt' | 'updatedAt' | 'isDeleted'>;

@@ -47,8 +47,6 @@ export function getDistanceBetweenCoordinates(
   coord2: { lat: number; lng: number },
   unit: 'km' | 'm' = 'km'
 ): number {
-  console.log('coord1', coord1);
-  console.log('coord2', coord2);
   const R = 6371; // Radio de la Tierra en kilómetros
   const dLat = toRadians(coord2.lat - coord1.lat);
   const dLng = toRadians(coord2.lng - coord1.lng);

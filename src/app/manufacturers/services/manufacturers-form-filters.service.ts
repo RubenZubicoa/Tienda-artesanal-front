@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IServiceForm } from '../../core/models/IServiceForm';
 import { ManufacturerFilters } from '../../core/models/Manufacturer';
-import { getLocationFromAddress } from '../../shared/utils/geocoder';
 
 type ManufacturersFormFiltersFormContent = {
+  name: FormControl<string | null>;
   address: FormControl<string | null>;
   maxDistance: FormControl<number | null>;
 }
@@ -19,12 +19,15 @@ export class ManufacturersFormFiltersService implements IServiceForm<Manufacture
   public form = this.crearFormulario();
   crearFormulario(): ManufacturersFormFiltersForm {
     return new FormGroup<ManufacturersFormFiltersFormContent>({
+      name: new FormControl(null),
       address: new FormControl(null),
       maxDistance: new FormControl(null),
     });
   }
   actualizarFormulario(form: ManufacturersFormFiltersForm, inputData: ManufacturerFilters): void {
     form.patchValue({
+      name: inputData.name ?? null,
+      address: inputData.address ?? null,
       maxDistance: inputData.maxDistance ?? null,
     });
   }

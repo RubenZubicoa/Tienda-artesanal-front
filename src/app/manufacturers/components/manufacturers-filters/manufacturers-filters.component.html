@@ -11,6 +11,10 @@
 <ng-template #filtersContent let-form="form">
     <form [formGroup]="form">
         <mat-form-field class="tienda-f-width" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" />
+        </mat-form-field>
+        <mat-form-field class="tienda-f-width" appearance="outline">
             <mat-label>Dirección</mat-label>
             <input matInput formControlName="address" />
         </mat-form-field>
