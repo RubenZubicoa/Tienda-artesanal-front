@@ -8,27 +8,27 @@ header {
 main {
   width: 100%;
   height: calc(100vh - variables.$header-mobile-height);
-  border-top: 1px solid gray;
+  border-top: 1px solid variables.$divider-color;
   display: flex;
   flex-direction: column;
   justify-content: start;
   box-sizing: border-box;
   overflow: auto;
+  background-color: variables.$background-color;
 }
 
 nav {
   width: 100%;
   box-sizing: border-box;
-  padding: 10px;
   height: variables.$sidenav-mobile-height;
-  background-color: variables.$light-gray-color;
+  background-color: variables.$surface-color;
 }
-
 
 content {
   flex: 1;
   box-sizing: border-box;
   overflow: auto;
+  background-color: variables.$background-color;
 }
 
 @media screen and (width > 768px) {
@@ -44,5 +44,6 @@ content {
     height: calc(100vh - variables.$header-desktop-height);
     width: 100%;
     flex-direction: row;
+    border-top: none;
   }
 }

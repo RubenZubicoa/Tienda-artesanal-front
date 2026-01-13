@@ -1,15 +1,28 @@
 @use '../../../core/theming/variables.scss' as variables;
 .clear-chip {
   cursor: pointer;
-  background-color: variables.$light-primary-color-10;
-  outline: 1px solid black;
-  font-size: 16px !important;
-  padding: 0px !important;
+  background-color: variables.$primary-color-bg;
+  border: 1px solid variables.$primary-color-light;
+  font-size: 14px !important;
+  padding: 4px 8px !important;
   margin: 0px 0px 0px 8px !important;
   text-wrap: auto;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: variables.$primary-color-light;
+    border-color: variables.$primary-color;
+    
+    .text-clear-chip {
+      color: variables.$white-color;
+    }
+  }
 
   .text-clear-chip {
     color: variables.$primary-color;
+    font-weight: 500;
+    transition: color 0.2s ease;
   }
 }
 

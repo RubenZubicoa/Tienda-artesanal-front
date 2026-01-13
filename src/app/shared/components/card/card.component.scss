@@ -3,42 +3,56 @@
 
 .card-container {
   height: auto;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #eeeeee;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: variables.$surface-color;
   display: flex;
   flex-direction: column;
   width: 300px;
-  gap: 10px;
-  border: 1px solid #cccccc;
+  gap: 16px;
+  border: 1px solid variables.$divider-color;
+  box-shadow: variables.$shadow-sm;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    box-shadow: variables.$shadow-md;
+    transform: translateY(-4px);
+    border-color: variables.$primary-color-light;
+  }
 }
 
 .card-header {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 12px;
   align-items: start;
   justify-content: start;
 
   .card-header-title {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
+    flex: 1;
   }
 }
 
 .card-title{
-  font-weight: bold;
+  font-weight: 700;
   color: variables.$text-color;
   font-size: 18px;
+  line-height: 1.4;
+  margin: 0;
 }
 
 .card-header-image {
-  height: 50px;
-  width: 50px;
+  height: 56px;
+  width: 56px;
+  min-width: 56px;
   background-size: cover;
   object-fit: cover;
-  border-radius: 100%;
+  border-radius: 50%;
+  border: 2px solid variables.$divider-color;
+  box-shadow: variables.$shadow-sm;
 }
 
 .card-content {
@@ -49,11 +63,13 @@
   overflow: hidden;
   flex: 1;
 }
+
 .card-actions {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5px;
-  height: 20%;
+  gap: 8px;
+  padding-top: 8px;
   box-sizing: border-box;
+  border-top: 1px solid variables.$divider-color;
 }

@@ -15,47 +15,71 @@ html,body {
   box-sizing: border-box;
   height: 100vh;
   width: 100vw;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans Variable', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: variables.$background-color;
+  color: variables.$text-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-
 .tienda-title {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 700;
   color: variables.$text-color;
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: -0.5px;
 }
 
 .tienda-subtitle {
   font-size: 16px;
   font-weight: 500;
-  color: variables.$text-color;
+  color: variables.$text-color-secondary;
+  line-height: 1.5;
+  margin: 0;
 }
 
 .tienda-text {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   color: variables.$text-color;
+  line-height: 1.6;
 }
 
 .tienda-price-text {
-  font-size: 18px;
-  font-weight: bold;
-  color: variables.$text-color;
+  font-size: 20px;
+  font-weight: 700;
+  color: variables.$primary-color;
+  line-height: 1.4;
 }
 
 .section-container {
-  padding: 10px;
+  padding: 24px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .section-container {
+    padding: 16px;
+  }
 }
 
 .tienda-primary-button {
-  @include mixins.button(variables.$primary-color);
+  @include mixins.button(variables.$primary-color, variables.$primary-color-dark);
 }
 
 .tienda-secondary-button {
-  @include mixins.button(variables.$light-gray-color);
-  background-color: white;
-  border-color: variables.$primary-color;
+  @include mixins.button(variables.$surface-color);
+  background-color: variables.$surface-color;
+  border: 2px solid variables.$primary-color;
   color: variables.$primary-color;
+  
+  &:hover {
+    background-color: variables.$primary-color-bg;
+    border-color: variables.$primary-color-dark;
+    color: variables.$primary-color-dark;
+  }
 }
 
 .tienda-warning-button {

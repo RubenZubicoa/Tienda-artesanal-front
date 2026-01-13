@@ -1,54 +1,98 @@
 @use '../../../core/theming/mixins.scss' as mixins;
 @use '../../../core/theming/variables.scss' as variables;
+@use 'sass:color' as color;
 
 .section-button {
   display: flex;
-  padding: 0px 5px;
+  padding: 8px 12px;
   cursor: pointer;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 80px;
-  gap: 4px;
-  border-radius: 10px;
+  gap: 6px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  color: variables.$text-color-secondary;
+  text-decoration: none;
 
   .text {
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
+    font-weight: 500;
+    transition: color 0.2s ease;
   }
 
   .icon {
-    padding-top: 5px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 100px;
-    scale: 1.2;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    width: 40px;
+    height: 40px;
   }
 
   .active-icon {
-    font-weight: bold;
+    background-color: variables.$primary-color-bg;
+    color: variables.$primary-color;
   }
 
   .active-text {
-    font-weight: bold;
+    font-weight: 600;
+    color: variables.$primary-color;
   }
 
+  &:hover {
+    background-color: variables.$surface-color-hover;
+    
+    .icon {
+      background-color: variables.$primary-color-bg;
+      color: variables.$primary-color;
+    }
+    
+    .text {
+      color: variables.$primary-color;
+    }
+  }
 
   &--first-element {
     .icon {
       width: 40px;
-      height: 34px;
-      border-radius: 100%;
+      height: 40px;
+      border-radius: 50%;
     }
   }
+}
 
-  @include mixins.hover-effect(variables.$primary-color, variables.$white-color);
+@media screen and (width > 768px) {
+  .section-button {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    gap: 12px;
+    
+    .text {
+      font-size: 14px;
+      text-align: left;
+      flex: 1;
+    }
+    
+    .icon {
+      width: 24px;
+      height: 24px;
+      padding: 0;
+    }
+  }
 }
 
 .header-buttons-menu {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 0px 10px;
+  gap: 12px;
+  padding: 8px;
+  min-width: 200px;
 }

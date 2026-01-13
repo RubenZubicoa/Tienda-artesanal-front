@@ -28,13 +28,27 @@
 .button-toggle-group {
   display: flex;
   flex-direction: row;
+  gap: 4px;
+  border-radius: 8px;
+  padding: 4px;
+  background-color: variables.$surface-color-hover;
 
   button {
-    padding: 5px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    border: none;
+    background-color: transparent;
+    color: variables.$text-color-secondary;
+
+    &:hover {
+      background-color: variables.$surface-color;
+    }
 
     &.active {
       background-color: variables.$primary-color;
       color: variables.$white-color;
+      box-shadow: variables.$shadow-sm;
     }
   }
 }

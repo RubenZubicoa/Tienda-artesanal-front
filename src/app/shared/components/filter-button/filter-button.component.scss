@@ -2,81 +2,96 @@
 @use '../../../core/theming/variables.scss' as variables;
 
 .button-filter {
-  width: 44px;
-  height: 44px;
-  border-radius: 77px;
-  background-color: variables.$light-gray-color;
-  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: variables.$primary-color;
+  color: variables.$white-color;
+  box-shadow: variables.$shadow-md;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    background-color: variables.$primary-color-dark;
+    box-shadow: variables.$shadow-lg;
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: variables.$shadow-md;
+  }
 }
 
 .filters-menu {
-  padding: 0px;
-  box-shadow: 0px 1px 3px 0px #0000004d;
-  box-shadow: 0px 4px 8px 3px #00000026;
-  background-color: white;
+  padding: 0;
+  box-shadow: variables.$shadow-lg;
+  background-color: variables.$surface-color;
   width: 400px;
-  border-radius: 12px;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   max-height: 70vh;
+  border: 1px solid variables.$divider-color;
   @include animations.translate-animation();
-  
 
   .header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: Fixed (52px) px;
-    padding: 4px 56px 4px 10px !important;
-    gap: 10px;
-    opacity: 0px;
+    height: 56px;
+    padding: 8px 16px;
+    gap: 12px;
     cursor: pointer;
-    
+    border-bottom: 1px solid variables.$divider-color;
+    transition: background-color 0.2s ease;
 
-    .icon{
+    &:hover {
+      background-color: variables.$surface-color-hover;
+    }
+
+    .icon {
       display: flex;
       align-items: center;
-      width: Fixed (48px)px;
-      height: Fixed (48px)px;
-      gap: 10px;
-      opacity: 0px;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: background-color 0.2s ease;
       cursor: pointer;
-      
+
+      &:hover {
+        background-color: variables.$primary-color-bg;
+        color: variables.$primary-color;
+      }
     }
 
     .title {
-      height: 44px;
-      gap: 10px;
-      opacity: 0px;
-      font-family: "inter";
-      font-size: 16px;
-      font-weight: 500;
+      flex: 1;
+      font-size: 18px;
+      font-weight: 600;
       line-height: 24px;
-      letter-spacing: 0.15px;
       text-align: left;
       display: flex;
       align-items: center;
-      text-underline-position: from-font;
-      text-decoration-skip-ink: none;
+      color: variables.$text-color;
     }
   }
 
   .content {
-    width: Fill (360px) px;
+    width: 100%;
     flex: 1;
     overflow: auto;
     box-sizing: border-box;
+    padding: 16px;
   }
 
   .footer {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: Fill (360px) px;
-    height: Hug (144px) px;
-    padding: 20px;
-    gap: 20px;
-    opacity: 0px;
+    align-items: stretch;
+    width: 100%;
+    padding: 16px 20px 20px;
+    gap: 12px;
+    border-top: 1px solid variables.$divider-color;
   }
 }

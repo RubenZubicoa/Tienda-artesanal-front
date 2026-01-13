@@ -5,15 +5,46 @@ $header-desktop-height: 10%;
 $sidenav-mobile-height: 11%;
 $sidenav-desktop-width: 8%;
 
-$primary-color: #457c3a;
-$warning-color: rgb(177, 78, 78);
-$accent-color: #6c757d;
-$text-color: #000;
-$light-gray-color: #adf1a0c5;
-$light-primary-color-10: #f2ffef;
-$dark-gray-color: #185025;
-$white-color: #eeeeee;
+// Paleta de colores principal - Moderna y profesional
+$primary-color: #2e7d32; // Verde esmeralda profundo
+$primary-color-light: #4caf50; // Verde claro para hovers
+$primary-color-dark: #1b5e20; // Verde oscuro para estados activos
+$primary-color-bg: #e8f5e9; // Fondo verde muy claro
 
-$order-status-pending-background-color: #fff3cd;
-$order-status-pending-color: #856404;
-$order-status-pending-border-color: #ffc107;
+$secondary-color: #1976d2; // Azul complementario
+$accent-color: #7b1fa2; // Morado para acentos
+
+// Colores de estado
+$warning-color: #f57c00; // Naranja más profesional
+$warning-color-bg: #fff3e0;
+$error-color: #d32f2f; // Rojo más moderno
+$success-color: #388e3c;
+$info-color: #0288d1;
+
+// Colores neutros
+$text-color: #212121; // Casi negro para mejor legibilidad
+$text-color-secondary: #616161; // Gris medio para texto secundario
+$text-color-disabled: #9e9e9e;
+
+// Fondos y superficies
+$background-color: #fafafa; // Fondo principal muy claro
+$surface-color: #ffffff; // Superficies (cards, panels)
+$surface-color-hover: #f5f5f5;
+$divider-color: #e0e0e0;
+
+// Colores legacy (mantener compatibilidad)
+$light-gray-color: rgba(46, 125, 50, 0.08); // Verde muy transparente
+$light-primary-color-10: #e8f5e9;
+$dark-gray-color: #1b5e20;
+$white-color: #ffffff;
+
+// Sombras profesionales
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+$shadow-md: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+$shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+$shadow-hover: 0 5px 15px rgba(0, 0, 0, 0.2), 0 3px 8px rgba(0, 0, 0, 0.15);
+
+// Estados de pedidos
+$order-status-pending-background-color: #fff3e0;
+$order-status-pending-color: #e65100;
+$order-status-pending-border-color: #ff9800;

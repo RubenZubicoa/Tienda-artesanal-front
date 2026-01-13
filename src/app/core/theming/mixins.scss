@@ -2,21 +2,50 @@
 @use 'sass:color' as color;
 
 @mixin hover-effect($color: variables.$light-gray-color, $text-color: variables.$text-color) {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
         cursor: pointer;
-        background-color: color.adjust($color, $lightness: -10%);
+        background-color: color.adjust($color, $lightness: -8%);
         color: $text-color;
+        transform: translateY(-1px);
+        box-shadow: variables.$shadow-hover;
+    }
+    &:active {
+        transform: translateY(0);
+        box-shadow: variables.$shadow-sm;
     }
 }
 
-@mixin button($color: variables.$primary-color) {
+@mixin button($color: variables.$primary-color, $hover-color: null) {
     background-color: $color;
     color: variables.$white-color;
-    border-radius: 10px;
-    border: 1px solid $color;
-    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    padding: 12px 24px;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
-    @include hover-effect($color);
+    cursor: pointer;
+    box-shadow: variables.$shadow-sm;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    $hover-bg: if($hover-color, $hover-color, color.adjust($color, $lightness: -10%));
+    
+    &:hover {
+        background-color: $hover-bg;
+        box-shadow: variables.$shadow-md;
+        transform: translateY(-2px);
+    }
+    
+    &:active {
+        transform: translateY(0);
+        box-shadow: variables.$shadow-sm;
+    }
+    
+    &:disabled {
+        background-color: variables.$text-color-disabled;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
 }
