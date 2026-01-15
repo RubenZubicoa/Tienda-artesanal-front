@@ -1,0 +1,12 @@
+<div class="meeting-point-details-dialog-container">
+    <div class="meeting-point-details-dialog-container-header">
+        <h1 class="tienda-title">Seleccionar punto de encuentro para el artesano {{ data.manufacturerId }}</h1>
+        <p class="tienda-text">Punto de encuentro seleccionado: <b>{{ selectedMeetingPoint()?.name ?? '' }}</b></p>
+    </div>
+     <div class="map-container">
+        <app-map [markers]="markers" [zoom]="17" (markerClick)="onMarkerClick($event)"></app-map>
+    </div>
+    <div class="meeting-point-form-dialog-container-buttons">
+        <button mat-raised-button class="tienda-primary-button tienda-f-width" (click)="selectMeetingPoint()">Seleccionar punto de encuentro</button>
+    </div>
+</div>
