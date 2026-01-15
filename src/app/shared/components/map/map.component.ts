@@ -61,10 +61,11 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
       return;
     }
 
-    const mapOptions = {
+    const mapOptions: google.maps.MapOptions = {
       center: { lat: location.lat, lng: location.lng },
       zoom: this.zoom,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.SATELLITE,
+      streetViewControl: false      
     };
 
     this.map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
