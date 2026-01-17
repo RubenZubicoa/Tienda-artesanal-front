@@ -24,6 +24,10 @@ export class MeetingPointsService {
     return this.http.post<MeetingPointDB[]>(this.url + '/criteria', filteredFilters).pipe(map(meetingPoints => meetingPoints.map(mapMeetingPointToMeetingPoint)));
   }
 
+  getMeetingPoint(meetingPointId: MeetingPoint['uuid']): Observable<MeetingPoint> {
+    return this.http.get<MeetingPointDB>(this.url + '/' + meetingPointId).pipe(map(mapMeetingPointToMeetingPoint));
+  }
+
   createMeetingPoint(meetingPoint: AddMeetingPointDB): Observable<InsertOneResult> {
     return this.http.post<InsertOneResult>(this.url, meetingPoint);
   }

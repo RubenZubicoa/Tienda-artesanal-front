@@ -16,7 +16,14 @@
       <app-order-product-list [products]="order().products"></app-order-product-list>
     </div>
     <div class="order-meeting-point-container">
-      <app-order-meeting-point></app-order-meeting-point>
+      @if (meetingPoint()) {
+      <app-order-meeting-point [meetingPoint]="meetingPoint()!"></app-order-meeting-point>
+      }
+      @else {
+      <div class="order-meeting-point-container">
+        <h2 class="tienda-subtitle">No se ha seleccionado ningún punto de encuentro</h2>
+      </div>
+      }
     </div>
   </div>
 </div>

@@ -24,6 +24,9 @@ export class OrderDataComponent {
 
   constructor(){
     effect(() => {
+      if (this.isTheManufacturer()) {
+        return;
+      }
       this.manufacturerService.getManufacturer(this.order().manufacturerId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(manufacturer => {
         this.manufacturer.set(manufacturer);
       });
