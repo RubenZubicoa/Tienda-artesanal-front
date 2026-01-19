@@ -39,6 +39,19 @@ export async function getMeetingPointsByFilters(filters: MeetingPointFilters) {
     }
 }
 
+export async function getMeetingPointById(meetingPointId: string) {
+    try {
+        await clientDB.connect();
+        const meetingPoint = await database.collection("MeetingPoints").findOne({ _id: new ObjectId(meetingPointId) });
+        await clientDB.close();
+        return meetingPoint;
+    } catch (error) {
+        await clientDB.close();
+        console.error(error);
+        throw new Error("Error al obtener el punto de encuentro");
+    }
+}
+
 export async function createMeetingPoint(meetingPoint: CreateMeetingPoint) {
     try {
         await clientDB.connect();

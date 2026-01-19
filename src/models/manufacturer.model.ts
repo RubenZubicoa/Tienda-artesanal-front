@@ -36,7 +36,7 @@ export async function getManufacturersByFilters(filters: ManufacturerFilters) {
 export async function getManufacturerById(manufacturerId: Manufacturer['_id']) {
     try {
         await clientDB.connect();
-        const manufacturer = await database.collection("Manufacturers").findOne({ _id: manufacturerId, isDeleted: false });
+        const manufacturer = await database.collection<Manufacturer>("Manufacturers").findOne({ _id: manufacturerId, isDeleted: false });
         await clientDB.close();
         return manufacturer;
     } catch (error) {

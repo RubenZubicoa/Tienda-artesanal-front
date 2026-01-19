@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getMeetingPointsByManufacturerId as getMeetingPointsByManufacturerIdModel, createMeetingPoint as createMeetingPointModel, updateMeetingPoint as updateMeetingPointModel, deleteMeetingPoint as deleteMeetingPointModel, getMeetingPointsByFilters as getMeetingPointsByFiltersModel } from "../models/meetingPoint.model";
+import { getMeetingPointsByManufacturerId as getMeetingPointsByManufacturerIdModel, createMeetingPoint as createMeetingPointModel, updateMeetingPoint as updateMeetingPointModel, deleteMeetingPoint as deleteMeetingPointModel, getMeetingPointsByFilters as getMeetingPointsByFiltersModel, getMeetingPointById as getMeetingPointByIdModel } from "../models/meetingPoint.model";
 import { isCreateMeetingPoint, isUpdateMeetingPoint, MeetingPoint, MeetingPointFilters, UpdateMeetingPoint } from "../types/MeetingPoint";
 
 export async function getMeetingPointsByManufacturerId(req: Request<{ manufacturerId: string }>, res: Response) {
@@ -21,6 +21,17 @@ export async function getMeetingPointsByFilters(req: Request<{}, {}, MeetingPoin
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Error al obtener los puntos de encuentro", error: error });
+    }
+}
+
+export async function getMeetingPointById(req: Request<{ id: string }>, res: Response) {
+    const meetingPointId = req.params.id;
+    try {
+        const meetingPoint = await getMeetingPointByIdModel(meetingPointId);
+        res.status(200).json(meetingPoint);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error al obtener el punto de encuentro", error: error });
     }
 }
 

@@ -26,6 +26,10 @@ export type ProductFilters = {
     category?: string;
 }
 
+export type ProductWithQuantity = Product & {
+    quantity: number;
+}
+
 export function isProduct(product: unknown): product is Product {
     return (
         product !== undefined &&
