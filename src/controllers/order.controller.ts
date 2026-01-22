@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { getOrders as getOrdersModel, getOrdersByManufacturerId as getOrdersByManufacturerIdModel, getOrderById as getOrderByIdModel, insertOrder as insertOrderModel, updateOrder as updateOrderModel, deleteOrder as deleteOrderModel, getOrdersByEmail as getOrdersByEmailModel, getOrdersByFilters as getOrdersByFiltersModel } from "../models/order.model";
 import { AddOrder, isAddOrder, Order, OrderFilters } from "../types/Order";
 import { ObjectId } from "mongodb";
-import { sendEmail } from "../mailer/nodemailer";
+import { sendEmail } from "../libs/nodemailer";
 import { getManufacturerById as getManufacturerByIdModel } from "../models/manufacturer.model";
 import { getProductById as getProductByIdModel } from "../models/product.model";
 

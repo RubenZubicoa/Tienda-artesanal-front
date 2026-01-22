@@ -9,7 +9,7 @@ import {
   getProductsByFilters as getProductsByFiltersModel,
 } from "../models/product.model";
 import { isProduct, Product, ProductFilters } from "../types/Product";
-import { ObjectId } from "mongodb";
+import { ObjectId, UpdateResult } from "mongodb";
 
 export async function getProducts(req: Request, res: Response) {
   try {
@@ -90,7 +90,7 @@ export async function updateProduct(
     return res.status(400).json({ message: "Datos de producto inválidos" });
   }
   try {
-    const result = await updateProductModel(productId, product);
+    const result: UpdateResult = await updateProductModel(productId, product);
     res.status(200).json(result);
   } catch (error) {
     console.error(error);
