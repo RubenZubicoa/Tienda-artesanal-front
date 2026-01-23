@@ -57,9 +57,14 @@ export async function getProductById(productId: Product['_id']) {
     try {
         await clientDB.connect();
         const product = await database.collection("Products").findOne({ _id: productId, isDeleted: false });
-        const productWithImages = await getProductImages([product as Product]);
+        if (!product) {
+            await clientDB.close();
+            throw new Error("Producto no encontrado");
+        }
+        const result = await database.collection("ProductImages").findOne({ productId: (product._id as ObjectId).toString() });
+        product.images = result?.images || [];
         await clientDB.close();
-        return productWithImages;
+        return product;
     } catch (error) {
         await clientDB.close();
         console.error(error);

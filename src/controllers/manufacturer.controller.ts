@@ -7,6 +7,7 @@ import {
   deleteManufacturer as deleteManufacturerModel,
   getManufacturerById as getManufacturerByIdModel,
   getManufacturersByFilters as getManufacturersByFiltersModel,
+  uploadManufacturerImage as uploadManufacturerImageModel,
 } from "../models/manufacturer.model";
 import { ObjectId } from "mongodb";
 
@@ -103,5 +104,18 @@ export async function deleteManufacturer(
     res
       .status(500)
       .json({ message: "Error al eliminar el artesano", error: error });
+  }
+}
+
+export async function uploadManufacturerImage(req: Request, res: Response) {
+  const manufacturerId = req.body.manufacturerId;
+  const image = req.file as Express.Multer.File;
+  const oldImage = req.body.oldImage;
+  try {
+    const result = await uploadManufacturerImageModel(manufacturerId, image.path, oldImage);
+    res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al subir la imagen del artesano", error: error });
   }
 }

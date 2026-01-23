@@ -1,6 +1,7 @@
-import { Filter } from "mongodb";
+import { Filter, ObjectId } from "mongodb";
 import { clientDB, database } from "../db/database";
 import { Manufacturer, ManufacturerFilters } from "../types/Manufacturer";
+import fs from "fs";
 
 export async function getManufacturers() {
     try {
@@ -85,5 +86,25 @@ export async function deleteManufacturer(manufacturerId: Manufacturer['_id']) {
         await clientDB.close();
         console.error(error);
         throw new Error("Error al eliminar el artesano");
+    }
+}
+
+export async function uploadManufacturerImage(manufacturerId: string, image: string, oldImage: string) {
+    try {
+        if (oldImage) {
+            await fs.unlink(oldImage, (err) => {
+                if (err) {
+                    console.error(err);
+                }
+            });
+        }
+        await clientDB.connect();
+        const result = await database.collection("Manufacturers").updateOne({ _id: new ObjectId(manufacturerId) }, { $set: { image } });
+        await clientDB.close();
+        return result;
+    } catch (error) {
+        await clientDB.close();
+        console.error(error);
+        throw new Error("Error al subir la imagen del artesano");
     }
 }

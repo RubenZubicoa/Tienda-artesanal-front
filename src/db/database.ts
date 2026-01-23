@@ -10,7 +10,10 @@ const clientDB = new MongoClient(uri,  {
             version: ServerApiVersion.v1,
             strict: true,
             deprecationErrors: true,
-        }
+        },
+        maxPoolSize: 20,
+        serverSelectionTimeoutMS: 30000,
+        socketTimeoutMS: 45000
     }
 );
 

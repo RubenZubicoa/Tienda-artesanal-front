@@ -70,10 +70,10 @@ export async function updateUser(userId: string, user: User) {
         await clientDB.connect();
         user.updatedAt = Date.now();        
         const result = await database.collection("Users").updateOne({ _id: new ObjectId(userId) }, { $set: user });
-        // await clientDB.close();
+        await clientDB.close();
         return result;
     } catch (error) {
-        // await clientDB.close();
+        await clientDB.close();
         console.error(error);
         throw new Error("Error al actualizar el usuario");
     }
