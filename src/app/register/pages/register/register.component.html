@@ -131,7 +131,7 @@
 
 <ng-template #imagesTemplate>
   <div class="images-container">
-    <app-carrusel [showNavigation]="false" [showIndicators]="false" [images]="[imageToDisplay()]"></app-carrusel>
+    <app-carrusel [showNavigation]="false" [showIndicators]="false" [images]="imageToDisplay() ? [imageToDisplay()!] : []"></app-carrusel>
     <div class="row">
       <label class="file-input-label">
         <input type="file" accept="image/*" #imageInput (change)="onFileSelected($event)" style="display: none;" />

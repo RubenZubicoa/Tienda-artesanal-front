@@ -44,7 +44,7 @@ export class RegisterComponent {
   public manufacturer = this.currentUserService.currentManufacturer;
   public manufacturerImage = computed(() => this.manufacturer()?.image);
   public image = signal<string | undefined>(undefined);
-  public imageToDisplay = computed(() => this.image() ?? this.manufacturerImage() ?? '');
+  public imageToDisplay = computed(() => this.image() ?? this.manufacturerImage() ?? undefined);
   public isUpdateMode = computed(() => this.user() !== undefined);
 
   private imageFile = signal<File | undefined>(undefined);
