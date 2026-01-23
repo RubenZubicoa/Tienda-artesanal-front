@@ -53,6 +53,16 @@
   }
 }
 
+.manufacturers-header-container{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.manufacturers-header-title{
+  display: none
+}
+
 @media screen and (width > 768px) {
   .manufacturers-list-container {
     display: flex;
@@ -65,5 +75,14 @@
   .manufacturers-details-container {
     display: block;
     flex: 1;
+  }
+  .manufacturers-header-title{
+    display: block;
+  }
+
+  .manufacturers-header-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 }

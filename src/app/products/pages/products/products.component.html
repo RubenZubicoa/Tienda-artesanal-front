@@ -1,8 +1,12 @@
 <section class="section-container">
     <app-breadcrumbs></app-breadcrumbs>
-    <h1 class="tienda-title">Lista de productos</h1>
-    <h2 class="tienda-subtitle">Encuentra los mejores productos artesanales cerca de ti</h2>
-    <app-products-filters [maxPrice]="maxPrice()" (applyFilters)="applyFilters($event)"></app-products-filters>
+    <section class="products-header-container">
+        <div class="products-header-title">
+            <h1 class="tienda-title">Lista de productos</h1>
+        <h2 class="tienda-subtitle">Encuentra los mejores productos artesanales cerca de ti</h2>
+        </div>
+        <app-products-filters [maxPrice]="maxPrice()" (applyFilters)="applyFilters($event)"></app-products-filters>
+    </section>
     <div class="products-list-container">
         @for (card of cards(); track card.uuid) {
             <app-card [card]="card" [buttonText]="'Ver producto'" [buttonType]="'primary'" (succesButtonClick)="goToProductDetails(card)"></app-card>
