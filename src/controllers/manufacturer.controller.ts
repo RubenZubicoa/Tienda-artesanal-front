@@ -10,6 +10,7 @@ import {
   uploadManufacturerImage as uploadManufacturerImageModel,
 } from "../models/manufacturer.model";
 import { ObjectId } from "mongodb";
+import { uploadToCloudinary } from "../libs/cloudinary";
 
 export async function getManufacturers(req: Request, res: Response) {
   try {
@@ -110,9 +111,12 @@ export async function deleteManufacturer(
 export async function uploadManufacturerImage(req: Request, res: Response) {
   const manufacturerId = req.body.manufacturerId;
   const image = req.file as Express.Multer.File;
-  const oldImage = req.body.oldImage;
   try {
-    const result = await uploadManufacturerImageModel(manufacturerId, image.path, oldImage);
+    const imageUrl = await uploadToCloudinary(image);
+    if (!imageUrl) {
+      return res.status(400).json({ message: "Error al subir la imagen del artesano" });
+    }
+    const result = await uploadManufacturerImageModel(manufacturerId, imageUrl);
     res.status(200).json(result);
   } catch (error) {
     console.error(error);

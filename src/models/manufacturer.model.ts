@@ -89,15 +89,8 @@ export async function deleteManufacturer(manufacturerId: Manufacturer['_id']) {
     }
 }
 
-export async function uploadManufacturerImage(manufacturerId: string, image: string, oldImage: string) {
+export async function uploadManufacturerImage(manufacturerId: string, image: string) {
     try {
-        if (oldImage) {
-            await fs.unlink(oldImage, (err) => {
-                if (err) {
-                    console.error(err);
-                }
-            });
-        }
         await clientDB.connect();
         const result = await database.collection("Manufacturers").updateOne({ _id: new ObjectId(manufacturerId) }, { $set: { image } });
         await clientDB.close();
