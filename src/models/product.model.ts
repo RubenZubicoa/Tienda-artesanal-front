@@ -59,8 +59,6 @@ export async function getProductById(productId: Product['_id']) {
             await clientDB.close();
             throw new Error("Producto no encontrado");
         }
-        const result = await database.collection("ProductImages").findOne({ productId: (product._id as ObjectId).toString() });
-        product.images = result?.images || [];
         await clientDB.close();
         return product;
     } catch (error) {
