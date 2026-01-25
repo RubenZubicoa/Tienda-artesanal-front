@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { AddProductImages, isAddProductImages } from "../types/ProductImages";
 import { addProductImages as addProductImagesModel, getProductImages as getProductImagesModel, deleteProductImages as deleteProductImagesModel } from "../models/product-images.model";
 import { ObjectId } from "mongodb";
+import { uploadToCloudinary } from "../libs/cloudinary";
 
 export async function addProductImages(req: Request, res: Response) {
     const productId = req.body.productId;
@@ -11,11 +12,15 @@ export async function addProductImages(req: Request, res: Response) {
         return res.status(400).json({ message: "Datos de imágenes de producto inválidos" });
     }
     try {
-        const imagesPaths = [];
+        const imagesUrls = [];
         for (const image of images) {
-            imagesPaths.push(image.path);
+            const imageUrl = await uploadToCloudinary(image);
+            if (!imageUrl) {
+                return res.status(400).json({ message: "Error al subir la imagen del producto" });
+            }
+            imagesUrls.push(imageUrl);
         }
-        productImages.images = imagesPaths;
+        productImages.images = imagesUrls;
         const result = await addProductImagesModel(productImages);
         res.status(201).json(result);
     } catch (error) {
