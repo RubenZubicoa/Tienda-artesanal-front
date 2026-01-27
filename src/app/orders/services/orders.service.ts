@@ -42,8 +42,8 @@ export class OrdersService {
     return this.http.post<void>(this.url, order);
   }
 
-  updateOrder(order: UpdateOrder): Observable<void> {
-    return this.http.put<void>(this.url, order);
+  updateOrder(orderId: Order['uuid'], order: UpdateOrder): Observable<void> {
+    return this.http.put<void>(this.url + '/' + orderId, order);
   }
 
   deleteOrder(orderId: Order['uuid']): Observable<void> {

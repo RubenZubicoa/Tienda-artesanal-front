@@ -3,10 +3,14 @@
     <app-breadcrumbs></app-breadcrumbs>
   </div>
   <div class="order-header-container">
-    <h1 class="tienda-title">Detalles del pedido</h1>
-    <h2 class="tienda-subtitle">
-      Aquí puedes ver los detalles del pedido de <b>{{ order().username }}</b>
-    </h2>
+    <div class="order-header-container-title">
+      <h1 class="tienda-title">Detalles del pedido</h1>
+      <h2 class="tienda-subtitle">
+        Aquí puedes ver los detalles del pedido de <b>{{ order().username }}</b>
+      </h2>
+    </div>
+    <button class="tienda-primary-button" (click)="changeOrderStatus(order())">{{ order().status === 'pending' ?
+      'Completado' : 'Pendiente' }}</button>
   </div>
   <div class="order-data-container">
     <app-order-data [order]="order()"></app-order-data>

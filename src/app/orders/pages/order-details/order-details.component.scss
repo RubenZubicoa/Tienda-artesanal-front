@@ -14,6 +14,22 @@
     width: 100%;
 }
 
+.order-header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.order-header-container-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+}
+
 .order-data-container {
     display: flex;
     flex-direction: column;
@@ -75,6 +91,11 @@
 }
 
 @media screen and (width < 768px) {
+
+    .order-header-container {
+        flex-direction: column;
+        gap: 10px;
+    }
 
     .order-products-list-container {
         width: 100%;
