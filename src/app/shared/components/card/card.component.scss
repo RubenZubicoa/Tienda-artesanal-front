@@ -21,6 +21,15 @@
   }
 }
 
+.card-container.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  &:hover {
+    box-shadow: variables.$shadow-sm;
+    transform: translateY(0);
+  }
+}
+
 .card-header {
   display: flex;
   flex-direction: row;

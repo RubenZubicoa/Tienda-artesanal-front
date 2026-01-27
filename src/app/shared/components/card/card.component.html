@@ -1,5 +1,5 @@
 @let cardData = card();
-<div class="card-container">
+<div class="card-container" [class.disabled]="cardData.disabled">
     <div class="card-header">
         @if (cardData.perfilImage) {
             <img class="card-header-image" [src]="cardData.perfilImage">
@@ -29,7 +29,7 @@
             <ng-container *ngTemplateOutlet="buttonTemplateRef; context: { uuid: cardData.uuid }"></ng-container>
         }
         @else {
-            <button [class]="buttonType() === 'warning' ? 'tienda-warning-button' : 'tienda-primary-button'" (click)="onClick()">{{ buttonText() }}</button>
+            <button [class]="buttonType() === 'warning' ? 'tienda-warning-button' : 'tienda-primary-button'" (click)="onClick()" [disabled]="cardData.disabled">{{ buttonText() }}</button>
         }
     </div>
 </div>

@@ -10,6 +10,7 @@ export type CardData = {
   price?: number;
   quantity?: number;
   description?: string;
+  disabled?: boolean;
 };
 
 export function mapProductToCardData(product: Product): CardData {
@@ -21,6 +22,7 @@ export function mapProductToCardData(product: Product): CardData {
     perfilImage: product.manufacturer?.image,
     price: product.price,
     description: product.description,
+    disabled: product.stock === 0,
   };
 }
 
