@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://tienda-artesanal-back-produccion.vercel.app/api'
+    apiUrl: 'https://tienda-back-produccion.vercel.app/api'
   };
   
