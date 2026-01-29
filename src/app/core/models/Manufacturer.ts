@@ -1,5 +1,6 @@
 import { getLocationFromAddress } from "../../shared/utils/geocoder";
 import { MapMarker } from "../../shared/components/map/map.models";
+import { mapMeetingPointToMeetingPoint, MeetingPoint, MeetingPointDB } from "./MeetingPoint";
 
 export type Manufacturer  = {
     uuid: string;
@@ -43,6 +44,14 @@ export type ManufacturerFiltersDB = {
     name?: string;
 }
 
+export type ManufacturerWithMeetingPoints = Manufacturer & {
+    meetingPoints: MeetingPoint[];
+}
+
+export type ManufacturerWithMeetingPointsDB = ManufacturerDB & {
+    meetingPoints: MeetingPointDB[];
+}
+
 export type AddManufacturerDB = Omit<ManufacturerDB, '_id' | 'createdAt' | 'updatedAt' | 'isDeleted'>;
 export type UpdateManufacturerDB = Omit<ManufacturerDB, '_id' | 'createdAt' | 'updatedAt' | 'isDeleted'>;
 
@@ -55,5 +64,12 @@ export const mapManufacturerToManufacturer = (manufacturerDB: ManufacturerDB): M
         image: manufacturerDB.image,
         address: manufacturerDB.address,
         description: manufacturerDB.description,
+    }
+}
+
+export const mapManufacturerWithMeetingPointsToManufacturerWithMeetingPoints = (manufacturerWithMeetingPointsDB: ManufacturerWithMeetingPointsDB): ManufacturerWithMeetingPoints => {
+    return {
+        ...mapManufacturerToManufacturer(manufacturerWithMeetingPointsDB),
+        meetingPoints: manufacturerWithMeetingPointsDB.meetingPoints.map(mapMeetingPointToMeetingPoint),
     }
 }

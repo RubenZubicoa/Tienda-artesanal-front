@@ -44,7 +44,6 @@ export function mapProductCartToCardData(product: ProductCart): CardData {
     title: product.name,
     subtitle: product.manufacturer?.name,
     images: product.images,
-    perfilImage: product.manufacturerId,
     price: product.price,
     quantity: product.quantity,
   };

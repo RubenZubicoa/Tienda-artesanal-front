@@ -3,14 +3,14 @@
     @if (data[manufacturerId]) {
     <div class="meeting-point-container">
       <h2 class="tienda-subtitle">
-        <b>Punto de encuentro del artesano {{ manufacturerId }}:</b>
+        <b>Punto de encuentro de: <span class="tienda-text-highlight">{{ data[manufacturerId].name }}</span></b>
       </h2>
-      @if (data[manufacturerId].length > 0) {
+      @if (data[manufacturerId].meetingPoints.length > 0) {
       <mat-form-field class="tienda-f-width" appearance="outline">
         <mat-label>Punto de encuentro</mat-label>
         <mat-select class="tienda-select-input" [disabled]="disabledForm()" [formControl]="meetingPointsFormControl">
           <mat-option
-            *ngFor="let meetingPoint of data[manufacturerId]"
+            *ngFor="let meetingPoint of data[manufacturerId].meetingPoints"
             [value]="meetingPoint.uuid"
             (onSelectionChange)="onChangeMeetingPoint(manufacturerId, meetingPoint.uuid)"
             
@@ -19,12 +19,13 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button class="tienda-primary-button" [disabled]="disabledForm()" (click)="openMeetingPointDialog(manufacturerId, data[manufacturerId])"><mat-icon>map</mat-icon></button>
+      <button class="tienda-primary-button" [disabled]="disabledForm()" (click)="openMeetingPointDialog(manufacturerId, data[manufacturerId].meetingPoints)"><mat-icon>map</mat-icon></button>
       } @else {
       <p class="tienda-text">No hay puntos de encuentro disponibles para este artesano. Cuando realices el pedido el artesano te contactará para confirmar el punto de encuentro.</p>
       }
     </div>
-    }
+  }
+  <mat-divider class="tienda-divider"></mat-divider>
   </ng-container>
   
 </div>

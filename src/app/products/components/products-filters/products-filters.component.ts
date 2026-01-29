@@ -10,6 +10,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ProductFilters } from '../../../core/models/Product';
 import { PRODUCTS_CHIPS } from '../../models/products-chips';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { EnumsService } from '../../../core/services/enums.service';
 
 @Component({
   selector: 'app-products-filters',
@@ -19,12 +20,14 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 })
 export class ProductsFiltersComponent {
   public readonly formService = inject(ProductsFormFiltersService);
+  private readonly enumsService = inject(EnumsService);
   
   public maxPrice = input<number>(100);
   public applyFilters = output<ProductFilters>(); 
 
   public filters: ProductFilters | undefined = undefined;
   public readonly chips = PRODUCTS_CHIPS;
+  public categories = this.enumsService.categories;
 
   ngOnInit(): void {
     this.filters = this.formService.obtenerDatos(this.formService.form);

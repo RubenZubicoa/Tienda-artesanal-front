@@ -47,7 +47,7 @@ export class AddProductDialogComponent implements OnInit {
   private readonly productImagesService = inject(ProductImagesService);
   
   public productForm = this.productFormService.crearFormulario();
-  public categories = toSignal(this.enumsService.getCategories());
+  public categories = this.enumsService.categories;
 
   public images = signal<string[]>([]);
   public isUpdateMode = signal<boolean>(false);

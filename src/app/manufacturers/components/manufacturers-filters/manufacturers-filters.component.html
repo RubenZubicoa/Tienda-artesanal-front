@@ -11,12 +11,12 @@
 <ng-template #filtersContent let-form="form">
     <form [formGroup]="form">
         <mat-form-field class="tienda-f-width" appearance="outline">
-            <mat-label>Nombre</mat-label>
-            <input matInput formControlName="name" />
+            <mat-label>¿Qué buscas?</mat-label>
+            <input matInput formControlName="name" placeholder="Nombre del artesano" />
         </mat-form-field>
         <mat-form-field class="tienda-f-width" appearance="outline">
-            <mat-label>Dirección</mat-label>
-            <input matInput formControlName="address" />
+            <mat-label>¿Dónde estás?</mat-label>
+            <input matInput formControlName="address" placeholder="Dirección de tu ubicación" />
         </mat-form-field>
         <mat-form-field class="tienda-f-width" appearance="outline">
             <mat-label>Distancia (km)</mat-label>

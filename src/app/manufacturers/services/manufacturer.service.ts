@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { API_CONFIG } from '../../core/config/api.config';
 import { from, map, Observable, switchMap } from 'rxjs';
-import { AddManufacturerDB, Manufacturer, ManufacturerDB, ManufacturerFilters, ManufacturerFiltersDB, mapManufacturerToManufacturer, UpdateManufacturerDB } from '../../core/models/Manufacturer';
+import { AddManufacturerDB, Manufacturer, ManufacturerDB, ManufacturerFilters, ManufacturerFiltersDB, ManufacturerWithMeetingPoints, ManufacturerWithMeetingPointsDB, mapManufacturerToManufacturer, mapManufacturerWithMeetingPointsToManufacturerWithMeetingPoints, UpdateManufacturerDB } from '../../core/models/Manufacturer';
 import { InsertOneResult } from '../../core/models/InsertOneResult';
 
 @Injectable({
@@ -27,6 +27,11 @@ export class ManufacturerService {
 
   getManufacturer(manufacturerId: string): Observable<Manufacturer> {
     return this.http.get<ManufacturerDB>(this.url + '/' + manufacturerId).pipe(map(mapManufacturerToManufacturer));
+  }
+
+
+  getManufacturerWithMeetingPoints(manufacturerId: string): Observable<ManufacturerWithMeetingPoints> {
+    return this.http.get<ManufacturerWithMeetingPointsDB>(this.url + '/' + manufacturerId + '/meeting-points').pipe(map(mapManufacturerWithMeetingPointsToManufacturerWithMeetingPoints));
   }
 
   createManufacturer(manufacturer: AddManufacturerDB): Observable<InsertOneResult> {
