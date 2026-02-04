@@ -13,7 +13,7 @@
         <img class="product-details-content-header-image" [src]="manufacturer()?.image">
         <div class="product-details-content-title">
           <span class="tienda-title">{{ product().name }}</span>
-          <span class="tienda-subtitle">Vendido por: {{ manufacturer()?.name }}</span>
+          <span class="tienda-subtitle">Vendido por: <a class="tienda-link" [routerLink]="['/manufacturers', manufacturer()?.uuid]">{{ manufacturer()?.name }}</a></span>
         </div>
       </div>
       <mat-divider class="tienda-divider"></mat-divider>

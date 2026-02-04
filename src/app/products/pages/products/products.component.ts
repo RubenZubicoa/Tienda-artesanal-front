@@ -15,7 +15,7 @@ import { Product, ProductFilters } from '../../../core/models/Product';
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
 
   private readonly productsService = inject(ProductsService);
   private readonly destroyRef = inject(DestroyRef);
@@ -28,10 +28,6 @@ export class ProductsComponent implements OnInit {
   public maxPrice = computed(() => this.products()?.reduce((max, product) => Math.max(max, product.price), 0) ?? 0);
   public readonly router = inject(Router);
 
-  ngOnInit(): void {
-    console.log(this.maxPrice());
-  }
-
   public applyFilters(filters: ProductFilters) {
     this.filters.set(filters);
     this.productsService.getProductsByFilters(filters).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(products => {
@@ -40,7 +36,6 @@ export class ProductsComponent implements OnInit {
   }
 
   public goToProductDetails(card: CardData) {
-    console.log(card);
     this.router.navigate(['/products', card.uuid]);
   }
 }

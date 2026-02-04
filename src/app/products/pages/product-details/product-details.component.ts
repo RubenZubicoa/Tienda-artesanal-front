@@ -11,10 +11,11 @@ import { ManufacturerService } from '../../../manufacturers/services/manufacture
 import { Manufacturer } from '../../../core/models/Manufacturer';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDividerModule } from '@angular/material/divider';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
-  imports: [CommonModule, BreadcrumbsComponent, MatInputModule, CarruselComponent, MatDividerModule],
+  imports: [CommonModule, BreadcrumbsComponent, MatInputModule, CarruselComponent, MatDividerModule, RouterModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
