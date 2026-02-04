@@ -15,6 +15,7 @@ export type ProductImageDB = {
 export type AddProductImage = {
     productId: Product['uuid'];
     images: File[];
+    oldImages: string[];
 }
 
 export function mapProductImageToProductImage(productImageDB: ProductImageDB): ProductImage {

@@ -52,7 +52,6 @@ export class AddProductDialogComponent implements OnInit {
   public images = signal<string[]>([]);
   public isUpdateMode = signal<boolean>(false);
   private imageFiles = signal<File[]>([]);
-  private deleteImages = signal<string[]>([]);
 
   private readonly MAX_IMAGES = 10;
 
@@ -131,9 +130,6 @@ export class AddProductDialogComponent implements OnInit {
 
   public saveChanges(){
     if (this.isUpdateMode()) {
-      if (this.deleteImages().length > 0) {
-        this.deleteProductImages(this.data.product?.uuid ?? '');
-      }
       this.updateProduct();
     } else {
       this.addProduct();
@@ -141,7 +137,6 @@ export class AddProductDialogComponent implements OnInit {
   }
 
   public removeImages() {
-    this.deleteImages.set(this.images());
     this.images.set([]);
     this.imageFiles.set([]);
   }
@@ -187,20 +182,13 @@ export class AddProductDialogComponent implements OnInit {
     const addProductImage: AddProductImage = {
       productId: product.uuid,
       images: this.imageFiles(),
+      oldImages: this.images().filter((image: string) => image.includes('https')),
     }
     this.productImagesService.addProductImages(addProductImage).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => {
         this.toastService.showMessage(ToastTypes.SUCCESS, 'Producto actualizado', 'El producto ha sido actualizado correctamente');
         this.dialogRef.close( { success: true, product: product } );
       }
-    });
-  }
-
-  private deleteProductImages(productId: string) {
-    this.productImagesService.deleteProductImages(productId, this.deleteImages()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-      next: () => {
-        this.toastService.showMessage(ToastTypes.SUCCESS, 'Imágenes eliminadas', 'Las imágenes han sido eliminadas correctamente');
-      },
     });
   }
 }
