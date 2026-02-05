@@ -3,7 +3,7 @@
     <h1 class="tienda-title">Agregar producto</h1>
     <ng-container *ngTemplateOutlet="formTemplate; context: { form: productForm }"></ng-container>
   </div>
-  <button mat-raised-button class="tienda-primary-button" (click)="saveChanges()">
+  <button class="tienda-primary-button" (click)="saveChanges()">
     {{ isUpdateMode() ? 'Actualizar producto' : 'Agregar producto' }}
   </button>
 </div>
