@@ -13,7 +13,7 @@
         </div>
     </div>
      <div class="map-container">
-        <app-map [markers]="marker() ? [marker()!] : []" [zoom]="17" (mapClick)="onMapClick($event)"></app-map>
+        <app-map [latitude]="marker()?.lat ?? 0" [longitude]="marker()?.lng ?? 0" [markers]="marker() ? [marker()!] : []" [zoom]="17" (mapClick)="onMapClick($event)"></app-map>
     </div>
     <div class="meeting-point-form-dialog-container-buttons">
         <button mat-raised-button class="tienda-primary-button tienda-f-width" (click)="saveMeetingPoint()">Guardar punto de encuentro</button>

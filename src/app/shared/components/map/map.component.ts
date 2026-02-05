@@ -22,8 +22,10 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
   @Output() mapClick = new EventEmitter<{ lat: number, lng: number }>();
   @Output() markerClick = new EventEmitter<string>();
 
-  private map: any;
-  private marker: any = null;
+  private map: google.maps.Map | null = null;
+  private marker: google.maps.Marker | null = null;
+
+  private markersOnTheMap: google.maps.Marker[] = [];
 
   ngAfterViewInit(): void {
     this.configureMap();
@@ -37,7 +39,13 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['markers']) {
-      this.configureMap();
+      // this.configureMap();
+      this.markersOnTheMap.forEach(marker => {
+        marker.setMap(null);
+      });
+      this.markers.forEach(marker => {
+        this.addMarker(marker);
+      });
     }
   }
 
@@ -82,6 +90,7 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
       title: this.markerTitle,
       draggable: marker.draggable ?? false,
     });
+    this.markersOnTheMap.push(markerElement);
 
     if (marker.isClickable) {
       markerElement.addListener('click', () => {
