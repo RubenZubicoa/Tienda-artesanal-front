@@ -16,3 +16,18 @@
     width: 100%;
     gap: 10px;
 }
+
+.meeting-point-container-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    gap: 10px;
+}
+
+@media screen and (width < 768px) {
+    .meeting-point-container {
+        flex-direction: column;
+    }
+}

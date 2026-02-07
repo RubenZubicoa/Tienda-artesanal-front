@@ -6,20 +6,22 @@
         <b>Punto de encuentro de: <span class="tienda-text-highlight">{{ data[manufacturerId].name }}</span></b>
       </h2>
       @if (data[manufacturerId].meetingPoints.length > 0) {
-      <mat-form-field class="tienda-f-width" appearance="outline">
-        <mat-label>Punto de encuentro</mat-label>
-        <mat-select class="tienda-select-input" [disabled]="disabledForm()" [formControl]="meetingPointsFormControl">
-          <mat-option
-            *ngFor="let meetingPoint of data[manufacturerId].meetingPoints"
-            [value]="meetingPoint.uuid"
-            (onSelectionChange)="onChangeMeetingPoint(manufacturerId, meetingPoint.uuid)"
-            
-          >
-            {{ meetingPoint.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <button class="tienda-primary-button" [disabled]="disabledForm()" (click)="openMeetingPointDialog(manufacturerId, data[manufacturerId].meetingPoints)"><mat-icon>map</mat-icon></button>
+      <div class="meeting-point-container-form">
+        <mat-form-field class="tienda-f-width" appearance="outline">
+          <mat-label>Punto de encuentro</mat-label>
+          <mat-select class="tienda-select-input" [disabled]="disabledForm()" [formControl]="meetingPointsFormControl">
+            <mat-option
+              *ngFor="let meetingPoint of data[manufacturerId].meetingPoints"
+              [value]="meetingPoint.uuid"
+              (onSelectionChange)="onChangeMeetingPoint(manufacturerId, meetingPoint.uuid)"
+              
+            >
+              {{ meetingPoint.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button class="tienda-primary-button" [disabled]="disabledForm()" (click)="openMeetingPointDialog(manufacturerId, data[manufacturerId].meetingPoints)"><mat-icon>map</mat-icon></button>
+      </div>
       } @else {
       <p class="tienda-text">No hay puntos de encuentro disponibles para este artesano. Cuando realices el pedido el artesano te contactará para confirmar el punto de encuentro.</p>
       }
