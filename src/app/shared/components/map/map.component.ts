@@ -38,6 +38,9 @@ export class MapComponent implements AfterViewInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (changes['latitude'] || changes['longitude']) {
+      this.configureMap();
+    }
     if (changes['markers']) {
       // this.configureMap();
       this.markersOnTheMap.forEach(marker => {

@@ -1,7 +1,6 @@
 import {
   Component,
   computed,
-  effect,
   inject,
   OnInit,
   signal,
@@ -19,7 +18,6 @@ import { MapMarker } from '../../../shared/components/map/map.models';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ManufacturersDialogComponent } from '../../components/manufacturers-dialog/manufacturers-dialog.component';
 import { ManufacturerService } from '../../services/manufacturer.service';
-import { toSignal } from '@angular/core/rxjs-interop';
 import {
   getCurrentLocation,
   getDistanceBetweenCoordinates,
