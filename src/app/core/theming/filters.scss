@@ -1,3 +1,4 @@
+@use 'variables.scss' as variables;
 .adif-filters-container {
   display: flex;
   flex-direction: row;
@@ -7,7 +8,7 @@
 }
 
 .adif-menu {
-  background-color: var(--primary-color-white) !important;
+  background-color: variables.$white-color !important;
 }
 
 .mat-mdc-dialog-panel {
@@ -15,11 +16,11 @@
 }
 
 .mat-mdc-select-panel-above div.mat-mdc-select-panel {
-  background-color: var(--primary-color-white) !important;
+  background-color: variables.$white-color !important;
 }
 
 .mat-mdc-select-panel {
-  background-color: var(--primary-color-white) !important;
+  background-color: variables.$white-color !important;
 }
 
 .cdk-overlay-pane {

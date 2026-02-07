@@ -35,9 +35,9 @@
                     <mat-option value="false">No</mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field class="tienda-f-width" appearance="outline">
+            <mat-form-field class="tienda-select-input tienda-f-width" appearance="outline">
                 <mat-label>Categoría</mat-label>
-                <mat-select [formControl]="form.controls.category">
+                <mat-select [formControl]="form.controls.category" style="background-color: white;">
                     <mat-option *ngFor="let category of categories()" [value]="category.uuid">{{ category.name }}</mat-option>
                 </mat-select>
             </mat-form-field> -->
