@@ -21,12 +21,11 @@ export class SelectMeetingPointDialogComponent implements OnInit {
   private readonly dialogRef = inject(MatDialogRef<SelectMeetingPointDialogComponent>);
   private readonly toastService = inject(ToastService);
 
-  public readonly data = inject<{ manufacturerId: Manufacturer['uuid'], meetingPoints: MeetingPoint[] }>(MAT_DIALOG_DATA);
+  public readonly data = inject<{ manufacturerId: Manufacturer['uuid'], name: Manufacturer['name'], meetingPoints: MeetingPoint[] }>(MAT_DIALOG_DATA);
   public selectedMeetingPoint = signal<MeetingPoint | undefined>(undefined);
   public markers: MapMarker[] = [];
 
   ngOnInit(): void {
-    console.log(this.data);
     this.data.meetingPoints.forEach(meetingPoint => {
       this.markers.push({
         id: meetingPoint.uuid,

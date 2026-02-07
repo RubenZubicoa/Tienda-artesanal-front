@@ -47,16 +47,16 @@ export class SelectMeetingPointComponent implements OnInit {
     this.selectedMeetingPoint.emit({ manufacturerId, meetingPointId });
   }
 
-  public openMeetingPointDialog(manufacturerId: Manufacturer['uuid'], meetingPoints: MeetingPoint[]): void {
+  public openMeetingPointDialog(manufacturer: ManufacturerWithMeetingPoints): void {
     const dialogRef = this.dialog.open(SelectMeetingPointDialogComponent, {
-      data: { manufacturerId, meetingPoints },
+      data: { manufacturerId: manufacturer.uuid, name: manufacturer.name, meetingPoints: manufacturer.meetingPoints },
       width: '80vw',
       height: '90vh',
     });
 
     dialogRef.afterClosed().pipe(takeUntilDestroyed(this.destroyRef)).subscribe(result => {
       if (result) {
-        this.selectedMeetingPoint.emit({ manufacturerId, meetingPointId: result.uuid });
+        this.selectedMeetingPoint.emit({ manufacturerId: manufacturer.uuid, meetingPointId: result.uuid });
         this.meetingPointsFormControl.setValue(result.meetingPointId);
       }
     });

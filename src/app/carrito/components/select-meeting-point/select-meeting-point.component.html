@@ -20,7 +20,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <button class="tienda-primary-button" [disabled]="disabledForm()" (click)="openMeetingPointDialog(manufacturerId, data[manufacturerId].meetingPoints)"><mat-icon>map</mat-icon></button>
+        <button class="tienda-primary-button" [disabled]="disabledForm()" (click)="openMeetingPointDialog(data[manufacturerId])"><mat-icon>map</mat-icon></button>
       </div>
       } @else {
       <p class="tienda-text">No hay puntos de encuentro disponibles para este artesano. Cuando realices el pedido el artesano te contactará para confirmar el punto de encuentro.</p>
