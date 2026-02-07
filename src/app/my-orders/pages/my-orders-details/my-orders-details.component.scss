@@ -26,6 +26,15 @@
     box-sizing: border-box;
 }
 
+.order-data-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0px;
+  }
+
 @media screen and (width < 768px) {
     .order-details-container {
         flex-direction: column;

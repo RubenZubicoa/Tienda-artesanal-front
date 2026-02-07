@@ -8,27 +8,7 @@
     </div>
 
     <div class="order-data-content">
-      <div class="data-section">
-        <div class="data-item">
-          <span class="data-label">Nombre del cliente</span>
-          <span class="data-value">{{ orderData.username }}</span>
-        </div>
-
-        <div class="data-item">
-          <span class="data-label">Fecha del pedido</span>
-          <span class="data-value">{{ orderData.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
-        </div>
-        
-        <div class="data-item">
-          <span class="data-label">Email</span>
-          <span class="data-value">{{ orderData.email }}</span>
-        </div>
-        
-        <div class="data-item">
-          <span class="data-label">Teléfono</span>
-          <span class="data-value">{{ orderData.phone }}</span>
-        </div>
-      </div>
+      <app-data-section [data]="dataSection()"></app-data-section>
     </div>
 
   </div>

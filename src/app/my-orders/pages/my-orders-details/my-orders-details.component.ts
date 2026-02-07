@@ -9,10 +9,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { OrderProductListComponent } from '../../../orders/components/order-product-list/order-product-list.component';
 import { ManufacturerService } from '../../../manufacturers/services/manufacturer.service';
 import { Manufacturer } from '../../../core/models/Manufacturer';
+import { DataSectionComponent } from '../../../shared/components/data-section/data-section.component';
+import { DataSection } from '../../../shared/components/data-section/models';
 
 @Component({
   selector: 'app-my-orders-details',
-  imports: [CommonModule, BreadcrumbsComponent, OrderMeetingPointComponent, OrderProductListComponent],
+  imports: [CommonModule, BreadcrumbsComponent, OrderMeetingPointComponent, OrderProductListComponent, DataSectionComponent],
   templateUrl: './my-orders-details.component.html',
   styleUrl: './my-orders-details.component.scss'
 })
@@ -25,6 +27,7 @@ export class MyOrdersDetailsComponent {
   public order = input.required<Order>();
   public meetingPoint = signal<MeetingPoint | undefined>(undefined);
   public manufacturer = signal<Manufacturer | undefined>(undefined);
+  public dataSection = signal<DataSection>([]);
 
   constructor() {
     effect(() => {
@@ -51,6 +54,15 @@ export class MyOrdersDetailsComponent {
   getManufacturer(manufacturerId: Manufacturer['uuid']): void {
     this.manufacturersService.getManufacturer(manufacturerId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(manufacturer => {
       this.manufacturer.set(manufacturer);
+      this.dataSection.set(this.mapManufacturerToDataSection(manufacturer));
     });
+  }
+
+  mapManufacturerToDataSection(manufacturer: Manufacturer): DataSection {
+    return [
+      { label: 'Nombre del artesano', value: manufacturer.name },
+      { label: 'Email del artesano', value: manufacturer.email },
+      { label: 'Teléfono del artesano', value: manufacturer.phone },
+    ];
   }
 }

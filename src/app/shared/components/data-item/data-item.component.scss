@@ -1,0 +1,40 @@
+@use '../../../core/theming/variables.scss' as variables;
+.data-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  background-color: variables.$light-primary-color-10;
+  border-radius: 8px;
+  border-left: 3px solid variables.$primary-color;
+  border-bottom: 1px solid variables.$primary-color;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.data-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: variables.$accent-color;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.data-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: variables.$text-color;
+  word-break: break-word;
+}
+
+// Responsive design
+@media screen and (width < 768px) {
+  .data-item {
+    width: 100%;
+    padding: 0.875rem;
+  }
+
+  .data-value {
+    font-size: 0.9375rem;
+  }
+}
