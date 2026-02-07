@@ -13,20 +13,14 @@ import { CurrentUserService } from '../../../core/services/current-user.service'
   styleUrl: './order-data.component.scss'
 })
 export class OrderDataComponent {
-  private readonly currentUserService = inject(CurrentUserService);
   private readonly manufacturerService = inject(ManufacturerService);
   private readonly destroyRef = inject(DestroyRef);
 
   public order = input.required<Order>();
   public manufacturer = signal<Manufacturer | undefined>(undefined);
 
-  public isTheManufacturer = computed(() => this.currentUserService.currentUser()?.manufacturerId === this.order().manufacturerId);
-
   constructor(){
     effect(() => {
-      if (this.isTheManufacturer()) {
-        return;
-      }
       this.manufacturerService.getManufacturer(this.order().manufacturerId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(manufacturer => {
         this.manufacturer.set(manufacturer);
       });

@@ -1,7 +1,5 @@
+<app-breadcrumbs></app-breadcrumbs>
 <div class="section-container">
-  <div class="breadcrumbs-container">
-    <app-breadcrumbs></app-breadcrumbs>
-  </div>
   <div class="order-header-container">
     <div class="order-header-container-title">
       <h1 class="tienda-title">Detalles del pedido</h1>
@@ -9,7 +7,7 @@
         Aquí puedes ver los detalles del pedido de <b>{{ order().username }}</b>
       </h2>
     </div>
-    <button class="tienda-primary-button" (click)="changeOrderStatus(order())">{{ order().status === 'pending' ?
+    <button [ngClass]="{'tienda-primary-button': order().status === 'pending', 'tienda-warning-button': order().status === 'completed'}" (click)="changeOrderStatus(order())">{{ order().status === 'pending' ?
       'Completado' : 'Pendiente' }}</button>
   </div>
   <div class="order-data-container">
