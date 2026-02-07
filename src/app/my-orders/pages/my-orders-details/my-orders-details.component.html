@@ -1,0 +1,13 @@
+<app-breadcrumbs></app-breadcrumbs>
+<section class="section-container">
+  <h1 class="tienda-title">Detalles del pedido</h1>
+  <h2 class="tienda-subtitle">Aquí puedes ver los detalles del pedido de <b>{{ manufacturer()?.name }}</b></h2>
+  <div class="order-details-container">
+    <div class="order-meeting-point-container">
+        <app-order-meeting-point [meetingPoint]="meetingPoint()!"></app-order-meeting-point>
+      </div>
+      <div class="order-products-list-container">
+        <app-order-product-list [products]="order().products"></app-order-product-list>
+      </div>
+  </div>
+</section>

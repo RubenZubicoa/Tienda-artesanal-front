@@ -33,6 +33,6 @@ export class MyOrdersComponent {
   public readonly orders = toSignal(this.orders$, { initialValue: [] as OrderTableData[] });
 
   public goToOrderDetails(order: OrderTableData) {
-    this.router.navigate(['/orders', order.uuid]);
+    this.router.navigate(['/my-orders', order.uuid]);
   }
 }
