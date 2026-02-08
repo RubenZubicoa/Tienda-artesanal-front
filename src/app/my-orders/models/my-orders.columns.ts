@@ -1,18 +1,6 @@
 import { TableColumn } from "../../shared/components/table/table.models";
 
-export const ORDERS_COLUMNS: TableColumn[] = [
-  {
-    header: 'Nombre',
-    field: 'username',
-  },   
-  {
-    header: 'Teléfono',
-    field: 'phone',
-  },
-  {
-    header: 'Email',
-    field: 'email',
-  },
+export const MY_ORDERS_COLUMNS: TableColumn[] = [
   {
     header: 'Fecha de creación',
     field: 'createdAt',

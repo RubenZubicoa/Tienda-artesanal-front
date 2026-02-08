@@ -3,12 +3,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { CurrentUserService } from '../../../core/services/current-user.service';
-import { ORDERS_COLUMNS } from '../../../orders/models/orders.columns';
 import { OrdersService } from '../../../orders/services/orders.service';
 import { OrderTableData } from '../../../core/models/Order';
 import { CommonModule } from '@angular/common';
 import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
 import { TableComponent } from '../../../shared/components/table/table.component';
+import { MY_ORDERS_COLUMNS } from '../../models/my-orders.columns';
 
 @Component({
   selector: 'app-my-orders',
@@ -21,7 +21,7 @@ export class MyOrdersComponent {
   private readonly currentUserService = inject(CurrentUserService);
   private readonly router = inject(Router);
 
-  public readonly columns = ORDERS_COLUMNS;
+  public readonly columns = MY_ORDERS_COLUMNS;
   public orders$ = this.ordersService.getOrdersByEmail(this.currentUserService.currentUser()?.email ?? '').pipe(
     map((data) => {
       return data.map((order) => ({
