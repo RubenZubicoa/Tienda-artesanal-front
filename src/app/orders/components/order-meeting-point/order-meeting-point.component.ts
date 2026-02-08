@@ -21,8 +21,4 @@ export class OrderMeetingPointComponent {
       draggable: false,
     }
   })
-
-  ngOnInit(): void {
-    console.log(this.meetingPoint());
-  }
 }
