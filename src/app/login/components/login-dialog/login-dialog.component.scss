@@ -1,11 +1,12 @@
+@use '../../../core/theming/variables.scss' as variables;
+
 .login-dialog-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    width: 400px;
-    height: 400px;
+    gap: 12px;
 }
 
 
@@ -15,8 +16,17 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    height: 50px;
+    flex: 1;
 }
+
+.login-dialog-header-logo {
+    img {
+      max-height: 120px;
+      border-radius: 50%;
+      margin-left: 0;
+      box-shadow: variables.$shadow-sm;
+    }
+  }
 
 .login-dialog-body {
     display: flex;
@@ -26,3 +36,4 @@
     flex: 1;
     width: 100%;
 }              
+
