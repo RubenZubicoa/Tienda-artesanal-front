@@ -1,5 +1,5 @@
 @let sectionTemplate = section();
-<div class="section-button" [routerLink]="sectionTemplate.route"  [matMenuTriggerFor]="displayMenu() ? menu : null">
+<div class="section-button" [routerLink]="sectionTemplate.route"  [matMenuTriggerFor]="displayMenu() ? menu : null" [class.disabled]="sectionTemplate.disabled">
     <div class="icon" [routerLinkActive]="'active-icon'" [matBadge]="sectionTemplate.badge" matBadgePosition="above after">
       <mat-icon>{{sectionTemplate.icon}}</mat-icon>
     </div>

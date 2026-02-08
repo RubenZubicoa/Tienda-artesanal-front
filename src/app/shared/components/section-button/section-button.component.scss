@@ -67,6 +67,12 @@
   }
 }
 
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 @media screen and (width > 768px) {
   .section-button {
     width: 100%;

@@ -4,6 +4,7 @@ export type Section = {
   route: string;
   badge?: number;
   menu?: boolean;
+  disabled?: boolean;
 };
 
 export const SIDENAV_SECTIONS: Section[] = [
@@ -53,5 +54,6 @@ export const MANUFACTURERS_SECTIONS: Section[] = [
     title: 'Análisis',
     icon: 'analytics',
     route: '/analysis',
+    disabled: true,
   }
 ]
