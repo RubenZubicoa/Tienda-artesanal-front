@@ -8,16 +8,21 @@ export type Section = {
 };
 
 export const SIDENAV_SECTIONS: Section[] = [
-    {
-        title: 'Artesanos',
-        icon: 'store',
-        route: '/manufacturers',
-    },
-    {
-      title: 'Productos',
-      icon: 'category',
-      route: '/products',
-    },
+  {
+    title: 'Inicio',
+    icon: 'home',
+    route: '/home',
+  },
+  {
+    title: 'Artesanos',
+    icon: 'store',
+    route: '/manufacturers',
+  },
+  {
+    title: 'Productos',
+    icon: 'category',
+    route: '/products',
+  },
 ];
 
 export const HEADER_SECTIONS: Section[] = [

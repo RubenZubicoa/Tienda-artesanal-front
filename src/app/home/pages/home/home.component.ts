@@ -35,7 +35,7 @@ export class HomeComponent {
       case 'Productos':
         this.router.navigate(['/products']);
         break;
-      case 'Vendedores':
+      case 'Artesanos':
         this.router.navigate(['/manufacturers']);
         break;
     }

@@ -5,6 +5,11 @@ import { userGuard } from './core/guards/user.guard';
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
     loadChildren: () => import('./home/home.routes').then(m => m.homeRoutes),
     data: {
       breadcrumb: 'Inicio',
