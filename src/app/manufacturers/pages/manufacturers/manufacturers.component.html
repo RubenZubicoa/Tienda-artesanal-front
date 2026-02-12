@@ -9,7 +9,7 @@
       </h2>
     </div>
     <div class="manufacturers-buttons-container">
-      <app-manufacturers-filters (applyFilters)="applyFilters($event)"></app-manufacturers-filters>
+      <!-- <app-manufacturers-filters (applyFilters)="applyFilters($event)"></app-manufacturers-filters> -->
       <ng-container *ngTemplateOutlet="buttonToggleGroup"></ng-container>
     </div>
   </div>
@@ -36,11 +36,11 @@
 
 <ng-template #buttonToggleGroup>
   <div class="button-toggle-group">
-    <button mat-icon-button (click)="toggleView(views.MAP)" [class.active]="view() === views.MAP">
-      <mat-icon>map</mat-icon>
-    </button>
     <button mat-icon-button (click)="toggleView(views.LIST)" [class.active]="view() === views.LIST">
       <mat-icon>list</mat-icon>
+    </button>
+    <button mat-icon-button (click)="toggleView(views.MAP)" [class.active]="view() === views.MAP">
+      <mat-icon>map</mat-icon>
     </button>
   </div>
 </ng-template>

@@ -55,6 +55,7 @@ export type ProductCart = Product & {
 
 export type ProductFilters = {
     manufacturerId?: string;
+    manufacturers?: Manufacturer['uuid'][];
     name?: string;
     description?: string;
     price?: {

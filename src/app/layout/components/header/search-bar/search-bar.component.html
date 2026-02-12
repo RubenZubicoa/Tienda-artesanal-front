@@ -1,0 +1,6 @@
+<mat-form-field class="tienda-f-width" appearance="outline">
+    <mat-icon matPrefix>map</mat-icon>
+    <mat-label>Cambia tu ubicación</mat-label>
+    <input matInput placeholder="Buscar" #addressInput />
+    <mat-icon matSuffix (click)="changeLocation(addressInput.value)">arrow_forward</mat-icon>
+</mat-form-field>
