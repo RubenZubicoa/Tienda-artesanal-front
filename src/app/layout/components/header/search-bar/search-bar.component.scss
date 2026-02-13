@@ -1,0 +1,12 @@
+@use '../../../../core/theming/variables.scss' as variables;
+.search-bar-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: variables.$surface-color;
+  box-shadow: variables.$shadow-sm;
+  border: 1px solid variables.$primary-color;
+}

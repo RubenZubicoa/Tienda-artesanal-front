@@ -5,6 +5,7 @@ import { Manufacturer, ManufacturerWithLocation } from '../models/Manufacturer';
 import { getLocationFromAddress } from '../../shared/utils/geocoder';
 import { MapMarker } from '../../shared/components/map/map.models';
 import { ManufacturerService } from '../../manufacturers/services/manufacturer.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class LocationService {
   private _manufacturersLocations = signal<ManufacturerWithLocation[] | undefined>(undefined);
   private _maxDistance = signal<number>(20);
   private manufacturerService = inject(ManufacturerService);
+  private router = inject(Router);
 
   public get location() {
     return this._location.asReadonly();
@@ -40,6 +42,7 @@ export class LocationService {
     getLocationFromAddress(address).then((location) => {
       this.setLocation(location);
       this.getManufacturers();
+      this.router.navigate(['/manufacturers']);
     });
   }
 

@@ -39,8 +39,8 @@
 }
 
 .header-search {
-  flex: 1;
-  max-width: 600px;
+  flex: 2;
+  width: 100%;
 }
 
 .header-buttons {
@@ -48,9 +48,8 @@
   justify-content: end;
   align-items: center;
   flex: 1;
-  padding: 8px 16px;
+  padding: 8px;
   box-sizing: border-box;
-  gap: 8px;
 }
 
 .header-user-info {
@@ -74,4 +73,14 @@
   border-radius: 50%;
   border: 2px solid variables.$divider-color;
   box-shadow: variables.$shadow-sm;
+}
+
+@media screen and (width < 768px) {
+  .platform-title {
+    display: none;
+  }
+
+  .header-user-info {
+    display: none;
+  }
 }
