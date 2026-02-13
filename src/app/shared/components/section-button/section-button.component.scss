@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   width: 80px;
-  gap: 6px;
+  gap: 4px;
   border-radius: 12px;
   transition: all 0.2s ease;
   color: variables.$text-color-secondary;
@@ -98,7 +98,7 @@
 .header-buttons-menu {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   padding: 8px;
   min-width: 200px;
 }

@@ -22,6 +22,7 @@ nav {
   box-sizing: border-box;
   height: variables.$sidenav-mobile-height;
   background-color: variables.$surface-color;
+  overflow-x: auto;
 }
 
 content {
