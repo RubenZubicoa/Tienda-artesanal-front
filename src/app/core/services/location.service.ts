@@ -14,7 +14,7 @@ export class LocationService {
 
   private _location = signal<Location | null>(null);
   private _manufacturersLocations = signal<ManufacturerWithLocation[] | undefined>(undefined);
-  private _maxDistance = signal<number>(20);
+  private _maxDistance = signal<number>(5);
   private manufacturerService = inject(ManufacturerService);
   private router = inject(Router);
 
