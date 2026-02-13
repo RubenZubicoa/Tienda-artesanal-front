@@ -2,7 +2,6 @@ import {
   Component,
   computed,
   inject,
-  OnInit,
   signal,
 } from '@angular/core';
 import { CardComponent } from '../../../shared/components/card/card.component';
@@ -13,20 +12,11 @@ import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/bre
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MapComponent } from '../../../shared/components/map/map.component';
-import { getLocationFromAddress } from '../../../shared/utils/geocoder';
-import { MapMarker } from '../../../shared/components/map/map.models';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ManufacturersDialogComponent } from '../../components/manufacturers-dialog/manufacturers-dialog.component';
-import { ManufacturerService } from '../../services/manufacturer.service';
 import {
-  getDistanceBetweenCoordinates,
-} from '../../../shared/utils/location';
-import {
-  Manufacturer,
   ManufacturerFilters,
-  ManufacturerWithLocation,
 } from '../../../core/models/Manufacturer';
-import { ManufacturersFiltersComponent } from '../../components/manufacturers-filters/manufacturers-filters.component';
 import { ManufacturerPageViews } from '../../models/manufacturer-page-views';
 import { LocationService } from '../../../core/services/location.service';
 
@@ -41,7 +31,6 @@ import { LocationService } from '../../../core/services/location.service';
     MapComponent,
     RouterModule,
     MatDialogModule,
-    ManufacturersFiltersComponent,
   ],
   templateUrl: './manufacturers.component.html',
   styleUrl: './manufacturers.component.scss',
