@@ -5,10 +5,11 @@ import { CardComponent } from '../../../shared/components/card/card.component';
 import { CommonModule } from '@angular/common';
 import { mapManufacturerToCardData } from '../../../shared/components/card/card.models';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-manufacturers-dialog',
-  imports: [CardComponent, CommonModule],
+  imports: [CardComponent, CommonModule, TranslatePipe],
   templateUrl: './manufacturers-dialog.component.html',
   styleUrl: './manufacturers-dialog.component.scss'
 })

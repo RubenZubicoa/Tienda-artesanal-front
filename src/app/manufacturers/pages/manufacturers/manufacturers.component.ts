@@ -19,6 +19,7 @@ import {
 } from '../../../core/models/Manufacturer';
 import { ManufacturerPageViews } from '../../models/manufacturer-page-views';
 import { LocationService } from '../../../core/services/location.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-manufacturers',
@@ -31,6 +32,7 @@ import { LocationService } from '../../../core/services/location.service';
     MapComponent,
     RouterModule,
     MatDialogModule,
+    TranslatePipe
   ],
   templateUrl: './manufacturers.component.html',
   styleUrl: './manufacturers.component.scss',

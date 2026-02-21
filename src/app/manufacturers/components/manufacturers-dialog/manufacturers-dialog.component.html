@@ -2,7 +2,7 @@
   @if (manufacturerCard()) {
   <app-card
     [card]="manufacturerCard()!"
-    [buttonText]="'Ver productos'"
+    [buttonText]="'manufacturers.button-text' | translate"
     (succesButtonClick)="goToManufacturersDetails()"
   ></app-card>
   }
