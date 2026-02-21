@@ -27,5 +27,10 @@
         "login": "Iniciar sesión",
         "logout": "Cerrar sesión",
         "profile": "Perfil"
+    },
+    "manufacturers": {
+        "title": "Lista de artesanos",
+        "subtitle": "Encuentra los mejores vendedores de productos artesanales cerca de ti",
+        "button-text": "Ver productos"        
     }
 }
