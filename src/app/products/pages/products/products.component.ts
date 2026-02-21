@@ -9,10 +9,11 @@ import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { ProductsFiltersComponent } from '../../components/products-filters/products-filters.component';
 import { Product, ProductFilters } from '../../../core/models/Product';
 import { LocationService } from '../../../core/services/location.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products',
-  imports: [CardComponent, CommonModule, BreadcrumbsComponent, ProductsFiltersComponent],
+  imports: [CardComponent, CommonModule, BreadcrumbsComponent, ProductsFiltersComponent, TranslatePipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })

@@ -11,21 +11,21 @@
 <ng-template #filtersContent let-form="form" let-maxPrice="maxPrice">
         <form >
             <mat-form-field class="tienda-f-width" appearance="outline">
-                <mat-label>¿Qué buscas?</mat-label>
-                <input matInput [formControl]="form.controls.name" placeholder="Nombre del producto" />
+                <mat-label>{{ 'products.filters.name-label' | translate }}</mat-label>
+                <input matInput [formControl]="form.controls.name" [placeholder]="'products.filters.name-placeholder' | translate" />
             </mat-form-field>
             <!-- <mat-form-field class="tienda-f-width" appearance="outline">
                 <mat-label>Descripción</mat-label>
                 <input matInput [formControl]="form.controls.description" />
             </mat-form-field> -->
                 <mat-form-field class="tienda-f-width" appearance="outline">
-                    <mat-label>Precio mínimo</mat-label>
-                    <input matInput type="number" [formControl]="form.controls.price.controls.start" min="0" [max]="maxPrice" />
+                    <mat-label>{{ 'products.filters.price-min-label' | translate }}</mat-label>
+                    <input matInput type="number" [placeholder]="'products.filters.price-min-placeholder' | translate" [formControl]="form.controls.price.controls.start" min="0" [max]="maxPrice" />
                     <span matTextSuffix>€</span>
                 </mat-form-field>
                 <mat-form-field class="tienda-f-width" appearance="outline">
-                    <mat-label>Precio máximo</mat-label>
-                    <input matInput type="number" [formControl]="form.controls.price.controls.end" min="0" [max]="maxPrice" />
+                    <mat-label>{{ 'products.filters.price-max-label' | translate }}</mat-label>
+                    <input matInput type="number" [placeholder]="'products.filters.price-max-placeholder' | translate" [formControl]="form.controls.price.controls.end" min="0" [max]="maxPrice" />
                     <span matTextSuffix>€</span>
                 </mat-form-field>
             <!-- <mat-form-field class="tienda-f-width" appearance="outline">

@@ -32,5 +32,32 @@
         "title": "Lista de artesanos",
         "subtitle": "Encuentra los mejores vendedores de productos artesanales cerca de ti",
         "button-text": "Ver productos"        
+    },
+    "manufacturers-details": {
+        "title": "Lista de productos de ",
+        "button-text": "Ver producto"
+    },
+    "products": {
+        "title": "Lista de productos",
+        "subtitle": "Encuentra los mejores productos artesanales de la region",
+        "button-text": "Ver producto",
+        "filters": {
+            "name-label": "¿Qué buscas?",
+            "name-placeholder": "Nombre del producto",
+            "price-min-label": "Precio mínimo",
+            "price-min-placeholder": "Precio mínimo",
+            "price-max-label": "Precio máximo",
+            "price-max-placeholder": "Precio máximo"
+        }
+    },
+    "product-details": {
+        "title": "Detalles del producto",
+        "subtitle": "Aquí puedes ver los detalles del producto, si te interesa, puedes agregar al carrito y continuar con la compra",
+        "details-subtitle": "Vendido por: ",
+        "price-label": "Precio: ",
+        "quantity-label": "Cantidad",        
+        "button-text": "Agregar al carrito",
+        "toast-success-title": "Producto agregado al carrito",
+        "toast-success-message": "El producto ha sido agregado correctamente"
     }
 }

@@ -12,10 +12,11 @@ import { Manufacturer } from '../../../core/models/Manufacturer';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-details',
-  imports: [CommonModule, BreadcrumbsComponent, MatInputModule, CarruselComponent, MatDividerModule, RouterModule],
+  imports: [CommonModule, BreadcrumbsComponent, MatInputModule, CarruselComponent, MatDividerModule, RouterModule, TranslatePipe],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
@@ -24,6 +25,7 @@ export class ProductDetailsComponent  {
   private readonly toastService = inject(ToastService);
   private readonly manufacturerService = inject(ManufacturerService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly translate = inject(TranslateService);
 
   public product = input.required<Product>();
   public manufacturer = signal<Manufacturer | undefined>(undefined);
@@ -38,6 +40,6 @@ export class ProductDetailsComponent  {
 
   public addProductToCart(quantity: string) {
     this.carritoService.addProduct(this.product(), Number(quantity));
-    this.toastService.showMessage(ToastTypes.SUCCESS, 'Producto agregado al carrito', 'El producto ha sido agregado al carrito correctamente');
+    this.toastService.showMessage(ToastTypes.SUCCESS, this.translate.instant('product-details.toast-success-title'), this.translate.instant('product-details.toast-success-message'));
   }
 }

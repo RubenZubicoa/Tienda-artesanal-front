@@ -1,33 +1,34 @@
 <app-breadcrumbs></app-breadcrumbs>
 <section class="section-container">
   <section class="product-details-header-container">
-    <h1 class="tienda-title">Detalles del producto</h1>
-    <h2 class="tienda-subtitle">Aquí puedes ver los detalles del producto, si te interesa, puedes agregar al carrito y continuar con la compra</h2>
+    <h1 class="tienda-title">{{ 'product-details.title' | translate }}</h1>
+    <h2 class="tienda-subtitle">{{ 'product-details.subtitle' | translate }}</h2>
   </section>
   <div class="product-details-container">
-      <div class="product-details-image">
-        <app-carrusel [images]="product().images"></app-carrusel>
-      </div>
+    <div class="product-details-image">
+      <app-carrusel [images]="product().images"></app-carrusel>
+    </div>
     <div class="product-details-content">
       <div class="product-details-content-header">
         <img class="product-details-content-header-image" [src]="manufacturer()?.image">
         <div class="product-details-content-title">
           <span class="tienda-title">{{ product().name }}</span>
-          <span class="tienda-subtitle">Vendido por: <a class="tienda-link" [routerLink]="['/manufacturers', manufacturer()?.uuid]">{{ manufacturer()?.name }}</a></span>
+          <span class="tienda-subtitle">{{ 'product-details.details-subtitle' | translate }} <a class="tienda-link"
+              [routerLink]="['/manufacturers', manufacturer()?.uuid]">{{ manufacturer()?.name }}</a></span>
         </div>
       </div>
       <mat-divider class="tienda-divider"></mat-divider>
       <div class="product-details-content-description">
         <span class="tienda-text">{{ product().description }}</span>
-      </div>      
+      </div>
       <mat-divider class="tienda-divider"></mat-divider>
       <div class="product-details-content-footer">
-        <span class="tienda-price-text">Precio: {{ product().price }}€</span>
+        <span class="tienda-price-text">{{ 'product-details.price-label' | translate }} {{ product().price }}€</span>
         <mat-form-field appearance="outline" class="form-control">
-          <mat-label>Cantidad</mat-label>
+          <mat-label>{{ 'product-details.quantity-label' | translate }}</mat-label>
           <input matInput type="number" class="quantity-input" value="1" #quantityInput />
         </mat-form-field>
-        <button class="buy-button tienda-primary-button" (click)="addProductToCart(quantityInput.value)">Agregar al carrito</button>
+        <button class="buy-button tienda-primary-button" (click)="addProductToCart(quantityInput.value)">{{ 'product-details.button-text' | translate }}</button>
       </div>
     </div>
   </div>
