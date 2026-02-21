@@ -1,24 +1,26 @@
-import { Component, inject, input, TemplateRef } from '@angular/core';
+import { Component, DestroyRef, inject, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Section } from '../../../core/models/Section';
 import { MatBadgeModule } from '@angular/material/badge';
-import { MatMenu, MatMenuModule, MatMenuPanel } from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../../../login/components/login-dialog/login-dialog.component';
 import { CurrentUserService } from '../../../core/services/current-user.service';
 import { ToastTypes } from '../toast/toastData';
 import { ToastService } from '../toast/toast.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 
 @Component({
   selector: 'app-section-button',
-  imports: [RouterModule, MatIconModule, CommonModule, MatBadgeModule, MatMenuModule],
+  imports: [RouterModule, MatIconModule, CommonModule, MatBadgeModule, MatMenuModule, TranslatePipe],
   templateUrl: './section-button.component.html',
   styleUrl: './section-button.component.scss'
 })
 export class SectionButtonComponent {
+
   private readonly dialog = inject(MatDialog);
   private readonly currentUserService = inject(CurrentUserService);
   private readonly toastService = inject(ToastService);

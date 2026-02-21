@@ -9,17 +9,17 @@ export type Section = {
 
 export const SIDENAV_SECTIONS: Section[] = [
   {
-    title: 'Inicio',
+    title: 'layout.home',
     icon: 'home',
     route: '/home',
   },
   {
-    title: 'Artesanos',
+    title: 'layout.manufacturers',
     icon: 'store',
     route: '/manufacturers',
   },
   {
-    title: 'Productos',
+    title: 'layout.products',
     icon: 'category',
     route: '/products',
   },
@@ -27,13 +27,13 @@ export const SIDENAV_SECTIONS: Section[] = [
 
 export const HEADER_SECTIONS: Section[] = [
   {
-    title: 'Perfil',
+    title: 'layout.profile',
     icon: 'person',
     route: '#',
     menu: true,
   },
   {
-    title: 'Carrito',
+    title: 'layout.cart',
     icon: 'shopping_cart',
     route: '/carrito',
   },
@@ -41,22 +41,22 @@ export const HEADER_SECTIONS: Section[] = [
 
 export const MANUFACTURERS_SECTIONS: Section[] = [
   {
-    title: 'Pedidos',
+    title: 'layout.orders',
     icon: 'list',
     route: '/orders',
   },
   {
-    title: 'Mis productos',
+    title: 'layout.my-products',
     icon: 'inventory',
     route: '/my-products',
   },
   {
-    title: 'Puntos de encuentro',
+    title: 'layout.meeting-points',
     icon: 'location_on',
     route: '/meeting-points',
   },
   {
-    title: 'Análisis',
+    title: 'layout.analysis',
     icon: 'analytics',
     route: '/analysis',
     disabled: true,

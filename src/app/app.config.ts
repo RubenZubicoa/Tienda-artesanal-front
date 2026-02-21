@@ -30,10 +30,10 @@ export const appConfig: ApplicationConfig = {
     provideTranslateService({
       lang: 'es',
       fallbackLang: 'es',
-      // loader: provideTranslateHttpLoader({
-      //   prefix: '/i18n/',
-      //   suffix: '.json'
-      // })
+      loader: provideTranslateHttpLoader({
+        prefix: '/i18n/',
+        suffix: '.json'
+      })
     }),
   ]
 };

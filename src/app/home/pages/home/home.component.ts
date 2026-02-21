@@ -1,9 +1,7 @@
 import { Component, DestroyRef, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ComponentI18nLoaderService } from '../../../core/services/component-i18n-loader.service';
 import { CurrentLanguegeService } from '../../../core/services/current-languege.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface Section {
   title: string;
@@ -20,12 +18,6 @@ interface Section {
 export class HomeComponent {
   public readonly router = inject(Router);
   public readonly currentLanguegeService = inject(CurrentLanguegeService);
-  private readonly i18nLoader = inject(ComponentI18nLoaderService);
-  private readonly destroyRef = inject(DestroyRef);
-
-  constructor() {
-    this.i18nLoader.loadTranslations('home').pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
-  }
 
   public sections: Section[] = [
     {
