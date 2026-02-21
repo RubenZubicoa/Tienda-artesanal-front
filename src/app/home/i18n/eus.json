@@ -1,5 +1,17 @@
 {
     "home": {
-        "title": "Euskera"
+        "title": "Euskera",
+        "subtitle": "Euskera",
+        "text": "Euskera"
+    },
+    "sections": {
+        "artesanos": {
+            "title": "Artesanos en euskera",
+            "description": "Encuentra los mejores vendedores de productos artesanales de la region"
+        },
+        "productos": {
+            "title": "Productos en euskera",
+            "description": "Encuentra los mejores productos artesanales de la region"
+        }
     }
 }

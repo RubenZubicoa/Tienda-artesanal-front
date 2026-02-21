@@ -1,9 +1,9 @@
 <div class="section-container">
     <span class="tienda-title">{{ 'home.title' | translate }}</span>
-    <span class="tienda-subtitle">Encuentra los mejores productos artesanales</span>
+    <span class="tienda-subtitle">{{ 'home.subtitle' | translate }}</span>
 
     <p class="tienda-text">
-        Aqui podras encontrar los mejores productos y vendedores artesanales de tu zona.
+        {{ 'home.text' | translate }}
     </p>
 
     <button (click)="currentLanguegeService.setCurrentLanguege('es')">Cambiar a español</button>
@@ -16,8 +16,8 @@
                     <img [src]="section.image" [alt]="section.title" />
                 </div>
                 <div class="section-content">
-                    <h3 class="tienda-title">{{ section.title }}</h3>
-                    <p class="tienda-text">{{ section.description }}</p>
+                    <h3 class="tienda-title">{{ section.title | translate }}</h3>
+                    <p class="tienda-text">{{ section.description | translate }}</p>
                 </div>
             </div>
         }

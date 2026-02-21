@@ -1,8 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ComponentI18nLoaderService } from '../../../core/services/component-i18n-loader.service';
 import { CurrentLanguegeService } from '../../../core/services/current-languege.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 interface Section {
   title: string;
@@ -20,31 +21,32 @@ export class HomeComponent {
   public readonly router = inject(Router);
   public readonly currentLanguegeService = inject(CurrentLanguegeService);
   private readonly i18nLoader = inject(ComponentI18nLoaderService);
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor() {
-    this.i18nLoader.loadTranslations('home').subscribe();
+    this.i18nLoader.loadTranslations('home').pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
   }
 
   public sections: Section[] = [
     {
-      title: 'Artesanos',
+      title: 'sections.artesanos.title',
       description:
-        'Encuentra los mejores vendedores de productos artesanales de la region',
+        'sections.artesanos.description',
       image: 'https://cdn.pixabay.com/photo/2016/07/03/16/30/medieval-1495045_1280.jpg',
     },
     {
-      title: 'Productos',
-      description: 'Encuentra los mejores productos artesanales de la region',
+      title: 'sections.productos.title',
+      description: 'sections.productos.description',
       image: 'https://cdn.pixabay.com/photo/2016/03/26/18/23/bread-1281053_1280.jpg',
     },
   ];
 
   public navigateToSection(section: Section) {
     switch (section.title) {
-      case 'Productos':
+      case 'sections.productos.title':
         this.router.navigate(['/products']);
         break;
-      case 'Artesanos':
+      case 'sections.artesanos.title':
         this.router.navigate(['/manufacturers']);
         break;
     }
