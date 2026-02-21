@@ -1,10 +1,13 @@
 <div class="section-container">
-    <span class="tienda-title">Bienvenido a la tienda artesanal más grande de la región</span>
+    <span class="tienda-title">{{ 'home.title' | translate }}</span>
     <span class="tienda-subtitle">Encuentra los mejores productos artesanales</span>
 
     <p class="tienda-text">
         Aqui podras encontrar los mejores productos y vendedores artesanales de tu zona.
     </p>
+
+    <button (click)="currentLanguegeService.setCurrentLanguege('es')">Cambiar a español</button>
+    <button (click)="currentLanguegeService.setCurrentLanguege('eus')">Cambiar a euskera</button>
 
     <div class="sections-list">
         @for (section of sections; track section.title) {

@@ -1,5 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
+import { ComponentI18nLoaderService } from '../../../core/services/component-i18n-loader.service';
+import { CurrentLanguegeService } from '../../../core/services/current-languege.service';
 
 interface Section {
   title: string;
@@ -9,18 +12,24 @@ interface Section {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterModule],
+  imports: [RouterModule, TranslatePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   public readonly router = inject(Router);
+  public readonly currentLanguegeService = inject(CurrentLanguegeService);
+  private readonly i18nLoader = inject(ComponentI18nLoaderService);
+
+  constructor() {
+    this.i18nLoader.loadTranslations('home').subscribe();
+  }
 
   public sections: Section[] = [
     {
       title: 'Artesanos',
       description:
-      'Encuentra los mejores vendedores de productos artesanales de la region',
+        'Encuentra los mejores vendedores de productos artesanales de la region',
       image: 'https://cdn.pixabay.com/photo/2016/07/03/16/30/medieval-1495045_1280.jpg',
     },
     {
