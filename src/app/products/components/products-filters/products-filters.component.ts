@@ -11,10 +11,11 @@ import { ProductFilters } from '../../../core/models/Product';
 import { PRODUCTS_CHIPS } from '../../models/products-chips';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { EnumsService } from '../../../core/services/enums.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-products-filters',
-  imports: [CommonModule, FiltersContainerComponent, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatSlideToggleModule],
+  imports: [CommonModule, FiltersContainerComponent, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, MatSlideToggleModule, TranslatePipe],
   templateUrl: './products-filters.component.html',
   styleUrl: './products-filters.component.scss'
 })

@@ -8,10 +8,11 @@ import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/bre
 import { CardData, mapProductToCardData } from '../../../shared/components/card/card.models';
 import { ProductsService } from '../../../products/services/products.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-manufacturers-details',
-  imports: [CardComponent, CommonModule, BreadcrumbsComponent],
+  imports: [CardComponent, CommonModule, BreadcrumbsComponent, TranslatePipe],
   templateUrl: './manufacturers-details.component.html',
   styleUrl: './manufacturers-details.component.scss'
 })

@@ -2,14 +2,14 @@
 <section class="section-container">
     <section class="products-header-container">
         <div class="products-header-title">
-            <h1 class="tienda-title">Lista de productos</h1>
-        <h2 class="tienda-subtitle">Encuentra los mejores productos artesanales</h2>
+            <h1 class="tienda-title">{{ 'products.title' | translate }}</h1>
+        <h2 class="tienda-subtitle">{{ 'products.subtitle' | translate }}</h2>
         </div>
         <app-products-filters [maxPrice]="maxPrice()" (applyFilters)="applyFilters($event)"></app-products-filters>
     </section>
     <div class="products-list-container">
         @for (card of cards(); track card.uuid) {
-            <app-card [card]="card" [buttonText]="'Ver producto'" [buttonType]="'primary'" (succesButtonClick)="goToProductDetails(card)"></app-card>
+            <app-card [card]="card" [buttonText]="'products.button-text' | translate" [buttonType]="'primary'" (succesButtonClick)="goToProductDetails(card)"></app-card>
         }
     </div>
 </section>
