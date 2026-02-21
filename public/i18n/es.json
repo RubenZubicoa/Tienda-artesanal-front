@@ -13,5 +13,19 @@
             "title": "Productos",
             "description": "Encuentra los mejores productos artesanales de la region"
         }
+    },
+    "layout": {
+        "location": "Ubicación",
+        "home": "Inicio",
+        "manufacturers": "Artesanos",
+        "products": "Productos",
+        "cart": "Carrito",
+        "orders": "Pedidos",
+        "my-orders": "Mis pedidos",
+        "my-products": "Mis productos",
+        "register": "Registrarse",
+        "login": "Iniciar sesión",
+        "logout": "Cerrar sesión",
+        "profile": "Perfil"
     }
 }
