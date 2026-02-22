@@ -2,15 +2,15 @@ import { TableColumn } from "../../shared/components/table/table.models";
 
 export const PRODUCTS_COLUMNS: TableColumn[] = [
   {
-    header: 'Nombre',
+    header: 'order-details.order-products.table.product-name',
     field: 'name',
   },
   {
-    header: 'Cantidad',
+    header: 'order-details.order-products.table.product-quantity',
     field: 'quantity',
   },
   {
-    header: 'Precio',
+    header: 'order-details.order-products.table.product-price',
     field: 'price',
     type: 'currency',
   },

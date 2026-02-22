@@ -2,13 +2,14 @@
 <div class="section-container">
   <div class="order-header-container">
     <div class="order-header-container-title">
-      <h1 class="tienda-title">Detalles del pedido</h1>
+      <h1 class="tienda-title">{{ 'order-details.title' | translate }}</h1>
       <h2 class="tienda-subtitle">
-        Aquí puedes ver los detalles del pedido de <b>{{ order().username }}</b>
+        {{ 'order-details.subtitle' | translate }} <b>{{ order().username }}</b>
       </h2>
     </div>
-    <button [ngClass]="{'tienda-primary-button': order().status === 'pending', 'tienda-warning-button': order().status === 'completed'}" (click)="changeOrderStatus(order())">{{ order().status === 'pending' ?
-      'Completado' : 'Pendiente' }}</button>
+    @let statusCompleted = 'order-details.status-completed' | translate;
+    @let statusPending = 'order-details.status-pending' | translate;
+    <button [ngClass]="{'tienda-primary-button': order().status === 'pending', 'tienda-warning-button': order().status === 'completed'}" (click)="changeOrderStatus(order())">{{ order().status === 'pending' ? statusCompleted : statusPending }}</button>
   </div>
   <div class="order-data-container">
     <app-order-data [order]="order()"></app-order-data>
@@ -23,7 +24,7 @@
       }
       @else {
       <div class="order-meeting-point-container">
-        <h2 class="tienda-subtitle">No se ha seleccionado ningún punto de encuentro</h2>
+        <h2 class="tienda-subtitle">{{ 'order-details.order-meeting-point.no-meeting-point' | translate }}</h2>
       </div>
       }
     </div>

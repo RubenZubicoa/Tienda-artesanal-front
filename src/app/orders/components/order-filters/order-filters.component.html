@@ -11,19 +11,19 @@
 <ng-template #filtersContent let-form="form">
     <form [formGroup]="form">
         <mat-form-field class="tienda-f-width" appearance="outline">
-            <mat-label>Nombre</mat-label>
-            <input matInput formControlName="username" />
+            <mat-label>{{ 'orders.filters.name' | translate }}</mat-label>
+            <input matInput formControlName="username" [placeholder]="'orders.filters.name' | translate" />
         </mat-form-field>
         <mat-form-field class="tienda-f-width" appearance="outline">
-            <mat-label>Teléfono</mat-label>
-            <input matInput formControlName="phone" />
+            <mat-label>{{ 'orders.filters.phone' | translate }}</mat-label>
+            <input matInput formControlName="phone" [placeholder]="'orders.filters.phone' | translate" />
         </mat-form-field>
         <mat-form-field class="tienda-f-width" appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" />
+            <mat-label>{{ 'orders.filters.email' | translate }}</mat-label>
+            <input matInput formControlName="email" [placeholder]="'orders.filters.email' | translate" />
         </mat-form-field>
         <mat-form-field class="tienda-f-width" appearance="outline">
-            <mat-label>Estado</mat-label>
+            <mat-label>{{ 'orders.filters.status' | translate }}</mat-label>
             <mat-select formControlName="status">
                 @for (status of statuses; track status) {
                     <mat-option [value]="status">{{ status }}</mat-option>

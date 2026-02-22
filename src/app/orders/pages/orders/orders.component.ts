@@ -12,10 +12,11 @@ import { Router } from '@angular/router';
 import { OrderFiltersComponent } from '../../components/order-filters/order-filters.component';
 import { ToastTypes } from '../../../shared/components/toast/toastData';
 import { ToastService } from '../../../shared/components/toast/toast.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-orders',
-  imports: [CommonModule, BreadcrumbsComponent, TableComponent, OrderFiltersComponent],
+  imports: [CommonModule, BreadcrumbsComponent, TableComponent, OrderFiltersComponent, TranslatePipe],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss'
 })

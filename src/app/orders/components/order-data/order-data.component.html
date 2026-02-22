@@ -1,9 +1,9 @@
 @if (order(); as orderData) {
   <div class="order-data-container">
     <div class="order-data-header">
-      <h2 class="tienda-subtitle"><b>Datos del pedido:</b></h2>
+      <h2 class="tienda-subtitle"><b>{{ 'order-details.order-data.title' | translate }}</b></h2>
       <span class="order-status-badge" [class]="'status-' + orderData.status">
-        {{ getStatusLabel(orderData.status) }}
+        {{ getStatusLabel(orderData.status) | translate }}
       </span>
     </div>
 

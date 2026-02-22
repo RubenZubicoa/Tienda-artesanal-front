@@ -10,10 +10,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
-
+import { TranslatePipe } from '@ngx-translate/core';
 @Component({
   selector: 'app-order-filters',
-  imports: [CommonModule, FiltersContainerComponent, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule,],
+  imports: [CommonModule, FiltersContainerComponent, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatDatepickerModule, TranslatePipe],
   templateUrl: './order-filters.component.html',
   styleUrl: './order-filters.component.scss',
   providers: [provideNativeDateAdapter()],

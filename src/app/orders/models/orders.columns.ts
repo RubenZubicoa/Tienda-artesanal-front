@@ -2,29 +2,29 @@ import { TableColumn } from "../../shared/components/table/table.models";
 
 export const ORDERS_COLUMNS: TableColumn[] = [
   {
-    header: 'Nombre',
+    header: 'orders.table.name-label',
     field: 'username',
   },   
   {
-    header: 'Teléfono',
+    header: 'orders.table.phone-label',
     field: 'phone',
   },
   {
-    header: 'Email',
+    header: 'orders.table.email-label',
     field: 'email',
   },
   {
-    header: 'Fecha de creación',
+    header: 'orders.table.createdAt-label',
     field: 'createdAt',
     type: 'date',
   },
   {
-    header: 'Total',
+    header: 'orders.table.total-label',
     field: 'total',
     type: 'currency',
   },
   {
-    header: 'Estado',
+    header: 'orders.table.status-label',
     field: 'status',
   },
 ];

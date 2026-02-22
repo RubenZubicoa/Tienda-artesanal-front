@@ -74,10 +74,10 @@ export function mapOrderToOrder(orderDB: OrderDB): Order {
 
 export function getStatusLabel(status: OrderStatus): string {
   const statusLabels: Record<string, string> = {
-    'pending': 'Pendiente',
-    'completed': 'Completado',
-    'cancelled': 'Cancelado',
-    'shipped': 'Enviado',
+    'pending': 'order-details.status-pending',
+    'completed': 'order-details.status-completed',
+    'cancelled': 'order-details.status-cancelled',
+    'shipped': 'order-details.status-shipped',
   };
   return statusLabels[status] || status;
 }

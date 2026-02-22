@@ -9,10 +9,11 @@ import { TruncateTextDirective } from '../../directives/truncate-text.directive'
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { getStatusLabel, OrderStatus } from '../../../core/models/Order';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-table',
-  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, DatePipe, TruncateTextDirective, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule, DatePipe, TruncateTextDirective, MatIconModule, MatButtonModule, TranslatePipe],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
