@@ -153,5 +153,38 @@
         "toast-error-title": "Error al agregar punto de encuentro",
         "toast-error-message": "El punto de encuentro no ha sido agregado, asegurate de seleccionar un punto en el mapa y de rellenar todos los campos.",
         "confirm-delete-title": "¿Estás seguro de querer eliminar este punto de encuentro?"
+    },
+    "profile": {
+        "title" : "Registro de usuario y artesano",
+        "update-title" : "Actualizar cuenta",
+        "update-subtitle" : "Completa los siguientes campos para actualizar tu cuenta",
+        "create-title" : "Registro de usuario y artesano",
+        "create-subtitle" : "Completa los siguientes campos para crear tu cuenta y si lo deseas, también puedes registrar tu negocio",
+        "user-data" : {
+            "title" : "Datos de usuario",
+            "name" : "Nombre completo",
+            "name-required" : "El nombre es requerido",
+            "phone" : "Teléfono",
+            "phone-required" : "El teléfono es requerido",
+            "email" : "Correo electrónico",
+            "email-required" : "El correo electrónico es requerido",
+            "email-invalid" : "El correo electrónico no es válido",
+            "password" : "Contraseña",
+            "confirm-password" : "Confirmar contraseña",
+            "password-required" : "La contraseña es requerida",
+            "password-minlength" : "La contraseña debe tener al menos 6 caracteres",
+            "password-mismatch" : "Las contraseñas no coinciden",
+            "is-manufacturer" : "¿Eres artesano? Registra tu negocio (opcional)",
+            "manufacturer-data" : "Datos del artesano",
+            "manufacturer-name" : "Nombre del negocio",
+            "manufacturer-name-required" : "El nombre del negocio es requerido",
+            "manufacturer-phone" : "Teléfono del negocio",
+            "manufacturer-address" : "Dirección del negocio",
+            "manufacturer-address-required" : "La dirección del negocio es requerida",
+            "manufacturer-description" : "Descripción del negocio",
+            "change-image" : "Cambiar imagen del negocio",
+            "save" : "Guardar",
+            "cancel" : "Cancelar"
+        }
     }
 }

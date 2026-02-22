@@ -1,17 +1,17 @@
 <div class="section-container">
   <div class="register-header">
-    <h1 class="tienda-title">{{ isUpdateMode() ? 'Actualizar cuenta' : 'Registro de usuario y artesano' }}</h1>
-    <h2 class="tienda-subtitle">{{ isUpdateMode() ? 'Completa los siguientes campos para actualizar tu cuenta' :
-      'Completa los siguientes campos para crear tu cuenta y si lo deseas, también puedes registrar tu negocio' }}</h2>
+    <h1 class="tienda-title">{{ isUpdateMode() ? ('profile.update-title' | translate) : ('profile.create-title' | translate) }}</h1>
+    <h2 class="tienda-subtitle">{{ isUpdateMode() ? ('profile.update-subtitle' | translate) :
+      ('profile.create-subtitle' | translate) }}</h2>
   </div>
 
   <form [formGroup]="form" class="register-form">
     <!-- Sección de Usuario -->
     <div class="form-section">
-      <h2 class="section-title">Datos de Usuario</h2>
+      <h2 class="section-title">{{ 'profile.user-data.title' | translate }}</h2>
       <div class="form-fields">
         <mat-form-field appearance="outline" class="tienda-f-width">
-          <mat-label>Nombre completo</mat-label>
+          <mat-label>{{ 'profile.user-data.name' | translate }}</mat-label>
           <input matInput type="text" [formControl]="form.controls.name" placeholder="Introduce tu nombre completo" />
           <mat-error *ngIf="form.controls.name.hasError('required') && form.controls.name.touched">
             El nombre es requerido
@@ -19,49 +19,49 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="tienda-f-width">
-          <mat-label>Teléfono</mat-label>
+          <mat-label>{{ 'profile.user-data.phone' | translate }}</mat-label>
           <input matInput type="tel" [formControl]="form.controls.phone"
-            placeholder="Introduce tu número de teléfono" />
+            placeholder="{{ 'profile.user-data.phone' | translate }}" />
           <mat-error *ngIf="form.controls.phone.hasError('required') && form.controls.phone.touched">
-            El teléfono es requerido
+            {{ 'profile.user-data.phone-required' | translate }}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="tienda-f-width">
-          <mat-label>Correo electrónico</mat-label>
+          <mat-label>{{ 'profile.user-data.email' | translate }}</mat-label>
           <input matInput type="email" [formControl]="form.controls.email"
-            placeholder="Introduce tu correo electrónico" />
+            placeholder="{{ 'profile.user-data.email' | translate }}" />
           <mat-error *ngIf="form.controls.email.hasError('required') && form.controls.email.touched">
-            El correo electrónico es requerido
+            {{ 'profile.user-data.email-required' | translate }}
           </mat-error>
           <mat-error *ngIf="form.controls.email.hasError('email') && form.controls.email.touched">
-            El correo electrónico no es válido
+            {{ 'profile.user-data.email-invalid' | translate }}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="tienda-f-width">
-          <mat-label>Contraseña</mat-label>
+          <mat-label>{{ 'profile.user-data.password' | translate }}</mat-label>
           <input matInput type="password" [formControl]="form.controls.password"
-            placeholder="Introduce tu contraseña" />
+            placeholder="{{ 'profile.user-data.password' | translate }}" />
           <mat-error *ngIf="form.controls.password.hasError('required') && form.controls.password.touched">
-            La contraseña es requerida
+            {{ 'profile.user-data.password-required' | translate }}
           </mat-error>
           <mat-error *ngIf="form.controls.password.hasError('minlength') && form.controls.password.touched">
-            La contraseña debe tener al menos 6 caracteres
+            {{ 'profile.user-data.password-minlength' | translate }}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="tienda-f-width">
-          <mat-label>Confirmar contraseña</mat-label>
+          <mat-label>{{ 'profile.user-data.confirm-password' | translate }}</mat-label>
           <input matInput type="password" [formControl]="form.controls.confirmPassword"
-            placeholder="Confirma tu contraseña" />
+            placeholder="{{ 'profile.user-data.confirm-password' | translate }}" />
           <mat-error
             *ngIf="form.controls.confirmPassword.hasError('required') && form.controls.confirmPassword.touched">
-            Debes confirmar la contraseña
+            {{ 'profile.user-data.confirm-password-required' | translate }}
           </mat-error>
           <mat-error
             *ngIf="form.hasError('passwordMismatch') && form.controls.confirmPassword.touched && !form.controls.confirmPassword.hasError('required')">
-            Las contraseñas no coinciden
+            {{ 'profile.user-data.password-mismatch' | translate }}
           </mat-error>
         </mat-form-field>
 
@@ -71,46 +71,46 @@
     <!-- Checkbox para activar sección de artesano -->
     <div class="manufacturer-toggle">
       <mat-checkbox [formControl]="form.controls.isManufacturer">
-        ¿Eres artesano? Registra tu negocio (opcional)
+        {{ 'profile.user-data.is-manufacturer' | translate }}
       </mat-checkbox>
     </div>
 
     <!-- Sección de Artesano (opcional) -->
     <div class="form-section" *ngIf="isManufacturer">
-      <h2 class="section-title">Datos del Artesano</h2>
+      <h2 class="section-title">{{ 'profile.user-data.manufacturer-data' | translate }}</h2>
       <div class="form-fields">
         <mat-form-field appearance="outline" class="tienda-f-width">
-          <mat-label>Nombre del negocio</mat-label>
+          <mat-label>{{ 'profile.user-data.manufacturer-name' | translate }}</mat-label>
           <input matInput type="text" [formControl]="form.controls.manufacturerName"
-            placeholder="Introduce el nombre de tu negocio" />
+            placeholder="{{ 'profile.user-data.manufacturer-name' | translate }}" />
           <mat-error
             *ngIf="form.controls.manufacturerName.hasError('required') && form.controls.manufacturerName.touched">
-            El nombre del negocio es requerido
+            {{ 'profile.user-data.manufacturer-name-required' | translate }}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="tienda-f-width">
-          <mat-label>Teléfono</mat-label>
+          <mat-label>{{ 'profile.user-data.manufacturer-phone' | translate }}</mat-label>
           <input matInput type="tel" [formControl]="form.controls.manufacturerPhone"
-            placeholder="Introduce tu número de teléfono" />
+            placeholder="{{ 'profile.user-data.manufacturer-phone' | translate }}" />
           <mat-error
             *ngIf="form.controls.manufacturerPhone.hasError('required') && form.controls.manufacturerPhone.touched">
-            El teléfono es requerido
+            {{ 'profile.user-data.phone-required' | translate }}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="tienda-f-width">
-          <mat-label>Dirección</mat-label>
+          <mat-label>{{ 'profile.user-data.manufacturer-address' | translate }}</mat-label>
           <input matInput type="text" [formControl]="form.controls.manufacturerAddress"
             placeholder="Introduce la dirección de tu negocio" />
           <mat-error
             *ngIf="form.controls.manufacturerAddress.hasError('required') && form.controls.manufacturerAddress.touched">
-            La dirección es requerida
+            {{ 'profile.user-data.manufacturer-address-required' | translate }}
           </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="tienda-f-width">
-          <mat-label>Descripción (opcional)</mat-label>
+          <mat-label>{{ 'profile.user-data.manufacturer-description' | translate }}</mat-label>
           <textarea matInput [formControl]="form.controls.manufacturerDescription" placeholder="Describe tu negocio"
             rows="4"></textarea>
         </mat-form-field>
@@ -121,7 +121,7 @@
 
     <div class="register-footer">
       <button type="button" class="tienda-primary-button" (click)="register()">
-        {{ isUpdateMode() ? 'Actualizar' : 'Registrarse' }}
+        {{ ('profile.user-data.save' | translate) }}
       </button>
     </div>
   </form>
@@ -135,7 +135,7 @@
       <label class="file-input-label">
         <input type="file" accept="image/*" #imageInput (change)="onFileSelected($event)" style="display: none;" />
         <button type="button" class="tienda-primary-button" (click)="imageInput.click()">
-          Cambiar imagen de perfil
+          {{ 'profile.user-data.change-image' | translate }}
         </button>
       </label>
     </div>
