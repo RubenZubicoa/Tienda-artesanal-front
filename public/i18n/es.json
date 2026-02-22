@@ -132,5 +132,26 @@
             "remove-images": "Eliminar imágenes",
             "save": "Guardar"
         }
+    },
+    "meeting-points": {
+        "title": "Puntos de encuentro",
+        "subtitle": "Aquí puedes ver tus puntos de encuentro para que los usuarios puedan encontrarte físicamente y realizar el pago de sus pedidos.",
+        "button-text": "Agregar punto de encuentro",
+        "table": {
+            "name-label": "Nombre",
+            "description-label": "Descripción",
+            "actions-label": "Acciones"
+        },
+        "add-meeting-point-dialog": {
+            "title": "Agregar punto de encuentro",
+            "name": "Nombre",
+            "description": "Descripción",
+            "save": "Guardar"
+        },
+        "toast-success-title": "Punto de encuentro agregado correctamente",
+        "toast-success-message": "El punto de encuentro ha sido agregado correctamente",
+        "toast-error-title": "Error al agregar punto de encuentro",
+        "toast-error-message": "El punto de encuentro no ha sido agregado, asegurate de seleccionar un punto en el mapa y de rellenar todos los campos.",
+        "confirm-delete-title": "¿Estás seguro de querer eliminar este punto de encuentro?"
     }
 }

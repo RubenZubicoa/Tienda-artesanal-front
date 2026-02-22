@@ -12,11 +12,11 @@ import { MeetingPointDetailsDialogComponent } from '../../components/meeting-poi
 import { MatDialog } from '@angular/material/dialog';
 import { MeetingPointFormDialogComponent } from '../../components/meeting-point-form-dialog/meeting-point-form-dialog.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MeetingPointsFiltersComponent } from '../../components/meeting-points-filters/meeting-points-filters.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-meeting-points',
-  imports: [CommonModule, BreadcrumbsComponent, TableComponent, MeetingPointsFiltersComponent],
+  imports: [CommonModule, BreadcrumbsComponent, TableComponent, TranslatePipe],
   templateUrl: './meeting-points.component.html',
   styleUrl: './meeting-points.component.scss'
 })

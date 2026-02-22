@@ -13,10 +13,11 @@ import { ToastTypes } from '../../../shared/components/toast/toastData';
 import { CurrentUserService } from '../../../core/services/current-user.service';
 import { AddMeetingPointDB, MeetingPoint, UpdateMeetingPointDB } from '../../../core/models/MeetingPoint';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-meeting-point-form-dialog',
-  imports: [CommonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MapComponent, ReactiveFormsModule],
+  imports: [CommonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MapComponent, ReactiveFormsModule, TranslatePipe],
   templateUrl: './meeting-point-form-dialog.component.html',
   styleUrl: './meeting-point-form-dialog.component.scss'
 })
@@ -27,6 +28,7 @@ export class MeetingPointFormDialogComponent implements OnInit {
   private readonly currentUserService = inject(CurrentUserService);
   private readonly dialogRef = inject(MatDialogRef<MeetingPointFormDialogComponent>);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly translate = inject(TranslateService);
   public readonly data = inject<{ meetingPoint?: MeetingPoint }>(MAT_DIALOG_DATA);
 
   public form = this.meetingPointsFormService.crearFormulario();
@@ -59,12 +61,12 @@ export class MeetingPointFormDialogComponent implements OnInit {
   public saveMeetingPoint(): void {
     const location = this.marker();
     if (!location) {
-      this.toastService.showMessage(ToastTypes.ERROR, 'Error al crear punto de encuentro', 'No se ha seleccionado un punto en el mapa');
+      this.toastService.showMessage(ToastTypes.ERROR, this.translate.instant('meeting-points.toast-error-title'), this.translate.instant('meeting-points.toast-error-message'));
       return;
     }
     const manufacturerId = this.currentUserService.currentManufacturer()?.uuid ?? '';
     if (!manufacturerId) {
-      this.toastService.showMessage(ToastTypes.ERROR, 'Error al crear punto de encuentro', 'No se ha seleccionado un fabricante');
+      this.toastService.showMessage(ToastTypes.ERROR, this.translate.instant('meeting-points.toast-error-title'), this.translate.instant('meeting-points.toast-error-message'));
       return;
     }
     const formData = this.meetingPointsFormService.obtenerDatos(this.form);
@@ -92,11 +94,11 @@ export class MeetingPointFormDialogComponent implements OnInit {
   private createMeetingPoint(meetingPoint: AddMeetingPointDB): void {
     this.meetingPointsService.createMeetingPoint(meetingPoint).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (data) => {
-        this.toastService.showMessage(ToastTypes.SUCCESS, 'Punto de encuentro creado', 'El punto de encuentro ha sido creado correctamente');
+        this.toastService.showMessage(ToastTypes.SUCCESS, this.translate.instant('meeting-points.toast-success-title'), this.translate.instant('meeting-points.toast-success-message'));
         this.dialogRef.close(true);
       },
       error: () => {
-        this.toastService.showMessage(ToastTypes.ERROR, 'Error al crear punto de encuentro', 'El punto de encuentro no ha sido creado');
+        this.toastService.showMessage(ToastTypes.ERROR, this.translate.instant('meeting-points.toast-error-title'), this.translate.instant('meeting-points.toast-error-message'));
       }
     });
   }
