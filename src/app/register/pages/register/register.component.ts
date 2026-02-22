@@ -16,6 +16,7 @@ import { Manufacturer } from '../../../core/models/Manufacturer';
 import { User } from '../../../core/models/User';
 import { CarruselComponent } from '../../../shared/components/carrusel/carrusel.component';
 import { InsertOneResult } from '../../../core/models/InsertOneResult';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
@@ -26,7 +27,8 @@ import { InsertOneResult } from '../../../core/models/InsertOneResult';
     MatInputModule,
     MatButtonModule,
     MatCheckboxModule,
-    CarruselComponent
+    CarruselComponent,
+    TranslatePipe
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
