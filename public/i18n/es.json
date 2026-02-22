@@ -23,6 +23,7 @@
         "orders": "Pedidos",
         "my-orders": "Mis pedidos",
         "my-products": "Mis productos",
+        "meeting-points": "Puntos de encuentro",
         "register": "Registrarse",
         "login": "Iniciar sesión",
         "logout": "Cerrar sesión",
@@ -59,5 +60,50 @@
         "button-text": "Agregar al carrito",
         "toast-success-title": "Producto agregado al carrito",
         "toast-success-message": "El producto ha sido agregado correctamente"
+    },
+    "orders": {
+        "title": "Pedidos",
+        "subtitle": "Aquí puedes ver los pedidos de los usuarios",
+        "table": {
+            "name-label": "Nombre",
+            "phone-label": "Teléfono",
+            "email-label": "Email",
+            "createdAt-label": "Fecha de creación",
+            "total-label": "Total",
+            "status-label": "Estado",
+            "actions-label": "Acciones"
+        },
+        "filters": {
+            "name": "Nombre del cliente",
+            "phone": "Teléfono del cliente",
+            "email": "Email del cliente",
+            "status": "Estado del pedido"
+        }
+    },
+    "order-details": {
+        "title": "Detalles del pedido",
+        "subtitle": "Aquí puedes ver los detalles del pedido de",
+        "status-completed": "Completado",
+        "status-pending": "Pendiente",
+        "order-data": {
+            "title": "Datos del pedido:",
+            "name": "Nombre del cliente",
+            "date": "Fecha del pedido",
+            "phone": "Teléfono del cliente",
+            "email": "Email del cliente"
+        },
+        "order-products": {
+            "title": "Productos del pedido",
+            "table": {
+                "product-name": "Nombre del producto",
+                "product-quantity": "Cantidad",
+                "product-price": "Precio",
+                "total": "Total"
+            }
+        },
+        "order-meeting-point": {
+            "title": "Punto de encuentro: ",
+            "no-meeting-point": "No se ha seleccionado ningún punto de encuentro"
+        }
     }
 }

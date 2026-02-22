@@ -11,8 +11,23 @@ export class CurrentUserService {
   private readonly manufacturerService = inject(ManufacturerService);
   private readonly destroyRef = inject(DestroyRef);
 
-  private user = signal<User | undefined>(undefined);
-  private manufacturer = signal<Manufacturer | undefined>(undefined);
+  private user = signal<User | undefined>({
+    "uuid": "695393864cdd9f39237b8585",
+    "name": "Ruben Zubicoa",
+    "email": "rubenzubicoa@gmail.com",
+    "password": "$2b$10$kPlVuvLkdgVX.MqSoOYvXesmnm.zJpNiSRpJcBop05QvHHEnP.EOi",
+    "manufacturerId": "6947d19f5df928a95527d6ef",
+    "phone": "663437945"
+});
+  private manufacturer = signal<Manufacturer | undefined>({
+    "uuid": "6947d19f5df928a95527d6ef",
+    "name": "Ruben Zubicoa",
+    "phone": "666666666",
+    "email": "rubenzubicoa@gmail.com",
+    "image": "https://res.cloudinary.com/dlfkse85a/image/upload/v1770213188/1770213189154-equipo.jpg.jpg",
+    "address": "Zegama",
+    "description": "description de ruben zubicoa",
+});
   public isManufacturer = computed(() => this.user()?.manufacturerId !== undefined);
 
   public get currentUser() {

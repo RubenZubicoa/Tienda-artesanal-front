@@ -1,7 +1,7 @@
 <app-breadcrumbs></app-breadcrumbs>
 <section class="section-container">
-    <h1 class="tienda-title">Pedidos</h1>
-    <h2 class="tienda-subtitle">Aquí puedes ver los pedidos de los usuarios</h2>
+    <h1 class="tienda-title">{{ 'orders.title' | translate }}</h1>
+    <h2 class="tienda-subtitle">{{ 'orders.subtitle' | translate }}</h2>
     <app-order-filters (applyFilters)="applyFilters($event)"></app-order-filters>
     <app-table [columns]="columns" [data]="orders()" (detailsClick)="goToOrderDetails($event)"></app-table>
 </section>

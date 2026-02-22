@@ -2,12 +2,12 @@
     @for (column of columns(); track column.field) {
     <ng-container [matColumnDef]="column.field">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>
-        {{ column.header }}
+        {{ column.header | translate }}
       </th>
       <td mat-cell *matCellDef="let row" appTruncateText [maxLength]="50">
         @if (column.field === 'status') {
         <span class="status-{{ row.status }}">
-          {{ getStatusLabel(row.status) }}
+          {{ getStatusLabel(row.status) | translate }}
         </span>
         }@else { @if (column.type === 'date') {
         {{ row[column.field] | date : "dd/MM/yyyy" }}

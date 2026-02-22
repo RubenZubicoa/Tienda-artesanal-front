@@ -7,10 +7,11 @@ import { ManufacturerService } from '../../../manufacturers/services/manufacture
 import { DataSection } from '../../../shared/components/data-section/models';
 import { DataSectionComponent } from '../../../shared/components/data-section/data-section.component';
 import { DatePipe } from '@angular/common';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-data',
-  imports: [CommonModule, DataSectionComponent],
+  imports: [CommonModule, DataSectionComponent, TranslatePipe],
   templateUrl: './order-data.component.html',
   styleUrl: './order-data.component.scss',
   standalone: true,
@@ -19,6 +20,7 @@ import { DatePipe } from '@angular/common';
 export class OrderDataComponent implements OnInit {
   private readonly manufacturerService = inject(ManufacturerService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly translate = inject(TranslateService);
 
   public order = input.required<Order>();
   public manufacturer = signal<Manufacturer | undefined>(undefined);
@@ -44,10 +46,10 @@ export class OrderDataComponent implements OnInit {
   mapDataOrderToDataSection(order: Order): DataSection {
     const formattedDate = this.datePipe.transform(order.createdAt, 'dd/MM/yyyy HH:mm') ?? '';
     return [
-      { label: 'Nombre del cliente', value: order.username },
-      { label: 'Fecha del pedido', value: formattedDate },
-      { label: 'Email', value: order.email },
-      { label: 'Teléfono', value: order.phone },
+      { label: this.translate.instant('order-details.order-data.name'), value: order.username },
+      { label: this.translate.instant('order-details.order-data.date'), value: formattedDate },
+      { label: this.translate.instant('order-details.order-data.email'), value: order.email },
+      { label: this.translate.instant('order-details.order-data.phone'), value: order.phone },
     ];
   }
 
