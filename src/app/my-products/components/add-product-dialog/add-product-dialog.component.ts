@@ -19,6 +19,7 @@ import { CarruselComponent } from '../../../shared/components/carrusel/carrusel.
 import { AddProductImage } from '../../../core/models/ProductImage';
 import { ProductImagesService } from '../../../products/services/product-images.service';
 import { InsertOneResult, UpdateOneResult } from '../../../core/models/InsertOneResult';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-product-dialog',
@@ -30,7 +31,8 @@ import { InsertOneResult, UpdateOneResult } from '../../../core/models/InsertOne
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
-    CarruselComponent
+    CarruselComponent,
+    TranslatePipe
   ],
   templateUrl: './add-product-dialog.component.html',
   styleUrl: './add-product-dialog.component.scss',

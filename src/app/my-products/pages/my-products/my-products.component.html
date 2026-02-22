@@ -1,11 +1,10 @@
-<div class="section-container">
-  <app-breadcrumbs></app-breadcrumbs>
+<app-breadcrumbs></app-breadcrumbs>
+<section class="section-container">
   <div class="my-products-header-container">
     <div class="my-products-header-container-title">
-      <h1 class="tienda-title">Estos son tus productos</h1>
+      <h1 class="tienda-title">{{ 'my-products.title' | translate }}</h1>
       <h2 class="tienda-subtitle">
-        Aquí puedes ver los productos que has agregado a la plataforma,
-        editarlos o eliminarlos.
+        {{ 'my-products.subtitle' | translate }}
       </h2>
     </div>
     <button
@@ -13,7 +12,7 @@
       class="tienda-primary-button"
       (click)="openFormDialog()"
     >
-      Agregar producto
+      {{ 'my-products.button-text' | translate }}
     </button>
   </div>
   <app-products-filters [maxPrice]="0" (applyFilters)="applyFilters($event)"></app-products-filters>
@@ -21,21 +20,21 @@
     @for (card of cards(); track card.uuid) {
     <app-card
       [card]="card"
-      [buttonText]="'Editar producto'"
+      [buttonText]="'my-products.edit-product-button' | translate"
       [buttonType]="'primary'"
       [buttonTemplate]="editProductButton"
     ></app-card>
     }
   </div>
-</div>
+</section>
 
 <ng-template #editProductButton let-uuid="uuid">
   <div class="edit-product-buttons-container">
     <button mat-raised-button class="tienda-primary-button tienda-f-width" (click)="openFormDialog(uuid)">
-      Editar
+      {{ 'my-products.edit-product-button' | translate }}
     </button>
     <button mat-raised-button class="tienda-warning-button tienda-f-width" (click)="removeProduct(uuid)">
-      Eliminar
+      {{ 'my-products.delete-product-button' | translate }}
     </button>
   </div>
 </ng-template>
