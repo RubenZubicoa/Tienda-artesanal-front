@@ -1,11 +1,10 @@
+<app-breadcrumbs></app-breadcrumbs>
 <section class="section-container">
-  <app-breadcrumbs></app-breadcrumbs>
   <div class="meeting-points-header-container">
     <div class="meeting-points-header-container-title">
-      <h1 class="tienda-title">Puntos de encuentro</h1>
+      <h1 class="tienda-title">{{ 'meeting-points.title' | translate }}</h1>
       <h2 class="tienda-subtitle">
-        Aquí puedes ver tus puntos de encuentro para que los usuarios puedan
-        encontrarte físicamente y realizar el pago de sus pedidos.
+        {{ 'meeting-points.subtitle' | translate }}
       </h2>
     </div>
     <button
@@ -13,13 +12,13 @@
       class="tienda-primary-button"
       (click)="openMeetingPointFormDialog()"
     >
-      Agregar punto de encuentro
+      {{ 'meeting-points.button-text' | translate }}
     </button>
   </div>
-  <app-meeting-points-filters (applyFilters)="applyFilters($event)"></app-meeting-points-filters>
   <app-table
     [columns]="columns"
     [data]="meetingPoints()"
+    [showDetails]="false"
     [showDelete]="true"
     [showEdit]="true"
     (detailsClick)="openMeetingPointDetailsDialog($event)"
