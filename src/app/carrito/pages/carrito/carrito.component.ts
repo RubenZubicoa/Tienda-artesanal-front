@@ -5,10 +5,11 @@ import { CardComponent } from '../../../shared/components/card/card.component';
 import { CarritoService } from '../../services/carrito.service';
 import { CardData, mapProductCartToCardData } from '../../../shared/components/card/card.models';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-carrito',
-  imports: [CommonModule, BreadcrumbsComponent, CardComponent],
+  imports: [CommonModule, BreadcrumbsComponent, CardComponent, TranslatePipe],
   templateUrl: './carrito.component.html',
   styleUrl: './carrito.component.scss'
 })

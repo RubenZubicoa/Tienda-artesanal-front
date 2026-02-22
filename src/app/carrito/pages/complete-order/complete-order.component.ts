@@ -6,8 +6,6 @@ import { SelectMeetingPointComponent } from '../../components/select-meeting-poi
 import { MatDividerModule } from '@angular/material/divider';
 import { Router } from '@angular/router';
 import { AddOrder } from '../../../core/models/Order';
-import { ProductCart } from '../../../core/models/Product';
-import { CurrentUserService } from '../../../core/services/current-user.service';
 import { OrdersService } from '../../../orders/services/orders.service';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 import { ToastTypes } from '../../../shared/components/toast/toastData';
@@ -17,10 +15,11 @@ import { Manufacturer } from '../../../core/models/Manufacturer';
 import {MatStepper, MatStepperModule} from '@angular/material/stepper';
 import { MeetingPoint } from '../../../core/models/MeetingPoint';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-complete-order',
-  imports: [CommonModule, BreadcrumbsComponent, CompleteOrderFormComponent, MatDividerModule, SelectMeetingPointComponent, MatStepperModule],
+  imports: [CommonModule, BreadcrumbsComponent, CompleteOrderFormComponent, MatDividerModule, SelectMeetingPointComponent, MatStepperModule, TranslatePipe],
   templateUrl: './complete-order.component.html',
   styleUrl: './complete-order.component.scss'
 })
@@ -31,6 +30,7 @@ export class CompleteOrderComponent {
   private readonly ordersService = inject(OrdersService);
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly translate = inject(TranslateService);
 
   public orders: Record<Manufacturer['uuid'], AddOrder> = {};
   public orderFormData: CompleteOrderForm = this.completeOrderFormService.crearFormulario();
@@ -69,10 +69,11 @@ export class CompleteOrderComponent {
   private createOrder(order: AddOrder): void {
     this.ordersService.createOrder(order).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => {
-        this.toasterService.showMessage(ToastTypes.SUCCESS, 'Pedido completado', 'El pedido ha sido completado correctamente');
+        this.router.navigate(['/home']);
+        this.toasterService.showMessage(ToastTypes.SUCCESS, this.translate.instant('carrito.complete-order.toast-success-title'), this.translate.instant('carrito.complete-order.toast-success-message'));
       },
       error: () => {
-        this.toasterService.showMessage(ToastTypes.ERROR, 'Error al completar pedido', 'El pedido no ha sido completado correctamente');
+        this.toasterService.showMessage(ToastTypes.ERROR, this.translate.instant('carrito.complete-order.toast-error-title'), this.translate.instant('carrito.complete-order.toast-error-message'));
       }
     });
   }

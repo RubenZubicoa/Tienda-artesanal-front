@@ -3,12 +3,12 @@
     @if (data[manufacturerId]) {
     <div class="meeting-point-container">
       <h2 class="tienda-subtitle">
-        <b>Punto de encuentro de: <span class="tienda-text-highlight">{{ data[manufacturerId].name }}</span></b>
+        <b>{{ 'carrito.complete-order.text' | translate }} <span class="tienda-text-highlight">{{ data[manufacturerId].name }}</span></b>
       </h2>
       @if (data[manufacturerId].meetingPoints.length > 0) {
       <div class="meeting-point-container-form">
         <mat-form-field class="tienda-f-width" appearance="outline">
-          <mat-label>Punto de encuentro</mat-label>
+          <mat-label>{{ 'carrito.complete-order.meeting-point' | translate }}</mat-label>
           <mat-select class="tienda-select-input" [disabled]="disabledForm()" [formControl]="meetingPointsFormControl">
             <mat-option
               *ngFor="let meetingPoint of data[manufacturerId].meetingPoints"
@@ -23,7 +23,7 @@
         <button class="tienda-primary-button" [disabled]="disabledForm()" (click)="openMeetingPointDialog(data[manufacturerId])"><mat-icon>map</mat-icon></button>
       </div>
       } @else {
-      <p class="tienda-text">No hay puntos de encuentro disponibles para este artesano. Cuando realices el pedido el artesano te contactará para confirmar el punto de encuentro.</p>
+      <p class="tienda-text">{{ 'carrito.complete-order.no-meeting-point' | translate }}</p>
       }
     </div>
   }

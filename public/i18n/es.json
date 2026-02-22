@@ -186,5 +186,40 @@
             "save" : "Guardar",
             "cancel" : "Cancelar"
         }
+    },
+    "carrito": {
+        "title" : "Carrito de compras",
+        "subtitle" : "Aquí puedes ver los productos que has agregado al carrito",
+        "button-text" : "Completar pedido",
+        "button-remove-product" : "Quitar del carrito",
+        "total-price" : "Precio total",
+        "toast-success-title" : "Pedido completado correctamente",
+        "toast-success-message" : "El pedido ha sido completado correctamente",
+        "toast-error-title" : "Error al completar pedido",
+        "toast-error-message" : "El pedido no ha sido completado, asegurate de seleccionar un punto de encuentro y de rellenar todos los campos.",
+        "complete-order" : {
+            "title" : "Completar pedido",
+            "subtitle" : "Aquí puedes completar tu pedido",
+            "name": "Nombre",
+            "email": "Email",
+            "phone": "Teléfono",
+            "next-step-button" : "Siguiente paso",
+            "meeting-point" : "Punto de encuentro",
+            "meeting-point-step-title" : "Puntos de encuentro",
+            "meeting-point-step-subtitle" : "Aquí puedes seleccionar el punto de encuentro para tu pedido por cada artesano seleccionado",
+            "text": "Punto de encuentro de: ",
+            "no-meeting-point" : "No hay puntos de encuentro disponibles para este artesano. Cuando realices el pedido el artesano te contactará para confirmar el punto de encuentro.",
+            "complete-order-button" : "Completar pedido",
+            "select-meeting-point-dialog" : {
+                "title" : "Punto de encuentro de: ",
+                "selected-meeting-point" : "Punto de encuentro seleccionado: ",
+                "text" : "Haz click en los marcadores para seleccionar el punto de encuentro.",
+                "select-meeting-point-button" : "Seleccionar punto de encuentro"
+            },
+            "toast-error-title" : "Error al complear el pedido",
+            "toast-error-message" : "El pedido no ha sido completado, asegurate de seleccionar un punto de encuentro y de rellenar todos los campos.",
+            "toast-success-title" : "Pedido completado correctamente",
+            "toast-success-message" : "El pedido ha sido completado correctamente"
+        }
     }
 }

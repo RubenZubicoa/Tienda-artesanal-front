@@ -1,17 +1,17 @@
 <div class="complete-order-form-container">
     <form [formGroup]="form">
         <mat-form-field appearance="outline">
-            <mat-label>Nombre</mat-label>
-            <input matInput formControlName="name" placeholder="Nombre">
+            <mat-label>{{ 'carrito.complete-order.name' | translate }}</mat-label>
+            <input matInput formControlName="name" placeholder="{{ 'carrito.complete-order.name' | translate }}">
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="Email">
+            <mat-label>{{ 'carrito.complete-order.email' | translate }}</mat-label>
+            <input matInput formControlName="email" placeholder="{{ 'carrito.complete-order.email' | translate }}">
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <mat-label>Teléfono</mat-label>
-            <input matInput formControlName="phone" placeholder="Teléfono">
+            <mat-label>{{ 'carrito.complete-order.phone' | translate }}</mat-label>
+            <input matInput formControlName="phone" placeholder="{{ 'carrito.complete-order.phone' | translate }}">
         </mat-form-field>
     </form>
-    <button class="tienda-primary-button complete-order-button" (click)="onCompleteOrder()">Siguiente</button>
+    <button class="tienda-primary-button complete-order-button" (click)="onCompleteOrder()">{{ 'carrito.complete-order.next-step-button' | translate }}</button>
 </div>
