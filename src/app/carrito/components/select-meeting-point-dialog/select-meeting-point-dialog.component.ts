@@ -10,10 +10,11 @@ import { MapComponent } from '../../../shared/components/map/map.component';
 import { MapMarker } from '../../../shared/components/map/map.models';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 import { ToastTypes } from '../../../shared/components/toast/toastData';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-select-meeting-point-dialog',
-  imports: [CommonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MapComponent, ReactiveFormsModule],
+  imports: [CommonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MapComponent, ReactiveFormsModule, TranslatePipe],
   templateUrl: './select-meeting-point-dialog.component.html',
   styleUrl: './select-meeting-point-dialog.component.scss'
 })

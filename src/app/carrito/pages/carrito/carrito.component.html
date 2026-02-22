@@ -2,16 +2,16 @@
 <section class="section-container">
     <div class="carrito-container">
         <div class="carrito-container-header">
-            <h1 class="tienda-title">Carrito de compras</h1>
-            <h2 class="tienda-subtitle">Aquí puedes ver los productos que has agregado al carrito</h2>
+            <h1 class="tienda-title">{{ 'carrito.title' | translate }}</h1>
+            <h2 class="tienda-subtitle">{{ 'carrito.subtitle' | translate }}</h2>
         </div>
         @if (showCompleteOrderButton()) {
-            <button mat-raised-button class="tienda-primary-button complete-order-button" (click)="goToCompleteOrder()">Completar pedido</button>
+            <button mat-raised-button class="tienda-primary-button complete-order-button" (click)="goToCompleteOrder()">{{ 'carrito.button-text' | translate }}</button>
         }
     </div>
     <div class="products-list-container">
         @for (card of cards(); track card.uuid) {
-            <app-card [card]="card" [buttonText]="'Quitar del carrito'" [buttonType]="'warning'" (succesButtonClick)="removeProductFromCart(card)"></app-card>
+            <app-card [card]="card" [buttonText]="'carrito.button-remove-product' | translate" [buttonType]="'warning'" (succesButtonClick)="removeProductFromCart(card)"></app-card>
         }
     </div>
 </section>

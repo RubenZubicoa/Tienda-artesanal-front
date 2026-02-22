@@ -6,17 +6,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ToastService } from '../../../shared/components/toast/toast.service';
-import { ToastTypes } from '../../../shared/components/toast/toastData';
 import { CarritoService } from '../../services/carrito.service';
-import { AddOrder, Order } from '../../../core/models/Order';
 import { OrdersService } from '../../../orders/services/orders.service';
-import { ProductCart } from '../../../core/models/Product';
 import { CurrentUserService } from '../../../core/services/current-user.service';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-complete-order-form',
-  imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [ReactiveFormsModule, CommonModule, MatFormFieldModule, MatInputModule, MatButtonModule, TranslatePipe],
   templateUrl: './complete-order-form.component.html',
   styleUrl: './complete-order-form.component.scss'
 })

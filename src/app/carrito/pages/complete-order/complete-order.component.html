@@ -2,17 +2,16 @@
 <section class="section-container">
   <mat-stepper linear #stepper>
     <mat-step [stepControl]="orderFormData">
-      <h1 class="tienda-title">Completar pedido</h1>
-      <h2 class="tienda-subtitle">Aquí puedes completar tu pedido</h2>
+      <h1 class="tienda-title">{{ 'carrito.complete-order.title' | translate }}</h1>
+      <h2 class="tienda-subtitle">{{ 'carrito.complete-order.subtitle' | translate }}</h2>
       <app-complete-order-form
         (completeOrder)="completeOrder($event)"
       ></app-complete-order-form>
     </mat-step>
     <mat-step>
-      <h1 class="tienda-title">Puntos de encuentro</h1>
+      <h1 class="tienda-title">{{ 'carrito.complete-order.meeting-point-step-title' | translate }}</h1>
       <h2 class="tienda-subtitle">
-        Aquí puedes seleccionar el punto de encuentro para tu pedido por cada
-        artesano seleccionado
+        {{ 'carrito.complete-order.meeting-point-step-subtitle' | translate }}
       </h2>
       <app-select-meeting-point [disabledForm]="orderFormData.invalid" (selectedMeetingPoint)="selectedMeetingPoint($event)"></app-select-meeting-point>
       <div class="complete-order-button-container">

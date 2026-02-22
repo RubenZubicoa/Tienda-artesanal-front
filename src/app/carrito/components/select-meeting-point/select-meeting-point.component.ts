@@ -12,10 +12,11 @@ import { SelectMeetingPointDialogComponent } from '../select-meeting-point-dialo
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ManufacturerService } from '../../../manufacturers/services/manufacturer.service';
 import { MatDividerModule } from '@angular/material/divider';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-select-meeting-point',
-  imports: [CommonModule, MatSelectModule, MatIconModule, ReactiveFormsModule, MatDividerModule],
+  imports: [CommonModule, MatSelectModule, MatIconModule, ReactiveFormsModule, MatDividerModule, TranslatePipe],
   templateUrl: './select-meeting-point.component.html',
   styleUrl: './select-meeting-point.component.scss'
 })
