@@ -11,10 +11,11 @@ import { ToastService } from '../../../shared/components/toast/toast.service';
 import { CurrentUserService } from '../../../core/services/current-user.service';
 import { ProductsFiltersComponent } from '../../../products/components/products-filters/products-filters.component';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-products',
-  imports: [CommonModule, BreadcrumbsComponent, CardComponent, ProductsFiltersComponent],
+  imports: [CommonModule, BreadcrumbsComponent, CardComponent, ProductsFiltersComponent, TranslatePipe],
   templateUrl: './my-products.component.html',
   styleUrl: './my-products.component.scss'
 })

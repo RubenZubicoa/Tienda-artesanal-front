@@ -105,5 +105,32 @@
             "title": "Punto de encuentro: ",
             "no-meeting-point": "No se ha seleccionado ningún punto de encuentro"
         }
+    },
+    "my-products": {
+        "title": "Mis productos",
+        "subtitle": "Aquí puedes ver los productos que has agregado a la plataforma, editarlos o eliminarlos",
+        "button-text": "Agregar producto",
+        "edit-product-button": "Editar",
+        "delete-product-button": "Eliminar",
+        "filters": {
+            "name-label": "¿Qué buscas?",
+            "name-placeholder": "Nombre del producto",
+            "price-min-label": "Precio mínimo",
+            "price-min-placeholder": "Precio mínimo",
+            "price-max-label": "Precio máximo",
+            "price-max-placeholder": "Precio máximo"
+        },
+        "add-product-dialog": {
+            "title": "Agregar producto",
+            "name": "Nombre",
+            "price": "Precio",
+            "stock": "Stock",
+            "category": "Categoría",
+            "description": "Descripción",
+            "images": "Imágenes",
+            "select-images": "Seleccionar imágenes",
+            "remove-images": "Eliminar imágenes",
+            "save": "Guardar"
+        }
     }
 }

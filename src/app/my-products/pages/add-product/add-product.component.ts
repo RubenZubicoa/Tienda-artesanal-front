@@ -20,6 +20,7 @@ import { ToastTypes } from '../../../shared/components/toast/toastData';
 import { ProductFormService } from '../../services/product-form.service';
 import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-product',
@@ -33,6 +34,7 @@ import { Router } from '@angular/router';
     MatButtonModule,
     CarruselComponent,
     BreadcrumbsComponent
+    TranslatePipe
   ],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.scss'
