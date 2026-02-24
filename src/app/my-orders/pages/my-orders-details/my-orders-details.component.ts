@@ -11,10 +11,11 @@ import { ManufacturerService } from '../../../manufacturers/services/manufacture
 import { Manufacturer } from '../../../core/models/Manufacturer';
 import { DataSectionComponent } from '../../../shared/components/data-section/data-section.component';
 import { DataSection } from '../../../shared/components/data-section/models';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-orders-details',
-  imports: [CommonModule, BreadcrumbsComponent, OrderMeetingPointComponent, OrderProductListComponent, DataSectionComponent],
+  imports: [CommonModule, BreadcrumbsComponent, OrderMeetingPointComponent, OrderProductListComponent, DataSectionComponent, TranslatePipe],
   templateUrl: './my-orders-details.component.html',
   styleUrl: './my-orders-details.component.scss'
 })
@@ -23,6 +24,7 @@ export class MyOrdersDetailsComponent {
   private readonly meetingPointService = inject(MeetingPointsService);
   private readonly manufacturersService = inject(ManufacturerService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly translate = inject(TranslateService);
 
   public order = input.required<Order>();
   public meetingPoint = signal<MeetingPoint | undefined>(undefined);
@@ -60,9 +62,9 @@ export class MyOrdersDetailsComponent {
 
   mapManufacturerToDataSection(manufacturer: Manufacturer): DataSection {
     return [
-      { label: 'Nombre del artesano', value: manufacturer.name },
-      { label: 'Email del artesano', value: manufacturer.email },
-      { label: 'Teléfono del artesano', value: manufacturer.phone },
+      { label: this.translate.instant('order-details.order-data.manufacturer-name'), value: manufacturer.name },
+      { label: this.translate.instant('order-details.order-data.manufacturer-email'), value: manufacturer.email },
+      { label: this.translate.instant('order-details.order-data.manufacturer-phone'), value: manufacturer.phone },
     ];
   }
 }

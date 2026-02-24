@@ -1,4 +1,5 @@
 {
+
     "home": {
         "title": "Bienvenido a la tienda artesanal más grande de la región",
         "subtitle": "Encuentra los mejores productos artesanales",
@@ -90,7 +91,10 @@
             "name": "Nombre del cliente",
             "date": "Fecha del pedido",
             "phone": "Teléfono del cliente",
-            "email": "Email del cliente"
+            "email": "Email del cliente",
+            "manufacturer-name": "Nombre del artesano",
+            "manufacturer-phone": "Teléfono del artesano",
+            "manufacturer-email": "Email del artesano"
         },
         "order-products": {
             "title": "Productos del pedido",
@@ -221,5 +225,18 @@
             "toast-success-title" : "Pedido completado correctamente",
             "toast-success-message" : "El pedido ha sido completado correctamente"
         }
+    },
+    "my-orders": {
+        "title": "Mis pedidos",
+        "subtitle": "Aquí puedes ver los pedidos que has realizado",
+        "table": {
+            "createdAt-label": "Fecha de creación",
+            "total-label": "Total",
+            "status-label": "Estado"
+        }
+    },
+    "error": {
+        "title": "Error",
+        "message": "Ha ocurrido un error al realizar la solicitud"
     }
 }
