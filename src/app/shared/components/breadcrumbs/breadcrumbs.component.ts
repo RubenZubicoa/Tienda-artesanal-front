@@ -4,6 +4,7 @@ import { Breadcrumb } from './breadcrumb';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -18,6 +19,7 @@ export class BreadcrumbsComponent implements OnInit {
   public breadcrumbs: Breadcrumb[] = [];
   private readonly route: ActivatedRoute = inject(ActivatedRoute)
   private readonly router: Router = inject(Router);
+  private readonly translate = inject(TranslateService);
 
 
   ngOnInit(): void {
@@ -39,8 +41,9 @@ export class BreadcrumbsComponent implements OnInit {
       if (routeConfig && routeConfig.data && routeConfig.data['breadcrumb']) {
         const routeUrl: string = routeConfig.path ? `/${routeConfig.path}` : '';
         const nextUrl = `${url}${routeUrl}`;
+        const label = this.translate.instant(routeConfig.data['breadcrumb']);
         const breadcrumb: Breadcrumb = {
-          label: routeConfig.data['breadcrumb'],
+          label: label,
           url: nextUrl
         };
         breadcrumbs.push(breadcrumb);

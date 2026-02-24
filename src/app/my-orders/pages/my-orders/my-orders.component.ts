@@ -9,10 +9,11 @@ import { CommonModule } from '@angular/common';
 import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
 import { TableComponent } from '../../../shared/components/table/table.component';
 import { MY_ORDERS_COLUMNS } from '../../models/my-orders.columns';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-orders',
-  imports: [CommonModule, BreadcrumbsComponent, TableComponent],
+  imports: [CommonModule, BreadcrumbsComponent, TableComponent, TranslatePipe],
   templateUrl: './my-orders.component.html',
   styleUrl: './my-orders.component.scss'
 })

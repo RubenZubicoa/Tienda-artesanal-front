@@ -28,8 +28,8 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([errorInterceptor, loadingInterceptor])),
     {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
     provideTranslateService({
-      lang: 'es',
-      fallbackLang: 'es',
+      lang: 'eus',
+      fallbackLang: 'eus',
       loader: provideTranslateHttpLoader({
         prefix: '/i18n/',
         suffix: '.json'

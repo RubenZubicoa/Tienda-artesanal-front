@@ -19,7 +19,7 @@ export const routes: Routes = [
     path: 'manufacturers',
     loadChildren: () => import('./manufacturers/manufacturers.routes').then(m => m.manufacturersRoutes),
     data: {
-      breadcrumb: 'Artesanos',
+      breadcrumb: 'sections.artesanos.title',
     },
   },
   {
@@ -27,7 +27,7 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./products/products.routes').then((m) => m.productsRoutes),
     data: {
-      breadcrumb: 'Productos',
+      breadcrumb: 'sections.productos.title',
     },
   },
 
@@ -35,21 +35,21 @@ export const routes: Routes = [
     path: 'carrito',
     loadChildren: () => import('./carrito/carrito.routes').then(m => m.carritoRoutes),
     data: {
-      breadcrumb: 'Carrito de compras',
+      breadcrumb: 'layout.cart',
     },
   },
   {
     path: 'register',
     loadChildren: () => import('./register/register.routes').then(m => m.registerRoutes),
     data: {
-      breadcrumb: 'Registrarse',
+      breadcrumb: 'layout.register',
     },
   },
   {
     path: 'my-products',
     loadChildren: () => import('./my-products/my-products.routes').then(m => m.myProductsRoutes),
     data: {
-      breadcrumb: 'Mis productos',
+      breadcrumb: 'layout.my-products.title',
     },
     canActivate: [manufacturerGuard],
   },
@@ -57,7 +57,7 @@ export const routes: Routes = [
     path: 'orders',
     loadChildren: () => import('./orders/orders.routes').then(m => m.ordersRoutes),
     data: {
-      breadcrumb: 'Pedidos',
+      breadcrumb: 'layout.orders.title',
     },
     canActivate: [manufacturerGuard],
   },
@@ -65,7 +65,7 @@ export const routes: Routes = [
     path: 'my-orders',
     loadChildren: () => import('./my-orders/my-orders.routes').then(m => m.myOrdersRoutes),
     data: {
-      breadcrumb: 'Mis pedidos',
+      breadcrumb: 'layout.my-orders.title',
     },
     canActivate: [userGuard],
   },
@@ -73,7 +73,7 @@ export const routes: Routes = [
     path: 'meeting-points',
     loadChildren: () => import('./meeting-points/meeting-points.routes').then(m => m.meetingPointsRoutes),
     data: {
-      breadcrumb: 'Puntos de encuentro',
+      breadcrumb: 'layout.meeting-points.title',
     },
     canActivate: [manufacturerGuard],
   },

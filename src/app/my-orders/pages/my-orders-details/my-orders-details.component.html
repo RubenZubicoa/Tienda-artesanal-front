@@ -12,7 +12,7 @@
         <app-order-meeting-point [meetingPoint]="meetingPoint()!"></app-order-meeting-point>
       } @else {
         <div class="order-meeting-point-container">
-          <h2 class="tienda-subtitle">No se ha seleccionado ningún punto de encuentro</h2>
+          <h2 class="tienda-subtitle">{{ 'order-details.order-meeting-point.no-meeting-point' | translate }}</h2>
         </div>
       }
       </div>
