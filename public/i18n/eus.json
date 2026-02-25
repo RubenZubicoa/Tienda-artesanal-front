@@ -1,31 +1,242 @@
 {
+
     "home": {
-        "title": "Euskera",
-        "subtitle": "Euskera",
-        "text": "Euskera"
+        "title": "Bienvenido a la tienda artesanal más grande de la región",
+        "subtitle": "Encuentra los mejores productos artesanales",
+        "text": "Aquí podrás encontrar los mejores productos y vendedores artesanales de tu zona."
     },
     "sections": {
         "artesanos": {
-            "title": "Artesanos en euskera",
+            "title": "Artesanos",
             "description": "Encuentra los mejores vendedores de productos artesanales de la region"
         },
         "productos": {
-            "title": "Productos en euskera",
+            "title": "Productos",
             "description": "Encuentra los mejores productos artesanales de la region"
         }
     },
     "layout": {
         "location": "Ubicación",
-        "home": "Hasiera",
+        "home": "Inicio",
         "manufacturers": "Artesanos",
         "products": "Productos",
         "cart": "Carrito",
         "orders": "Pedidos",
-        "my-orders": "Mis pedidos",
+        "my-orders": "Mis pedidos", 
         "my-products": "Mis productos",
+        "meeting-points": "Puntos de encuentro",
         "register": "Registrarse",
         "login": "Iniciar sesión",
         "logout": "Cerrar sesión",
         "profile": "Perfil"
+    },
+    "manufacturers": {
+        "title": "Lista de artesanos",
+        "subtitle": "Encuentra los mejores vendedores de productos artesanales cerca de ti",
+        "button-text": "Ver productos"        
+    },
+    "manufacturers-details": {
+        "title": "Lista de productos de ",
+        "button-text": "Ver producto"
+    },
+    "products": {
+        "title": "Lista de productos",
+        "subtitle": "Encuentra los mejores productos artesanales de la region",
+        "button-text": "Ver producto",
+        "filters": {
+            "name-label": "¿Qué buscas?",
+            "name-placeholder": "Nombre del producto",
+            "price-min-label": "Precio mínimo",
+            "price-min-placeholder": "Precio mínimo",
+            "price-max-label": "Precio máximo",
+            "price-max-placeholder": "Precio máximo"
+        }
+    },
+    "product-details": {
+        "title": "Detalles del producto",
+        "subtitle": "Aquí puedes ver los detalles del producto, si te interesa, puedes agregar al carrito y continuar con la compra",
+        "details-subtitle": "Vendido por: ",
+        "price-label": "Precio: ",
+        "quantity-label": "Cantidad",        
+        "button-text": "Agregar al carrito",
+        "toast-success-title": "Producto agregado al carrito",
+        "toast-success-message": "El producto ha sido agregado correctamente"
+    },
+    "orders": {
+        "title": "Pedidos",
+        "subtitle": "Aquí puedes ver los pedidos de los usuarios",
+        "table": {
+            "name-label": "Nombre",
+            "phone-label": "Teléfono",
+            "email-label": "Email",
+            "createdAt-label": "Fecha de creación",
+            "total-label": "Total",
+            "status-label": "Estado",
+            "actions-label": "Acciones"
+        },
+        "filters": {
+            "name": "Nombre del cliente",
+            "phone": "Teléfono del cliente",
+            "email": "Email del cliente",
+            "status": "Estado del pedido"
+        }
+    },
+    "order-details": {
+        "title": "Detalles del pedido",
+        "subtitle": "Aquí puedes ver los detalles del pedido de",
+        "status-completed": "Completado",
+        "status-pending": "Pendiente",
+        "order-data": {
+            "title": "Datos del pedido:",
+            "name": "Nombre del cliente",
+            "date": "Fecha del pedido",
+            "phone": "Teléfono del cliente",
+            "email": "Email del cliente",
+            "manufacturer-name": "Nombre del artesano",
+            "manufacturer-phone": "Teléfono del artesano",
+            "manufacturer-email": "Email del artesano"
+        },
+        "order-products": {
+            "title": "Productos del pedido",
+            "table": {
+                "product-name": "Nombre del producto",
+                "product-quantity": "Cantidad",
+                "product-price": "Precio",
+                "total": "Total"
+            }
+        },
+        "order-meeting-point": {
+            "title": "Punto de encuentro: ",
+            "no-meeting-point": "No se ha seleccionado ningún punto de encuentro"
+        }
+    },
+    "my-products": {
+        "title": "Mis productos",
+        "subtitle": "Aquí puedes ver los productos que has agregado a la plataforma, editarlos o eliminarlos",
+        "button-text": "Agregar producto",
+        "edit-product-button": "Editar",
+        "delete-product-button": "Eliminar",
+        "filters": {
+            "name-label": "¿Qué buscas?",
+            "name-placeholder": "Nombre del producto",
+            "price-min-label": "Precio mínimo",
+            "price-min-placeholder": "Precio mínimo",
+            "price-max-label": "Precio máximo",
+            "price-max-placeholder": "Precio máximo"
+        },
+        "add-product-dialog": {
+            "title": "Agregar producto",
+            "name": "Nombre",
+            "price": "Precio",
+            "stock": "Stock",
+            "category": "Categoría",
+            "description": "Descripción",
+            "images": "Imágenes",
+            "select-images": "Seleccionar imágenes",
+            "remove-images": "Eliminar imágenes",
+            "save": "Guardar"
+        }
+    },
+    "meeting-points": {
+        "title": "Puntos de encuentro",
+        "subtitle": "Aquí puedes ver tus puntos de encuentro para que los usuarios puedan encontrarte físicamente y realizar el pago de sus pedidos.",
+        "button-text": "Agregar punto de encuentro",
+        "table": {
+            "name-label": "Nombre",
+            "description-label": "Descripción",
+            "actions-label": "Acciones"
+        },
+        "add-meeting-point-dialog": {
+            "title": "Agregar punto de encuentro",
+            "name": "Nombre",
+            "description": "Descripción",
+            "save": "Guardar"
+        },
+        "toast-success-title": "Punto de encuentro agregado correctamente",
+        "toast-success-message": "El punto de encuentro ha sido agregado correctamente",
+        "toast-error-title": "Error al agregar punto de encuentro",
+        "toast-error-message": "El punto de encuentro no ha sido agregado, asegurate de seleccionar un punto en el mapa y de rellenar todos los campos.",
+        "confirm-delete-title": "¿Estás seguro de querer eliminar este punto de encuentro?"
+    },
+    "profile": {
+        "title" : "Registro de usuario y artesano",
+        "update-title" : "Actualizar cuenta",
+        "update-subtitle" : "Completa los siguientes campos para actualizar tu cuenta",
+        "create-title" : "Registro de usuario y artesano",
+        "create-subtitle" : "Completa los siguientes campos para crear tu cuenta y si lo deseas, también puedes registrar tu negocio",
+        "user-data" : {
+            "title" : "Datos de usuario",
+            "name" : "Nombre completo",
+            "name-required" : "El nombre es requerido",
+            "phone" : "Teléfono",
+            "phone-required" : "El teléfono es requerido",
+            "email" : "Correo electrónico",
+            "email-required" : "El correo electrónico es requerido",
+            "email-invalid" : "El correo electrónico no es válido",
+            "password" : "Contraseña",
+            "confirm-password" : "Confirmar contraseña",
+            "password-required" : "La contraseña es requerida",
+            "password-minlength" : "La contraseña debe tener al menos 6 caracteres",
+            "password-mismatch" : "Las contraseñas no coinciden",
+            "is-manufacturer" : "¿Eres artesano? Registra tu negocio (opcional)",
+            "manufacturer-data" : "Datos del artesano",
+            "manufacturer-name" : "Nombre del negocio",
+            "manufacturer-name-required" : "El nombre del negocio es requerido",
+            "manufacturer-phone" : "Teléfono del negocio",
+            "manufacturer-address" : "Dirección del negocio",
+            "manufacturer-address-required" : "La dirección del negocio es requerida",
+            "manufacturer-description" : "Descripción del negocio",
+            "change-image" : "Cambiar imagen del negocio",
+            "save" : "Guardar",
+            "cancel" : "Cancelar"
+        }
+    },
+    "carrito": {
+        "title" : "Carrito de compras",
+        "subtitle" : "Aquí puedes ver los productos que has agregado al carrito",
+        "button-text" : "Completar pedido",
+        "button-remove-product" : "Quitar del carrito",
+        "total-price" : "Precio total",
+        "toast-success-title" : "Pedido completado correctamente",
+        "toast-success-message" : "El pedido ha sido completado correctamente",
+        "toast-error-title" : "Error al completar pedido",
+        "toast-error-message" : "El pedido no ha sido completado, asegurate de seleccionar un punto de encuentro y de rellenar todos los campos.",
+        "complete-order" : {
+            "title" : "Completar pedido",
+            "subtitle" : "Aquí puedes completar tu pedido",
+            "name": "Nombre",
+            "email": "Email",
+            "phone": "Teléfono",
+            "next-step-button" : "Siguiente paso",
+            "meeting-point" : "Punto de encuentro",
+            "meeting-point-step-title" : "Puntos de encuentro",
+            "meeting-point-step-subtitle" : "Aquí puedes seleccionar el punto de encuentro para tu pedido por cada artesano seleccionado",
+            "text": "Punto de encuentro de: ",
+            "no-meeting-point" : "No hay puntos de encuentro disponibles para este artesano. Cuando realices el pedido el artesano te contactará para confirmar el punto de encuentro.",
+            "complete-order-button" : "Completar pedido",
+            "select-meeting-point-dialog" : {
+                "title" : "Punto de encuentro de: ",
+                "selected-meeting-point" : "Punto de encuentro seleccionado: ",
+                "text" : "Haz click en los marcadores para seleccionar el punto de encuentro.",
+                "select-meeting-point-button" : "Seleccionar punto de encuentro"
+            },
+            "toast-error-title" : "Error al complear el pedido",
+            "toast-error-message" : "El pedido no ha sido completado, asegurate de seleccionar un punto de encuentro y de rellenar todos los campos.",
+            "toast-success-title" : "Pedido completado correctamente",
+            "toast-success-message" : "El pedido ha sido completado correctamente"
+        }
+    },
+    "my-orders": {
+        "title": "Mis pedidos",
+        "subtitle": "Aquí puedes ver los pedidos que has realizado",
+        "table": {
+            "createdAt-label": "Fecha de creación",
+            "total-label": "Total",
+            "status-label": "Estado"
+        }
+    },
+    "error": {
+        "title": "Error",
+        "message": "Ha ocurrido un error al realizar la solicitud"
     }
 }
