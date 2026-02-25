@@ -23,3 +23,11 @@
     padding: 10px;
     box-sizing: border-box;
 }
+
+@media screen and (width < 768px) {
+    .my-products-header-container{
+        flex-direction: column;
+        gap: 10px;
+        padding: 0px;
+    }
+}

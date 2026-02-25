@@ -1,27 +1,28 @@
-import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { Component, DestroyRef, inject, input, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ReactiveFormsModule } from '@angular/forms';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
-import { EnumsService } from '../../../core/services/enums.service';
-import { MatSelectModule } from '@angular/material/select';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ProductFormService } from '../../services/product-form.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { InsertOneResult, UpdateOneResult } from '../../../core/models/InsertOneResult';
+import { Product } from '../../../core/models/Product';
+import { AddProductImage } from '../../../core/models/ProductImage';
+import { CurrentUserService } from '../../../core/services/current-user.service';
+import { EnumsService } from '../../../core/services/enums.service';
+import { ProductImagesService } from '../../../products/services/product-images.service';
 import { ProductsService } from '../../../products/services/products.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { CarruselComponent } from '../../../shared/components/carrusel/carrusel.component';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 import { ToastTypes } from '../../../shared/components/toast/toastData';
-import { CurrentUserService } from '../../../core/services/current-user.service';
-import { AddProduct, Product } from '../../../core/models/Product';
-import { CarruselComponent } from '../../../shared/components/carrusel/carrusel.component';
-import { AddProductImage } from '../../../core/models/ProductImage';
-import { ProductImagesService } from '../../../products/services/product-images.service';
-import { InsertOneResult, UpdateOneResult } from '../../../core/models/InsertOneResult';
+import { ProductFormService } from '../../services/product-form.service';
+import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add-product-dialog',
+  selector: 'app-add-product',
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -30,22 +31,23 @@ import { InsertOneResult, UpdateOneResult } from '../../../core/models/InsertOne
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
-    CarruselComponent
+    CarruselComponent,
+    BreadcrumbsComponent
   ],
-  templateUrl: './add-product-dialog.component.html',
-  styleUrl: './add-product-dialog.component.scss',
+  templateUrl: './add-product.component.html',
+  styleUrl: './add-product.component.scss'
 })
-export class AddProductDialogComponent implements OnInit {
+export class AddProductComponent {
   private readonly enumsService = inject(EnumsService);
   private readonly productFormService = inject(ProductFormService);
   private readonly productsService = inject(ProductsService);
-  private readonly dialogRef = inject(MatDialogRef<AddProductDialogComponent>);
   private readonly toastService = inject(ToastService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly currentUserService = inject(CurrentUserService);
-  private readonly data = inject<{ product: Product }>(MAT_DIALOG_DATA);
   private readonly productImagesService = inject(ProductImagesService);
+  private readonly router = inject(Router);
   
+  public product = input<Product>()
   public productForm = this.productFormService.crearFormulario();
   public categories = this.enumsService.categories;
 
@@ -56,9 +58,10 @@ export class AddProductDialogComponent implements OnInit {
   private readonly MAX_IMAGES = 10;
 
   ngOnInit(): void {
-    if (this.data.product) {
-      this.productFormService.actualizarFormulario(this.productForm, this.data.product);
-      this.images.set(this.data.product.images);
+    const product = this.product();
+    if (product) {
+      this.productFormService.actualizarFormulario(this.productForm, product);
+      this.images.set(product.images);
       this.isUpdateMode.set(true);
       return
     }
@@ -151,7 +154,6 @@ export class AddProductDialogComponent implements OnInit {
       },
       error: () => {
         this.toastService.showMessage(ToastTypes.ERROR, 'Error al agregar producto', 'El producto no ha sido agregado correctamente');
-        this.dialogRef.close( { success: false } );
       }
     });
   }
@@ -160,13 +162,12 @@ export class AddProductDialogComponent implements OnInit {
     const product = this.productFormService.obtenerDatos(this.productForm);
     this.validateManufacturer();
     product.manufacturerId = this.currentUserService.currentUser()?.manufacturerId ?? '';
-    this.productsService.updateProduct(this.data.product?.uuid ?? '', product).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+    this.productsService.updateProduct(this.product()?.uuid ?? '', product).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result: UpdateOneResult) => {
-        this.addProductImages({...product, uuid: this.data.product.uuid});
+        this.addProductImages({...product, uuid: this.product()?.uuid ?? ''});
       },
       error: () => {
         this.toastService.showMessage(ToastTypes.ERROR, 'Error al actualizar producto', 'El producto no ha sido actualizado correctamente');
-        this.dialogRef.close( { success: false } );
       }
     });
   }
@@ -187,7 +188,7 @@ export class AddProductDialogComponent implements OnInit {
     this.productImagesService.addProductImages(addProductImage).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: () => {
         this.toastService.showMessage(ToastTypes.SUCCESS, 'Producto actualizado', 'El producto ha sido actualizado correctamente');
-        this.dialogRef.close( { success: true, product: product } );
+        this.router.navigate(['/my-products']);
       }
     });
   }

@@ -2,17 +2,15 @@ import { Component, computed, DestroyRef, inject, OnInit, signal } from '@angula
 import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../../../shared/components/card/card.component';
-import { PRODUCTS_LIST } from '../../../core/data/products';
 import { Product, ProductFilters } from '../../../core/models/Product';
-import { CardData, mapProductToCardData } from '../../../shared/components/card/card.models';
-import { AddProductDialogComponent } from '../../components/add-product-dialog/add-product-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { mapProductToCardData } from '../../../shared/components/card/card.models';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ProductsService } from '../../../products/services/products.service';
 import { ToastTypes } from '../../../shared/components/toast/toastData';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 import { CurrentUserService } from '../../../core/services/current-user.service';
 import { ProductsFiltersComponent } from '../../../products/components/products-filters/products-filters.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-products',
@@ -22,7 +20,7 @@ import { ProductsFiltersComponent } from '../../../products/components/products-
 })
 export class MyProductsComponent implements OnInit {
 
-  private readonly dialog = inject(MatDialog);
+  private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
   private readonly productsService = inject(ProductsService);
   private readonly toastService = inject(ToastService);
@@ -54,18 +52,11 @@ export class MyProductsComponent implements OnInit {
   }
 
   public openFormDialog(uuid?: Product['uuid']) {
-    const product = uuid ? this.products().find(product => product.uuid === uuid) : undefined;
-    const dialogRef = this.dialog.open(AddProductDialogComponent, {
-      data: {
-        product: product
-      }
-    });
-
-    dialogRef.afterClosed().pipe(takeUntilDestroyed(this.destroyRef)).subscribe((result) => {
-      if (result?.success) {
-        this.getProducts();
-      }
-    });
+    if (uuid) {
+      this.router.navigate(['/my-products', uuid]);
+      return;
+    }
+    this.router.navigate(['/my-products/add-product']);
   }
 
   public removeProduct(uuid: Product['uuid']) {
