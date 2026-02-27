@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { Component, computed, DestroyRef, inject, input, OnInit, signal } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
 import { MeetingPointsFormService } from '../../services/meeting-points-form.service';
@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MapComponent } from '../../../shared/components/map/map.component';
 import { MapMarker } from '../../../shared/components/map/map.models';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AddMeetingPointDB } from '../../../core/models/MeetingPoint';
+import { AddMeetingPointDB, MeetingPoint, UpdateMeetingPointDB } from '../../../core/models/MeetingPoint';
 import { ToastTypes } from '../../../shared/components/toast/toastData';
 import { MeetingPointsService } from '../../services/meeting-points.service';
 import { ToastService } from '../../../shared/components/toast/toast.service';
@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
   templateUrl: './add-meeting-point.component.html',
   styleUrl: './add-meeting-point.component.scss'
 })
-export class AddMeetingPointComponent {
+export class AddMeetingPointComponent implements OnInit {
   private readonly meetingPointsFormService = inject(MeetingPointsFormService);
   private readonly meetingPointsService = inject(MeetingPointsService);
   private readonly toastService = inject(ToastService);
@@ -31,9 +31,25 @@ export class AddMeetingPointComponent {
   private readonly currentUserService = inject(CurrentUserService);
   private readonly router = inject(Router);
 
+
+  public meetingPoint = input<MeetingPoint | undefined>();
+  public isUpdateMode = computed(() => this.meetingPoint() !== undefined);
+
   public form = this.meetingPointsFormService.crearFormulario();
 
   public marker = signal<MapMarker | undefined>(undefined);
+
+  ngOnInit(): void {
+    const meetingPoint = this.meetingPoint();
+    if (meetingPoint) {
+      this.meetingPointsFormService.actualizarFormulario(this.form, meetingPoint);
+      this.marker.set({
+        id: '1',
+        lat: meetingPoint.location.latitude,
+        lng: meetingPoint.location.longitude,
+      });
+    }
+  }
   
   public onMapClick(event: { lat: number, lng: number }): void {
     this.marker.set({
@@ -71,7 +87,11 @@ export class AddMeetingPointComponent {
       },
       manufacturerId: manufacturerId,
     };
+    if (this.isUpdateMode()) {
+      this.updateMeetingPoint(this.meetingPoint()!.uuid, meetingPoint);
+    } else {
       this.createMeetingPoint(meetingPoint);
+    }
   }
 
   private createMeetingPoint(meetingPoint: AddMeetingPointDB): void {
@@ -83,6 +103,15 @@ export class AddMeetingPointComponent {
       error: () => {
         this.toastService.showMessage(ToastTypes.ERROR, this.translate.instant('meeting-points.toast-error-title'), this.translate.instant('meeting-points.toast-error-message'));
       }
+    });
+  }
+
+  private updateMeetingPoint( meetingPointId: MeetingPoint['uuid'], meetingPoint: UpdateMeetingPointDB): void {
+    this.meetingPointsService.updateMeetingPoint(meetingPointId, meetingPoint).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: () => {
+        this.toastService.showMessage(ToastTypes.SUCCESS, this.translate.instant('meeting-points.toast-success-title'), this.translate.instant('meeting-points.toast-success-message'));
+        this.router.navigate(['/meeting-points']);
+      },
     });
   }
 

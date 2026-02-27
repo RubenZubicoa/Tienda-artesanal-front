@@ -20,7 +20,8 @@
     [data]="meetingPoints()"
     [showDetails]="false"
     [showDelete]="true"
-    [showEdit]="false"
+    [showEdit]="true"
+    (editClick)="editMeetingPoint($event)"
     (deleteClick)="deleteMeetingPoint($event)"
   ></app-table>
 </section>

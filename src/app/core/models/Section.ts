@@ -54,11 +54,11 @@ export const MANUFACTURERS_SECTIONS: Section[] = [
     title: 'layout.meeting-points',
     icon: 'location_on',
     route: '/meeting-points',
-  },
-  {
-    title: 'layout.analysis',
-    icon: 'analytics',
-    route: '/analysis',
-    disabled: true,
   }
+  // {
+  //   title: 'layout.analysis',
+  //   icon: 'analytics',
+  //   route: '/analysis',
+  //   disabled: true,
+  // }
 ]
