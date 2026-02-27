@@ -1,242 +1,242 @@
 {
 
     "home": {
-        "title": "Bienvenido a la tienda artesanal más grande de la región",
-        "subtitle": "Encuentra los mejores productos artesanales",
-        "text": "Aquí podrás encontrar los mejores productos y vendedores artesanales de tu zona."
+        "title": "Ongi etorri eskualdeko artisau dendarik handienera",
+        "subtitle": "Aurkitu artisau produktu onenak ",
+        "text": "Hemen zure inguruko artisau produktu eta saltzaile onenak aurkituko dituzu."
     },
     "sections": {
         "artesanos": {
-            "title": "Artesanos",
-            "description": "Encuentra los mejores vendedores de productos artesanales de la region"
+            "title": "Artisauak",
+            "description": "Aurkitu eskualdeko artisau produktu saltzaile onenak"
         },
         "productos": {
-            "title": "Productos",
-            "description": "Encuentra los mejores productos artesanales de la region"
+            "title": "Produktuak",
+            "description": "Aurkitu eskualdeko artisau produktu onenak"
         }
     },
     "layout": {
-        "location": "Ubicación",
-        "home": "Inicio",
-        "manufacturers": "Artesanos",
-        "products": "Productos",
-        "cart": "Carrito",
-        "orders": "Pedidos",
-        "my-orders": "Mis pedidos", 
-        "my-products": "Mis productos",
-        "meeting-points": "Puntos de encuentro",
-        "register": "Registrarse",
-        "login": "Iniciar sesión",
-        "logout": "Cerrar sesión",
-        "profile": "Perfil"
+        "location": "Kokalekua",
+        "home": "Hasiera",
+        "manufacturers": "Artisauak",
+        "products": "Produktuak",
+        "cart": "Poltsa",
+        "orders": "Eskaerak",
+        "my-orders": "Nire eskaerak", 
+        "my-products": "Nire produktuak",
+        "meeting-points": "Elkarguneak",
+        "register": "Erregistratu",
+        "login": "Saioa hasi",
+        "logout": "Saioa amaitu",
+        "profile": "Profila"
     },
     "manufacturers": {
-        "title": "Lista de artesanos",
-        "subtitle": "Encuentra los mejores vendedores de productos artesanales cerca de ti",
-        "button-text": "Ver productos"        
+        "title": "Artisau zerrenda",
+        "subtitle": "Aurkitu artisau produktuen saltzailerik onenak zugandik gertu",
+        "button-text": "Produktuak ikusi"        
     },
     "manufacturers-details": {
-        "title": "Lista de productos de ",
-        "button-text": "Ver producto"
+        "title": "Produktuen zerrenda",
+        "button-text": "Produktua ikusi"
     },
     "products": {
-        "title": "Lista de productos",
-        "subtitle": "Encuentra los mejores productos artesanales de la region",
-        "button-text": "Ver producto",
+        "title": "Produktuen zerrenda",
+        "subtitle": "Eskualdeko artisau produktu onenak aurkitu",
+        "button-text": "Produktua ikusi",
         "filters": {
-            "name-label": "¿Qué buscas?",
-            "name-placeholder": "Nombre del producto",
-            "price-min-label": "Precio mínimo",
-            "price-min-placeholder": "Precio mínimo",
-            "price-max-label": "Precio máximo",
-            "price-max-placeholder": "Precio máximo"
+            "name-label": "Zer bilatu nahi duzu?",
+            "name-placeholder": "Produktuaren izena",
+            "price-min-label": "Gutxienezko prezioa",
+            "price-min-placeholder": "Gutxienezko prezioa",
+            "price-max-label": "Gehienezko prezioa",
+            "price-max-placeholder": "Gehienezko prezioa"
         }
     },
     "product-details": {
-        "title": "Detalles del producto",
-        "subtitle": "Aquí puedes ver los detalles del producto, si te interesa, puedes agregar al carrito y continuar con la compra",
-        "details-subtitle": "Vendido por: ",
-        "price-label": "Precio: ",
-        "quantity-label": "Cantidad",        
-        "button-text": "Agregar al carrito",
-        "toast-success-title": "Producto agregado al carrito",
-        "toast-success-message": "El producto ha sido agregado correctamente"
+        "title": "Produktuaren xehetasunak",
+        "subtitle": "Hemen produktuaren xehetasunak ikus ditzakezu eta, interesatzen bazaizu, poltsara gehitu eta erosketarekin jarrai dezakezu",
+        "details-subtitle": "x-ek saldua: ",
+        "price-label": "Prezioa: ",
+        "quantity-label": "Kopurua",        
+        "button-text": "Poltsara gehitu",
+        "toast-success-title": "Poltsara gehitutako produktua",
+        "toast-success-message": "Produktua ondo gehitu da poltsara"
     },
     "orders": {
-        "title": "Pedidos",
-        "subtitle": "Aquí puedes ver los pedidos de los usuarios",
+        "title": "Eskaerak",
+        "subtitle": "Erabiltzaileen eskaerak hemen ikus ditzakezu",
         "table": {
-            "name-label": "Nombre",
-            "phone-label": "Teléfono",
-            "email-label": "Email",
-            "createdAt-label": "Fecha de creación",
-            "total-label": "Total",
-            "status-label": "Estado",
-            "actions-label": "Acciones"
+            "name-label": "Izena",
+            "phone-label": "Telefono zenbakia",
+            "email-label": "Emaila",
+            "createdAt-label": "Sortze-data",
+            "total-label": "Guztira",
+            "status-label": "Egoera",
+            "actions-label": "Ekintzak"
         },
         "filters": {
-            "name": "Nombre del cliente",
-            "phone": "Teléfono del cliente",
-            "email": "Email del cliente",
-            "status": "Estado del pedido"
+            "name": "Bezeroaren izena",
+            "phone": "Bezeroaren telefono zenbakia",
+            "email": "Bezeroaren emaila",
+            "status": "Eskaeraren egoera"
         }
     },
     "order-details": {
-        "title": "Detalles del pedido",
-        "subtitle": "Aquí puedes ver los detalles del pedido de",
-        "status-completed": "Completado",
-        "status-pending": "Pendiente",
+        "title": "Eskaeraren xehetasunak",
+        "subtitle": "hemen x eskaeraren xehetasunak ikus ditzakezu",
+        "status-completed": "Beteta",
+        "status-pending": "Ziurtatzeke",
         "order-data": {
-            "title": "Datos del pedido:",
-            "name": "Nombre del cliente",
-            "date": "Fecha del pedido",
-            "phone": "Teléfono del cliente",
-            "email": "Email del cliente",
-            "manufacturer-name": "Nombre del artesano",
-            "manufacturer-phone": "Teléfono del artesano",
-            "manufacturer-email": "Email del artesano"
+            "title": "Eskaeraren datuak:",
+            "name": "Bezeroaren izena",
+            "date": "Eskaera-data",
+            "phone": "Bezeroaren telefono zenbakia",
+            "email": "Bezeroaren emaila",
+            "manufacturer-name": "Artisauaren izena",
+            "manufacturer-phone": "Artisauaren telefono zenbakia",
+            "manufacturer-email": "Artisauaren emaila"
         },
         "order-products": {
-            "title": "Productos del pedido",
+            "title": "Eskaerako produktuak",
             "table": {
-                "product-name": "Nombre del producto",
-                "product-quantity": "Cantidad",
-                "product-price": "Precio",
-                "total": "Total"
+                "product-name": "Produkuaren izena",
+                "product-quantity": "Kopurua",
+                "product-price": "Prezioa",
+                "total": "Guztira"
             }
         },
         "order-meeting-point": {
-            "title": "Punto de encuentro: ",
-            "no-meeting-point": "No se ha seleccionado ningún punto de encuentro"
+            "title": "Elkargunea: ",
+            "no-meeting-point": "Ez da elkargunerik aukeratu"
         }
     },
     "my-products": {
-        "title": "Mis productos",
-        "subtitle": "Aquí puedes ver los productos que has agregado a la plataforma, editarlos o eliminarlos",
-        "button-text": "Agregar producto",
-        "edit-product-button": "Editar",
-        "delete-product-button": "Eliminar",
+        "title": "Nire produktuak",
+        "subtitle": "Hemen plataformara gehitu dituzun produktuak ikus ditzakezu, baita aldatu edo kendu ere",
+        "button-text": "Produktua gehitu",
+        "edit-product-button": "Aldatu",
+        "delete-product-button": "Kendu",
         "filters": {
-            "name-label": "¿Qué buscas?",
-            "name-placeholder": "Nombre del producto",
-            "price-min-label": "Precio mínimo",
-            "price-min-placeholder": "Precio mínimo",
-            "price-max-label": "Precio máximo",
-            "price-max-placeholder": "Precio máximo"
+            "name-label": "Zer bilatu nahi duzu?",
+            "name-placeholder": "Produktuaren izena",
+            "price-min-label": "Gutxienezko prezioa",
+            "price-min-placeholder": "Gutxienezko prezioa",
+            "price-max-label": "Gehienezko prezioa",
+            "price-max-placeholder": "Gehienezko prezioa"
         },
         "add-product-dialog": {
-            "title": "Agregar producto",
-            "name": "Nombre",
-            "price": "Precio",
-            "stock": "Stock",
-            "category": "Categoría",
-            "description": "Descripción",
-            "images": "Imágenes",
-            "select-images": "Seleccionar imágenes",
-            "remove-images": "Eliminar imágenes",
-            "save": "Guardar"
+            "title": "Produktua gehitu",
+            "name": "Izena",
+            "price": "Prezioa",
+            "stock": "Stocka",
+            "category": "Kategoria",
+            "description": "Deskribapena",
+            "images": "Irudiak",
+            "select-images": "Irudiak aukeratu",
+            "remove-images": "Irudiak ezabatu",
+            "save": "Gorde"
         }
     },
     "meeting-points": {
-        "title": "Puntos de encuentro",
-        "subtitle": "Aquí puedes ver tus puntos de encuentro para que los usuarios puedan encontrarte físicamente y realizar el pago de sus pedidos.",
-        "button-text": "Agregar punto de encuentro",
+        "title": "Elkarguneak",
+        "subtitle": "Hemen erabiltzaileekin aurrez aurre egoteko eta eskaerak ordaintzeko zure elkarguneak ikus ditzakezu.",
+        "button-text": "Elkargunea gehitu",
         "table": {
-            "name-label": "Nombre",
-            "description-label": "Descripción",
-            "actions-label": "Acciones"
+            "name-label": "Izena",
+            "description-label": "Deskribapena",
+            "actions-label": "Ekintzak"
         },
         "add-meeting-point-dialog": {
-            "title": "Agregar punto de encuentro",
-            "name": "Nombre",
-            "description": "Descripción",
-            "save": "Guardar"
+            "title": "Elkargunea gehitu",
+            "name": "Izena",
+            "description": "Deskribapena",
+            "save": "Gorde"
         },
-        "toast-success-title": "Punto de encuentro agregado correctamente",
-        "toast-success-message": "El punto de encuentro ha sido agregado correctamente",
-        "toast-error-title": "Error al agregar punto de encuentro",
-        "toast-error-message": "El punto de encuentro no ha sido agregado, asegurate de seleccionar un punto en el mapa y de rellenar todos los campos.",
-        "confirm-delete-title": "¿Estás seguro de querer eliminar este punto de encuentro?"
+        "toast-success-title": "Elkargunea ondo gehituta",
+        "toast-success-message": "Elkargunea ondo gehitu da",
+        "toast-error-title": "Arazoa elkargunea gehitzean",
+        "toast-error-message": "Elkargunea ez da gehitu, ziurtatu mapan puntu bat aukeratu duzula eta atal guztiak bete dituzula.",
+        "confirm-delete-title": "Ziur zaude elkargune hau ezabatu nahi duzula?"
     },
     "profile": {
-        "title" : "Registro de usuario y artesano",
-        "update-title" : "Actualizar cuenta",
-        "update-subtitle" : "Completa los siguientes campos para actualizar tu cuenta",
-        "create-title" : "Registro de usuario y artesano",
-        "create-subtitle" : "Completa los siguientes campos para crear tu cuenta y si lo deseas, también puedes registrar tu negocio",
+        "title" : "Erabiltzailearen eta artisauaren erregistroa",
+        "update-title" : "Kontua eguneratu",
+        "update-subtitle" : "Bete hurrengo atalak kontua eguneratzeko",
+        "create-title" : "Erabiltzailearen eta artisauaren erregistroa",
+        "create-subtitle" : "Bete hurrengo atalak zure kontua sortzeko eta, nahi baduzu, zure negozioa ere erregistratu dezakezu",
         "user-data" : {
-            "title" : "Datos de usuario",
-            "name" : "Nombre completo",
-            "name-required" : "El nombre es requerido",
-            "phone" : "Teléfono",
-            "phone-required" : "El teléfono es requerido",
-            "email" : "Correo electrónico",
-            "email-required" : "El correo electrónico es requerido",
-            "email-invalid" : "El correo electrónico no es válido",
-            "password" : "Contraseña",
-            "confirm-password" : "Confirmar contraseña",
-            "password-required" : "La contraseña es requerida",
-            "password-minlength" : "La contraseña debe tener al menos 6 caracteres",
-            "password-mismatch" : "Las contraseñas no coinciden",
-            "is-manufacturer" : "¿Eres artesano? Registra tu negocio (opcional)",
-            "manufacturer-data" : "Datos del artesano",
-            "manufacturer-name" : "Nombre del negocio",
-            "manufacturer-name-required" : "El nombre del negocio es requerido",
-            "manufacturer-phone" : "Teléfono del negocio",
-            "manufacturer-address" : "Dirección del negocio",
-            "manufacturer-address-required" : "La dirección del negocio es requerida",
-            "manufacturer-description" : "Descripción del negocio",
-            "change-image" : "Cambiar imagen del negocio",
-            "save" : "Guardar",
-            "cancel" : "Cancelar"
+            "title" : "Erabiltzailearen datuak",
+            "name" : "Izen osoa",
+            "name-required" : "Izena beharrezkoa da",
+            "phone" : "Telefono zenbakia",
+            "phone-required" : "Telefono zenbakia beharrezkoa da",
+            "email" : "Korreo elektronikoa",
+            "email-required" : "Korreo elektronikoa beharrezkoa da",
+            "email-invalid" : "Korreo elektronikoa ez da egokia",
+            "password" : "Pasahitza",
+            "confirm-password" : "Pasahitza errepikatu",
+            "password-required" : "Pasahitza beharrezkoa da",
+            "password-minlength" : "Pasahitzak 6 karaktere izan behar ditu gutxienez",
+            "password-mismatch" : "Pasahitzak ez datoz bat",
+            "is-manufacturer" : "Artisaua zara? Erregistratu zure negozioa (aukerakoa)",
+            "manufacturer-data" : "Artisauaren datuak",
+            "manufacturer-name" : "Negozioaren izena",
+            "manufacturer-name-required" : "Negozioaren izena beharrezkoa da",
+            "manufacturer-phone" : "Negozioaren telefono zenbakia",
+            "manufacturer-address" : "Negozioaren helbidea",
+            "manufacturer-address-required" : "Negozioaren helbidea beharrezkoa da",
+            "manufacturer-description" : "Negozioaren deskribapena",
+            "change-image" : "Negozioaren irudia aldatu",
+            "save" : "Gorde",
+            "cancel" : "Kendu"
         }
     },
     "carrito": {
-        "title" : "Carrito de compras",
-        "subtitle" : "Aquí puedes ver los productos que has agregado al carrito",
-        "button-text" : "Completar pedido",
-        "button-remove-product" : "Quitar del carrito",
-        "total-price" : "Precio total",
-        "toast-success-title" : "Pedido completado correctamente",
-        "toast-success-message" : "El pedido ha sido completado correctamente",
-        "toast-error-title" : "Error al completar pedido",
-        "toast-error-message" : "El pedido no ha sido completado, asegurate de seleccionar un punto de encuentro y de rellenar todos los campos.",
+        "title" : "Erosketa poltsa",
+        "subtitle" : "Hemen poltsara gehitu dituzun produktuak ikus ditzakezu",
+        "button-text" : "Eskaera osatu",
+        "button-remove-product" : "Poltsatik kendu",
+        "total-price" : "Prezioa guztira",
+        "toast-success-title" : "Ondo osatutako eskaera",
+        "toast-success-message" : "Eskaera ondo osatu da",
+        "toast-error-title" : "Arazoa eskaera osatzean",
+        "toast-error-message" : "Eskaera ez da osatu, ziurtatu mapan puntu bat aukeratu duzula eta atal guztiak bete dituzula.",
         "complete-order" : {
-            "title" : "Completar pedido",
-            "subtitle" : "Aquí puedes completar tu pedido",
-            "name": "Nombre",
-            "email": "Email",
-            "phone": "Teléfono",
-            "next-step-button" : "Siguiente paso",
-            "meeting-point" : "Punto de encuentro",
-            "meeting-point-step-title" : "Puntos de encuentro",
-            "meeting-point-step-subtitle" : "Aquí puedes seleccionar el punto de encuentro para tu pedido por cada artesano seleccionado",
-            "text": "Punto de encuentro de: ",
-            "no-meeting-point" : "No hay puntos de encuentro disponibles para este artesano. Cuando realices el pedido el artesano te contactará para confirmar el punto de encuentro.",
-            "complete-order-button" : "Completar pedido",
+            "title" : "Eskaera osatu",
+            "subtitle" : "Hemen zure eskaera osatu dezakezu",
+            "name": "Izena",
+            "email": "Emaila",
+            "phone": "Telefono zenbakia",
+            "next-step-button" : "Hurrengo pausoa",
+            "meeting-point" : "Elkargunea",
+            "meeting-point-step-title" : "Elkarguneak",
+            "meeting-point-step-subtitle" : "Hemen zure elkargunea aukeratu dezakezu aukeratu duzun artisau bakoitzarekin",
+            "text": "x-en elkargunea: ",
+            "no-meeting-point" : "Ez dago elkargunerik artisau honentzat. Eskaera burutzen duzunean zurekin harremanetan jarriko da elkargunea adosteko.",
+            "complete-order-button" : "Eskaera osatu",
             "select-meeting-point-dialog" : {
-                "title" : "Punto de encuentro de: ",
-                "selected-meeting-point" : "Punto de encuentro seleccionado: ",
-                "text" : "Haz click en los marcadores para seleccionar el punto de encuentro.",
-                "select-meeting-point-button" : "Seleccionar punto de encuentro"
+                "title" : "x-en elkargunea: ",
+                "selected-meeting-point" : "Aukeratutako elkargunea: ",
+                "text" : "Egin klik laster-marketan elkargunea aukeratzeko.",
+                "select-meeting-point-button" : "Elkargunea aukeratu"
             },
-            "toast-error-title" : "Error al complear el pedido",
-            "toast-error-message" : "El pedido no ha sido completado, asegurate de seleccionar un punto de encuentro y de rellenar todos los campos.",
-            "toast-success-title" : "Pedido completado correctamente",
-            "toast-success-message" : "El pedido ha sido completado correctamente"
+            "toast-error-title" : "Arazoa eskaera osatzean",
+            "toast-error-message" : "Eskaera ez da osatu, ziurtatu mapan puntu bat aukeratu duzula eta atal guztiak bete dituzula.",
+            "toast-success-title" : "Ondo osatutako eskaera",
+            "toast-success-message" : "Eskaera ondo osatu da"
         }
     },
     "my-orders": {
-        "title": "Mis pedidos",
-        "subtitle": "Aquí puedes ver los pedidos que has realizado",
+        "title": "Nire eskaerak",
+        "subtitle": "Hemen egin dituzun eskaerak ikus ditzakezu",
         "table": {
-            "createdAt-label": "Fecha de creación",
-            "total-label": "Total",
-            "status-label": "Estado"
+            "createdAt-label": "Sortze-data",
+            "total-label": "Guztira",
+            "status-label": "Egoera"
         }
     },
     "error": {
-        "title": "Error",
-        "message": "Ha ocurrido un error al realizar la solicitud"
+        "title": "Arazoa",
+        "message": "Arazo bat gertatu da eskaera egiterakoan"
     }
 }

@@ -4,6 +4,7 @@ import { HeaderComponent } from './layout/components/header/header.component';
 import { SidenavComponent } from './layout/components/sidenav/sidenav.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { CommonModule } from '@angular/common';
+import { CurrentLanguegeService } from './core/services/current-languege.service';
 
 @Component({
   selector: 'app-root',
@@ -14,4 +15,9 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'Artis';
+  private readonly currentLanguegeService = inject(CurrentLanguegeService);
+
+  constructor() {
+    this.currentLanguegeService.setCurrentLanguege('eus');
+  }
 } 

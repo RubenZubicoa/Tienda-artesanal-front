@@ -4,10 +4,10 @@
  * @returns Promise con las coordenadas { lat: number, lng: number } o null si hay error o el usuario deniega el permiso
  */
 export function getCurrentLocation(options?: PositionOptions): Promise<{ lat: number; lng: number } | null> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     if (!navigator.geolocation) {
       console.error('Geolocalización no está soportada por este navegador');
-      resolve(null);
+      reject(new Error('Geolocalización no está soportada por este navegador'));
       return;
     }
 
@@ -28,7 +28,7 @@ export function getCurrentLocation(options?: PositionOptions): Promise<{ lat: nu
       },
       (error) => {
         console.error('Error al obtener la ubicación:', error.message);
-        resolve(null);
+        reject(new Error('Error al obtener la ubicación, por favor permita el acceso a la ubicación en su navegador o introduce una ubicación manualmente'));
       },
       defaultOptions
     );

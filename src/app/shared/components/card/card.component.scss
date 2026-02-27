@@ -2,7 +2,7 @@
 @use '../../../core/theming/mixins.scss' as mixins;
 
 .card-container {
-  height: auto;
+  height: 450px;
   padding: 20px;
   border-radius: 16px;
   background-color: variables.$surface-color;

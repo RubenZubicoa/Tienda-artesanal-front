@@ -1,56 +1,95 @@
-@use '../../../core/theming/mixins.scss' as mixins;
-@use '../../../core/theming/variables.scss' as variables;
+@use "../../../core/theming/mixins.scss" as mixins;
+@use "../../../core/theming/variables.scss" as variables;
 
 .section-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-    align-items: start;
-    width: 100%;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  height: 100%;
 }
 
-.sections-list {
+.section-header-container {
+    flex: 1;
+    width: 100%;
+}
+
+.section-title-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    justify-content: start;
-    align-items: start;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
+    flex: 1;
+}
 
-    .section {
+
+.sections-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+
+  .section {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    background-color: variables.$light-gray-color;
+    border-radius: 10px;
+    padding: 10px;
+
+    .section-image img {
+      width: 100px;
+      background-color: variables.$light-gray-color;
+      border-radius: 10px;
+      object-fit: cover;
+      aspect-ratio: 1/1;
+    }
+
+    .section-content {
+      flex: 1;
+    }
+
+    @include mixins.hover-effect(variables.$light-gray-color);
+  }
+}
+
+
+.languages-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: end;
+  align-items: center;
+  padding: 10px;
+}
+.language-image {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (width > 768px) {
+    .section-header-container {
         display: flex;
         flex-direction: row;
-        gap: 20px;
         justify-content: space-between;
         align-items: center;
-        width: 100%;
-        height: 120px;
-        background-color: variables.$light-gray-color;
-        border-radius: 10px;
-        padding: 10px;
-
-        .section-image img {
-            width: 100px;
-            background-color: variables.$light-gray-color;
-            border-radius: 10px;
-            object-fit: cover;
-            aspect-ratio: 1/1;
-        }
-
-        .section-content {
-            flex: 1;
-        }
-
-        @include mixins.hover-effect(variables.$light-gray-color);
     }
+  .tienda-text {
+    display: block;
   }
-  
-@media screen and (width > 768px) {
-    .tienda-text {
-        display: block;
-    }
 }

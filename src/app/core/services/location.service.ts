@@ -6,6 +6,9 @@ import { getLocationFromAddress } from '../../shared/utils/geocoder';
 import { MapMarker } from '../../shared/components/map/map.models';
 import { ManufacturerService } from '../../manufacturers/services/manufacturer.service';
 import { Router } from '@angular/router';
+import { LoadingService } from '../../shared/services/loading/loading.service';
+import { ToastService } from '../../shared/components/toast/toast.service';
+import { ToastTypes } from '../../shared/components/toast/toastData';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,9 @@ export class LocationService {
   private _manufacturersLocations = signal<ManufacturerWithLocation[] | undefined>(undefined);
   private _maxDistance = signal<number>(5);
   private manufacturerService = inject(ManufacturerService);
+  private loadingService = inject(LoadingService);
   private router = inject(Router);
+  private toastService = inject(ToastService);
 
   public get location() {
     return this._location.asReadonly();
@@ -47,9 +52,13 @@ export class LocationService {
   }
 
   private getCurrentLocation() {
+    this.startLoading();
     getCurrentLocation().then((location) => {
       this.setLocation(location);
       this.getManufacturers();
+    }).catch((error) => {
+      this.stopLoading();
+      this.toastService.showMessage(ToastTypes.ERROR, 'Error al obtener la ubicación', error.message);
     });
   }
 
@@ -63,7 +72,7 @@ export class LocationService {
     const maxDistance = this._maxDistance();
     const mapLocation = this.location();
     this._manufacturersLocations.set([]);
-    manufacturers.forEach((manufacturer) => {
+    manufacturers.forEach((manufacturer, index, array) => {
       getLocationFromAddress(manufacturer.address ?? '').then((location) => {
         const distance = getDistanceBetweenCoordinates(
           mapLocation ?? { lat: 0, lng: 0 },
@@ -86,7 +95,18 @@ export class LocationService {
             },
           ]);
         }
+        if (index === array.length - 1) {
+          this.stopLoading();
+        }
       });
     });
+  }
+
+  private startLoading() {
+    this.loadingService.startLoading({ id: 'getCurrentLocation', method: 'GET' });
+  }
+
+  private stopLoading() {
+    this.loadingService.stopLoading({ id: 'getCurrentLocation', method: 'GET' });
   }
 }

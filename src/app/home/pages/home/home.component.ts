@@ -2,6 +2,10 @@ import { Component, DestroyRef, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 import { CurrentLanguegeService } from '../../../core/services/current-languege.service';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 interface Section {
   title: string;
@@ -11,7 +15,7 @@ interface Section {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterModule, TranslatePipe],
+  imports: [RouterModule, TranslatePipe, MatButtonToggleModule, MatIconModule, MatButtonModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

@@ -1,13 +1,16 @@
 <div class="section-container">
-    <span class="tienda-title">{{ 'home.title' | translate }}</span>
-    <span class="tienda-subtitle">{{ 'home.subtitle' | translate }}</span>
+    <div class="section-header-container">
+        <div class="section-title-container">
+            <span class="tienda-title">{{ 'home.title' | translate }}</span>
+            <span class="tienda-subtitle">{{ 'home.subtitle' | translate }}</span>
+        </div>
+        <ng-container *ngTemplateOutlet="buttonToggleGroup"></ng-container>
+    </div>
+
 
     <p class="tienda-text">
         {{ 'home.text' | translate }}
     </p>
-
-    <!-- <button (click)="currentLanguegeService.setCurrentLanguege('es')">Cambiar a español</button>
-    <button (click)="currentLanguegeService.setCurrentLanguege('eus')">Cambiar a euskera</button> -->
 
     <div class="sections-list">
         @for (section of sections; track section.title) {
@@ -23,3 +26,10 @@
         }
     </div>
 </div>
+
+<ng-template #buttonToggleGroup>
+    <div class="languages-container">
+      <img class="language-image" src="/assets/images/eus.png" alt="Euskera" (click)="currentLanguegeService.setCurrentLanguege('eus')" />
+      <img class="language-image" src="/assets/images/es.png" alt="Español" (click)="currentLanguegeService.setCurrentLanguege('es')" />
+    </div>
+  </ng-template>
