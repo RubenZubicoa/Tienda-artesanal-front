@@ -1,0 +1,30 @@
+<app-breadcrumbs></app-breadcrumbs>
+<div class="section-container">
+      <h1 class="tienda-title">{{ 'my-products.add-product-dialog.title' | translate }}</h1>
+      <h2 class="tienda-subtitle">{{ 'my-products.add-product-dialog.subtitle' | translate }}</h2>
+      <div class="add-meeting-point-form-container">
+        <ng-container *ngTemplateOutlet="formTemplate; context: { form: form }"></ng-container>
+      </div>
+      <div class="row">
+          <button class="tienda-primary-button" (click)="saveMeetingPoint()">
+              {{ 'my-products.add-product-dialog.save' | translate }}
+            </button>
+      </div>
+  </div>
+  
+  <ng-template #formTemplate let-form="form" >
+    <div class="meeting-point-form-dialog-container-form">
+        <mat-form-field appearance="outline" class="form-control tienda-f-width">
+            <mat-label>{{ 'meeting-points.add-meeting-point-dialog.name' | translate }}</mat-label>
+            <input matInput type="text" [formControl]="form.controls.name"/>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-control tienda-f-width">
+            <mat-label>{{ 'meeting-points.add-meeting-point-dialog.description' | translate }}</mat-label>
+            <input matInput type="text" [formControl]="form.controls.description"/>
+        </mat-form-field>
+    </div>
+
+    <div class="map-container">
+        <app-map [markers]="marker() ? [marker()!] : []" [zoom]="16" [height]="'50vh'" (mapClick)="onMapClick($event)"></app-map>
+    </div>
+  </ng-template>

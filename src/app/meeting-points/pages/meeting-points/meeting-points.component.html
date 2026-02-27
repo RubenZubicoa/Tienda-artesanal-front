@@ -10,7 +10,7 @@
     <button
       mat-raised-button
       class="tienda-primary-button"
-      (click)="openMeetingPointFormDialog()"
+      (click)="createMeetingPoint()"
     >
       {{ 'meeting-points.button-text' | translate }}
     </button>
@@ -20,9 +20,7 @@
     [data]="meetingPoints()"
     [showDetails]="false"
     [showDelete]="true"
-    [showEdit]="true"
-    (detailsClick)="openMeetingPointDetailsDialog($event)"
+    [showEdit]="false"
     (deleteClick)="deleteMeetingPoint($event)"
-    (editClick)="openMeetingPointFormDialog($event)"
   ></app-table>
 </section>

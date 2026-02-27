@@ -13,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MeetingPointFormDialogComponent } from '../../components/meeting-point-form-dialog/meeting-point-form-dialog.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslatePipe } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-meeting-points',
@@ -24,7 +25,7 @@ export class MeetingPointsComponent implements OnInit {
   private readonly meetingPointsService = inject(MeetingPointsService);
   private readonly currentUserService = inject(CurrentUserService);
   private readonly toastService = inject(ToastService);
-  private readonly dialog = inject(MatDialog);
+  private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
 
   public readonly columns = MEETING_POINTS_COLUMNS;
@@ -39,25 +40,8 @@ export class MeetingPointsComponent implements OnInit {
     }
   }
 
-  public openMeetingPointDetailsDialog(meetingPoint: MeetingPoint) {
-    this.dialog.open(MeetingPointDetailsDialogComponent, {
-      data: { meetingPoint },
-      width: '80vw',
-      height: '90vh',
-    });
-  }
-
-  public openMeetingPointFormDialog(meetingPoint?: MeetingPoint) {
-    const dialogRef = this.dialog.open(MeetingPointFormDialogComponent, {
-      data: { meetingPoint },
-      width: '80vw',
-      height: '90vh',
-    });
-    dialogRef.afterClosed().pipe(takeUntilDestroyed(this.destroyRef)).subscribe((result) => {
-      if (result) {
-        this.getMeetingPoints(this.filters());
-      }
-    });
+  public createMeetingPoint() {
+    this.router.navigate(['/meeting-points/add-meeting-point']);
   }
 
   public deleteMeetingPoint(meetingPoint: MeetingPoint) {
