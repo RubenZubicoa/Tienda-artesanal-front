@@ -19,7 +19,7 @@ export const routes: Routes = [
     path: 'manufacturers',
     loadChildren: () => import('./manufacturers/manufacturers.routes').then(m => m.manufacturersRoutes),
     data: {
-      breadcrumb: 'sections.artesanos.title',
+      breadcrumb: 'layout.manufacturers',
     },
   },
   {
@@ -27,7 +27,7 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./products/products.routes').then((m) => m.productsRoutes),
     data: {
-      breadcrumb: 'sections.productos.title',
+      breadcrumb: 'layout.products',
     },
   },
 
@@ -49,7 +49,7 @@ export const routes: Routes = [
     path: 'my-products',
     loadChildren: () => import('./my-products/my-products.routes').then(m => m.myProductsRoutes),
     data: {
-      breadcrumb: 'layout.my-products.title',
+      breadcrumb: 'layout.my-products',
     },
     canActivate: [manufacturerGuard],
   },
@@ -57,7 +57,7 @@ export const routes: Routes = [
     path: 'orders',
     loadChildren: () => import('./orders/orders.routes').then(m => m.ordersRoutes),
     data: {
-      breadcrumb: 'layout.orders.title',
+      breadcrumb: 'layout.orders',
     },
     canActivate: [manufacturerGuard],
   },
@@ -65,7 +65,7 @@ export const routes: Routes = [
     path: 'my-orders',
     loadChildren: () => import('./my-orders/my-orders.routes').then(m => m.myOrdersRoutes),
     data: {
-      breadcrumb: 'layout.my-orders.title',
+      breadcrumb: 'layout.my-orders',
     },
     canActivate: [userGuard],
   },
@@ -73,7 +73,7 @@ export const routes: Routes = [
     path: 'meeting-points',
     loadChildren: () => import('./meeting-points/meeting-points.routes').then(m => m.meetingPointsRoutes),
     data: {
-      breadcrumb: 'layout.meeting-points.title',
+      breadcrumb: 'layout.meeting-points',
     },
     canActivate: [manufacturerGuard],
   },

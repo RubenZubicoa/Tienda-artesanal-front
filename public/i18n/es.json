@@ -126,6 +126,7 @@
         },
         "add-product-dialog": {
             "title": "Agregar producto",
+            "subtitle": "Aquí puedes agregar un nuevo producto a la plataforma",
             "name": "Nombre",
             "price": "Precio",
             "stock": "Stock",

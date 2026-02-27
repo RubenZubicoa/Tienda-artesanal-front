@@ -33,7 +33,7 @@ import { TranslatePipe } from '@ngx-translate/core';
     MatIconModule,
     MatButtonModule,
     CarruselComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
     TranslatePipe
   ],
   templateUrl: './add-product.component.html',

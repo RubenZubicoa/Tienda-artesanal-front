@@ -1,17 +1,15 @@
 <app-breadcrumbs></app-breadcrumbs>
 <div class="section-container">
-    <div class="add-product-form">
-      <h1 class="tienda-title">Agregar producto</h1>
-      <h2 class="tienda-subtitle">Aquí puedes agregar un nuevo producto a la plataforma</h2>
+      <h1 class="tienda-title">{{ 'my-products.add-product-dialog.title' | translate }}</h1>
+      <h2 class="tienda-subtitle">{{ 'my-products.add-product-dialog.subtitle' | translate }}</h2>
       <div class="add-product-form-container">
         <ng-container *ngTemplateOutlet="formTemplate; context: { form: productForm }"></ng-container>
-        <div class="row">
-            <button class="tienda-primary-button" (click)="saveChanges()">
-                {{ isUpdateMode() ? 'Actualizar producto' : 'Agregar producto' }}
-              </button>
-        </div>
       </div>
-    </div>
+      <div class="row">
+          <button class="tienda-primary-button" (click)="saveChanges()">
+              {{ 'my-products.add-product-dialog.save' | translate }}
+            </button>
+      </div>
   </div>
   
   <ng-template #imagesTemplate>
@@ -21,19 +19,19 @@
   <ng-template #formTemplate let-form="form">
     <div class="row">
       <mat-form-field appearance="outline" class="form-control">
-        <mat-label>Nombre</mat-label>
-        <input matInput type="text" [formControl]="form.controls.name" />
+        <mat-label>{{ 'my-products.add-product-dialog.name' | translate }}</mat-label>
+        <input matInput type="text" [formControl]="form.controls.name" [placeholder]="'my-products.add-product-dialog.name' | translate" />
       </mat-form-field>
       <mat-form-field appearance="outline" class="form-control">
-        <mat-label>Precio</mat-label>
-        <input matInput type="number" [formControl]="form.controls.price" />
+        <mat-label>{{ 'my-products.add-product-dialog.price' | translate }}</mat-label>
+        <input matInput type="number" [formControl]="form.controls.price" [placeholder]="'my-products.add-product-dialog.price' | translate" />
       </mat-form-field>
         <mat-form-field appearance="outline" class="form-control">
-          <mat-label>Stock</mat-label>
-          <input matInput type="number" [formControl]="form.controls.stock" />
+          <mat-label>{{ 'my-products.add-product-dialog.stock' | translate }}</mat-label>
+          <input matInput type="number" [formControl]="form.controls.stock" [placeholder]="'my-products.add-product-dialog.stock' | translate" />
         </mat-form-field>
       <mat-form-field appearance="outline" class="form-control">
-        <mat-label>Categoría</mat-label>
+        <mat-label>{{ 'my-products.add-product-dialog.category' | translate }}</mat-label>
         <mat-select [formControl]="form.controls.category">
           <mat-option *ngFor="let category of categories()" [value]="category.uuid">{{ category.name }}</mat-option>
         </mat-select>
@@ -41,7 +39,7 @@
     </div>
     <div class="row">
         <mat-form-field appearance="outline" class="textarea-control" style="width: 100%;">
-            <mat-label>Descripción</mat-label>
+            <mat-label>{{ 'my-products.add-product-dialog.description' | translate }}</mat-label>
             <textarea matInput type="text" [formControl]="form.controls.description"></textarea>
           </mat-form-field>
     </div>
@@ -54,11 +52,11 @@
               <label class="file-input-label">
                 <input type="file" accept="image/*" #imageInput (change)="onFileSelected($event)" style="display: none;" />
                 <button type="button" class="tienda-primary-button" (click)="imageInput.click()">
-                  Seleccionar imagen
+                  {{ 'my-products.add-product-dialog.select-images' | translate }}
                 </button>
               </label>
             <button type="button" class="tienda-warning-button" (click)="removeImages()">
-              Eliminar imagenes
+              {{ 'my-products.add-product-dialog.remove-images' | translate }}
             </button>
           </div>
     </div>

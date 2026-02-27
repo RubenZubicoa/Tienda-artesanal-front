@@ -23,7 +23,7 @@ export class ProductFormService implements IServiceForm<AddProduct, ProductForm,
     return new FormGroup<ProductFormContent>({
       name: new FormControl(null, [Validators.required]),
       price: new FormControl(null, [Validators.required]),
-      stock: new FormControl(0, [Validators.required]),
+      stock: new FormControl(null, [Validators.required]),
       category: new FormControl(null, [Validators.required]),
       images: new FormControl([]),
       description: new FormControl(''),
