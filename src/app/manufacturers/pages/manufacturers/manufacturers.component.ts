@@ -61,7 +61,8 @@ export class ManufacturersComponent implements OnInit {
   public readonly views = ManufacturerPageViews;
 
   ngOnInit(): void {
-    if (!this.locationService.location()) {
+    const locations = this.manufacturersLocations();
+    if (!this.locationService.location() || locations === undefined || locations.length === 0) {
       this.locationService.getCurrentLocationAndSearchManufacturers();
     }
   }

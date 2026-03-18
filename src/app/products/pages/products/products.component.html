@@ -11,5 +11,16 @@
         @for (card of cards(); track card.uuid) {
             <app-card [card]="card" [buttonText]="'products.button-text' | translate" [buttonType]="'primary'" (succesButtonClick)="goToProductDetails(card)"></app-card>
         }
+        @let noProductsCondition = productsOfManufacturers() === undefined || productsOfManufacturers()?.length === 0;
+        @if (noProductsCondition) {
+            <ng-container *ngTemplateOutlet="noProducts"></ng-container>
+        }
     </div>
 </section>
+
+<ng-template #noProducts>
+    <div class="no-products-container">
+        <h2 class="tienda-title">{{ 'products.no-products-title' | translate }}</h2>
+        <p class="tienda-text">{{ 'products.no-products-text' | translate }}</p>
+    </div>
+</ng-template>

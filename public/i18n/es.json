@@ -33,7 +33,9 @@
     "manufacturers": {
         "title": "Lista de artesanos",
         "subtitle": "Encuentra los mejores vendedores de productos artesanales cerca de ti",
-        "button-text": "Ver productos"        
+        "button-text": "Ver productos",
+        "no-manufacturers-title": "No hay artesanos disponibles",
+        "no-manufacturers-text": "No hay artesanos disponibles para la ubicación seleccionada"
     },
     "manufacturers-details": {
         "title": "Lista de productos de ",
@@ -50,7 +52,10 @@
             "price-min-placeholder": "Precio mínimo",
             "price-max-label": "Precio máximo",
             "price-max-placeholder": "Precio máximo"
-        }
+        },
+        "no-products-title": "No hay productos disponibles",
+        "no-products-text": "No hay productos disponibles para la ubicación seleccionada",
+        "no-products-button": "Ver artesanos"
     },
     "product-details": {
         "title": "Detalles del producto",

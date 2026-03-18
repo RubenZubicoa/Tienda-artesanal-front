@@ -33,7 +33,9 @@
     "manufacturers": {
         "title": "Artisau zerrenda",
         "subtitle": "Aurkitu artisau produktuen saltzailerik onenak zugandik gertu",
-        "button-text": "Produktuak ikusi"        
+        "button-text": "Produktuak ikusi"        ,
+        "no-manufacturers-title": "Ez dago artisauak eskualdeko",
+        "no-manufacturers-text": "Ez dago artisaurik hautatutako kokapenerako."
     },
     "manufacturers-details": {
         "title": "Produktuen zerrenda",
@@ -50,7 +52,9 @@
             "price-min-placeholder": "Gutxienezko prezioa",
             "price-max-label": "Gehienezko prezioa",
             "price-max-placeholder": "Gehienezko prezioa"
-        }
+        },
+        "no-products-title": "Ez dago produktuak eskualdeko",
+        "no-products-text": "Ez dago produkturik hautatutako kokapenerako."
     },
     "product-details": {
         "title": "Produktuaren xehetasunak",
