@@ -115,7 +115,8 @@
         "subtitle": "Aquí puedes ver los productos que has agregado a la plataforma, editarlos o eliminarlos",
         "button-text": "Agregar producto",
         "edit-product-button": "Editar",
-        "delete-product-button": "Eliminar",
+        "enable-product-button": "Habilitar",
+        "disable-product-button": "Deshabilitar",
         "filters": {
             "name-label": "¿Qué buscas?",
             "name-placeholder": "Nombre del producto",
@@ -135,7 +136,8 @@
             "images": "Imágenes",
             "select-images": "Seleccionar imágenes",
             "remove-images": "Eliminar imágenes",
-            "save": "Guardar"
+            "save": "Guardar",
+            "delete": "Eliminar producto"
         }
     },
     "meeting-points": {

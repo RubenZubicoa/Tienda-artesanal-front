@@ -38,7 +38,7 @@ export class ProductsService {
   }
 
   createProduct(product: AddProduct): Observable<InsertOneResult> {
-    return this.http.post<InsertOneResult>(this.url, product);
+    return this.http.post<InsertOneResult>(this.url, {...product, stock: 1});
   }
 
   updateProduct(uuid: Product['uuid'], product: UpdateProduct): Observable<UpdateOneResult> {

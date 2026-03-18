@@ -2,6 +2,7 @@ import {
   Component,
   computed,
   inject,
+  OnInit,
   signal,
 } from '@angular/core';
 import { CardComponent } from '../../../shared/components/card/card.component';
@@ -37,7 +38,7 @@ import { TranslatePipe } from '@ngx-translate/core';
   templateUrl: './manufacturers.component.html',
   styleUrl: './manufacturers.component.scss',
 })
-export class ManufacturersComponent {
+export class ManufacturersComponent implements OnInit {
   public view = signal<ManufacturerPageViews>(ManufacturerPageViews.LIST);
 
   private readonly router = inject(Router);
@@ -57,6 +58,10 @@ export class ManufacturersComponent {
     () => this.filters().location ?? this.currentLocation()
   );
   public readonly views = ManufacturerPageViews;
+
+  ngOnInit(): void {
+    this.locationService.getManufacturers();
+  }
 
   public goToManufacturersDetails(manufacturerId: string) {
     this.router.navigate(['/manufacturers', manufacturerId]);

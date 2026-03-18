@@ -26,7 +26,7 @@
         }
         @let buttonTemplateRef = buttonTemplate();
         @if (buttonTemplateRef) {
-            <ng-container *ngTemplateOutlet="buttonTemplateRef; context: { uuid: cardData.uuid }"></ng-container>
+            <ng-container *ngTemplateOutlet="buttonTemplateRef; context: { uuid: cardData.uuid, card: cardData }"></ng-container>
         }
         @else {
             <button [class]="buttonType() === 'warning' ? 'tienda-warning-button' : 'tienda-primary-button'" (click)="onClick()" [disabled]="cardData.disabled">{{ buttonText() }}</button>

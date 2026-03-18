@@ -146,6 +146,14 @@ export class AddProductComponent {
     this.imageFiles.set([]);
   }
 
+  public deleteProduct() {
+    const confirm = window.confirm('¿Estás seguro de querer eliminar este producto?');
+    if (!confirm) {
+      return;
+    }
+    this.deleteProductRequest();
+  }
+
   private addProduct() {
     const product = this.productFormService.obtenerDatos(this.productForm);
     this.validateManufacturer();
@@ -164,12 +172,22 @@ export class AddProductComponent {
     const product = this.productFormService.obtenerDatos(this.productForm);
     this.validateManufacturer();
     product.manufacturerId = this.currentUserService.currentUser()?.manufacturerId ?? '';
+    product.stock = this.product()?.stock ?? 1;
     this.productsService.updateProduct(this.product()?.uuid ?? '', product).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
       next: (result: UpdateOneResult) => {
         this.addProductImages({...product, uuid: this.product()?.uuid ?? ''});
       },
       error: () => {
         this.toastService.showMessage(ToastTypes.ERROR, 'Error al actualizar producto', 'El producto no ha sido actualizado correctamente');
+      }
+    });
+  }
+
+  private deleteProductRequest() {
+    this.productsService.deleteProduct(this.product()?.uuid ?? '').pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: () => {
+        this.toastService.showMessage(ToastTypes.SUCCESS, 'Producto eliminado', 'El producto ha sido eliminado correctamente');
+        this.router.navigate(['/my-products']);
       }
     });
   }

@@ -11,12 +11,12 @@
   <mat-menu #menu="matMenu">
     <div class="header-buttons-menu">
       @if (!currentUser()) {
-        <button class="tienda-primary-button" (click)="openMenu()">Iniciar sesión</button>
-        <button class="tienda-primary-button" (click)="navigateToRegister()">Registrarse</button>
+        <button class="tienda-primary-button" (click)="openMenu()">{{ 'layout.login' | translate }}</button>
+        <button class="tienda-primary-button" (click)="navigateToRegister()">{{ 'layout.register' | translate }}</button>
       }@else if (currentUser()) {
-        <button class="tienda-primary-button" (click)="navigateToOrders()">Mis pedidos</button>
-        <button class="tienda-primary-button" (click)="navigateToRegister()">Perfil</button>
-        <button class="tienda-primary-button" (click)="logout()">Cerrar sesión</button>
+        <button class="tienda-primary-button" (click)="navigateToOrders()">{{ 'layout.my-orders' | translate }}</button>
+        <button class="tienda-primary-button" (click)="navigateToRegister()">{{ 'layout.profile' | translate }}</button>
+        <button class="tienda-primary-button" (click)="logout()">{{ 'layout.logout' | translate }}</button>
       }
     </div>
   </mat-menu>

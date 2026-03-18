@@ -6,7 +6,6 @@ import { AddProduct } from '../../core/models/Product';
 type ProductFormContent = {
   name: FormControl<string | null>;
   price: FormControl<number | null>;
-  stock: FormControl<number | null>;
   category: FormControl<string | null>;
   images: FormControl<string[] | null>;
   description: FormControl<string | null>;
@@ -23,7 +22,6 @@ export class ProductFormService implements IServiceForm<AddProduct, ProductForm,
     return new FormGroup<ProductFormContent>({
       name: new FormControl(null, [Validators.required]),
       price: new FormControl(null, [Validators.required]),
-      stock: new FormControl(null, [Validators.required]),
       category: new FormControl(null, [Validators.required]),
       images: new FormControl([]),
       description: new FormControl(''),

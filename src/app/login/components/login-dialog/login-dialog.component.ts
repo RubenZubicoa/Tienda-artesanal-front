@@ -9,10 +9,11 @@ import { CurrentUserService } from '../../../core/services/current-user.service'
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 import { ToastTypes } from '../../../shared/components/toast/toastData';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login-dialog',
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, TranslatePipe],
   templateUrl: './login-dialog.component.html',
   styleUrl: './login-dialog.component.scss'
 })

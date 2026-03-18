@@ -62,7 +62,7 @@ export class LocationService {
     });
   }
 
-  private getManufacturers() {
+  public getManufacturers() {
     this.manufacturerService.getManufacturers().subscribe((manufacturers) => {
       this.getManufacturerLocations(manufacturers);
     });

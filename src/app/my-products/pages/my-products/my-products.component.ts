@@ -60,20 +60,28 @@ export class MyProductsComponent implements OnInit {
     this.router.navigate(['/my-products/add-product']);
   }
 
-  public removeProduct(uuid: Product['uuid']) {
-      this.productsService.deleteProduct(uuid).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
-        next: () => {
-          this.toastService.showMessage(ToastTypes.SUCCESS, 'Producto eliminado', 'El producto ha sido eliminado correctamente');
-          this.getProducts();
-        },
-        error: (error) => {
-          this.toastService.showMessage(ToastTypes.ERROR, 'Error al eliminar producto', 'No se ha podido eliminar el producto');
-        }
-      });
+  public toggleProductStock(uuid: Product['uuid']) {
+    const product = this.products().find(product => product.uuid === uuid);
+    if (!product) {
+      this.toastService.showMessage(ToastTypes.ERROR, 'Error al eliminar producto', 'El producto no existe');
+      return;
+    }
+    this.updateProductStock(uuid, product, product.stock === 0 ? 1 : 0);
   }
 
   public applyFilters(filters: ProductFilters) {
     this.filters.set(filters);
     this.getProducts();
+  }
+
+  private updateProductStock(uuid: Product['uuid'], product: Product, stock: number) {
+    this.productsService.updateProduct(uuid, {...product, stock}).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: () => {
+        this.getProducts();
+      },
+      error: () => {
+        this.toastService.showMessage(ToastTypes.ERROR, 'Error al actualizar producto', 'El producto no ha sido actualizado correctamente');
+      }
+    });
   }
 }

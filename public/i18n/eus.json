@@ -115,7 +115,8 @@
         "subtitle": "Hemen plataformara gehitu dituzun produktuak ikus ditzakezu, baita aldatu edo kendu ere",
         "button-text": "Produktua gehitu",
         "edit-product-button": "Aldatu",
-        "delete-product-button": "Kendu",
+        "enable-product-button": "Gaitu",
+        "disable-product-button": "Desgaitu",
         "filters": {
             "name-label": "Zer bilatu nahi duzu?",
             "name-placeholder": "Produktuaren izena",
@@ -134,7 +135,8 @@
             "images": "Irudiak",
             "select-images": "Irudiak aukeratu",
             "remove-images": "Irudiak ezabatu",
-            "save": "Gorde"
+            "save": "Gorde",
+            "delete": "Produktua ezabatu"
         }
     },
     "meeting-points": {

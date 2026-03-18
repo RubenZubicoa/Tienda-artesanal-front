@@ -28,13 +28,13 @@
   </div>
 </section>
 
-<ng-template #editProductButton let-uuid="uuid">
+<ng-template #editProductButton let-card="card">
   <div class="edit-product-buttons-container">
-    <button mat-raised-button class="tienda-primary-button tienda-f-width" (click)="openFormDialog(uuid)">
+    <button mat-raised-button class="tienda-primary-button tienda-f-width" (click)="openFormDialog(card.uuid)">
       {{ 'my-products.edit-product-button' | translate }}
     </button>
-    <button mat-raised-button class="tienda-warning-button tienda-f-width" (click)="removeProduct(uuid)">
-      {{ 'my-products.delete-product-button' | translate }}
+    <button mat-raised-button class="tienda-warning-button tienda-f-width" (click)="toggleProductStock(card.uuid)">
+      {{ card.disabled ? ('my-products.disable-product-button' | translate) : ('my-products.enable-product-button' | translate) }}
     </button>
   </div>
 </ng-template>

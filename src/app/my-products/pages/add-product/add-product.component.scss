@@ -40,6 +40,11 @@
     gap: 10px;
 }
 
+.delete-button{
+    background-color: #f44336;
+    color: #fff;
+}
+
 @media screen and (width < 768px) {
     .row{
         flex-direction: column;
