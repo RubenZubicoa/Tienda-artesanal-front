@@ -1,4 +1,4 @@
-import { Component, computed, DestroyRef, effect, inject, signal } from '@angular/core';
+import { Component, computed, DestroyRef, effect, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BreadcrumbsComponent } from '../../../shared/components/breadcrumbs/breadcrumbs.component';
 import { CardComponent } from '../../../shared/components/card/card.component';
@@ -17,7 +17,7 @@ import { TranslatePipe } from '@ngx-translate/core';
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
-export class ProductsComponent  {
+export class ProductsComponent implements OnInit {
 
   private readonly productsService = inject(ProductsService);
   private readonly destroyRef = inject(DestroyRef);
@@ -34,6 +34,13 @@ export class ProductsComponent  {
     effect(() => {
       this.getProductsRequest();
     });
+  }
+
+  ngOnInit(): void {
+    const locations = this.manufacturersLocations();
+    if (!this.locationService.location() || locations === undefined || locations.length === 0) {
+      this.locationService.getCurrentLocationAndSearchManufacturers();
+    }
   }
 
   public applyFilters(filters: ProductFilters) {

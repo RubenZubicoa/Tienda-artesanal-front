@@ -10,6 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ToastService } from '../../../shared/components/toast/toast.service';
 import { ToastTypes } from '../../../shared/components/toast/toastData';
 import { TranslatePipe } from '@ngx-translate/core';
+import { TokenService } from '../../../core/services/token.service';
 
 @Component({
   selector: 'app-login-dialog',
@@ -18,6 +19,7 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './login-dialog.component.scss'
 })
 export class LoginDialogComponent {
+  private readonly tokenService = inject(TokenService);
   private readonly loginService = inject(LoginService);
   private readonly loginFormService = inject(LoginFormService);
   private readonly currentUserService = inject(CurrentUserService);
@@ -29,8 +31,9 @@ export class LoginDialogComponent {
   public login() {
     const formData = this.loginFormService.obtenerDatos(this.form);
     this.loginService.login(formData.email, formData.password).subscribe({
-      next: (user) => {
+      next: ({ user, token }) => {
         this.currentUserService.setCurrentUser(user);
+        this.tokenService.setCurrentToken(token);
         this.dialogRef.close(true);
         this.toastService.showMessage(ToastTypes.SUCCESS, 'Inicio de sesión exitoso', 'Has iniciado sesión correctamente');
       },

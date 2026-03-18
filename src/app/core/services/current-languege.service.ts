@@ -14,8 +14,5 @@ export class CurrentLanguegeService {
 
   public setCurrentLanguege(lang: 'es' | 'eus') {
     this.translate.use(lang);
-    console.log(this.currentLanguege);
   }
-
-  constructor() { }
 }

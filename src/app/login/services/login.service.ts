@@ -13,7 +13,11 @@ export class LoginService {
   private readonly http = inject(HttpClient);
   private readonly url = API_CONFIG.BASE_URL + API_CONFIG.LOGIN_URL;
 
-  login(email: string, password: string): Observable<User> {
-    return this.http.post<UserDB>(this.url, { email, password }).pipe(map(mapUserToUser));
+  login(email: string, password: string): Observable<{ user: User, token: string }> {
+    return this.http.post<{ user: UserDB, token: string }>(this.url, { email, password }).pipe(map((res) => ({ user: mapUserToUser(res.user), token: res.token })));
+  }
+
+  verifyToken(token: string): Observable<User> {
+    return this.http.post<UserDB>(this.url + '/verify-token', { token }).pipe(map(mapUserToUser));
   }
 }

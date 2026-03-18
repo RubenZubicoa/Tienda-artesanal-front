@@ -35,10 +35,6 @@ export class LocationService {
     this._location.set(location);
   }
 
-  constructor() {
-    this.getCurrentLocationAndSearchManufacturers();
-  }
-
   public getManufacturersIds(){
     return this._manufacturersLocations()?.map((manufacturer) => manufacturer.uuid) ?? [];
   }
@@ -58,7 +54,7 @@ export class LocationService {
       this.getManufacturers();
     }).catch((error) => {
       this.stopLoading();
-      this.toastService.showMessage(ToastTypes.WARNING, 'No hemos podido obtener tu ubicación', 'Por favor, introduce una ubicación manualmente para poder ver los artesanos cercanos');
+      this.toastService.showMessage(ToastTypes.INFO, 'No hemos podido obtener tu ubicación', 'Por favor, introduce una ubicación manualmente para poder ver los artesanos cercanos');
     });
   }
 

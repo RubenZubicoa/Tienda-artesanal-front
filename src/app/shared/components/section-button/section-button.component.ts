@@ -11,6 +11,7 @@ import { CurrentUserService } from '../../../core/services/current-user.service'
 import { ToastTypes } from '../toast/toastData';
 import { ToastService } from '../toast/toast.service';
 import { TranslatePipe } from '@ngx-translate/core';
+import { TokenService } from '../../../core/services/token.service';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class SectionButtonComponent {
   private readonly currentUserService = inject(CurrentUserService);
   private readonly toastService = inject(ToastService);
   private readonly router = inject(Router);
+  private readonly tokenService = inject(TokenService);
 
   public currentUser = this.currentUserService.currentUser;
 
@@ -39,7 +41,8 @@ export class SectionButtonComponent {
   }
 
   public logout() {
-    this.currentUserService.setCurrentUser(undefined);
+    this.currentUserService.clearCurrentUser();
+    this.tokenService.logout();
     this.toastService.showMessage(ToastTypes.SUCCESS, 'Cierre de sesión exitoso', 'Has cerrado sesión correctamente');
   }
 

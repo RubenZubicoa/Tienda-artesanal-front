@@ -12,6 +12,7 @@ export class CurrentUserService {
   private readonly destroyRef = inject(DestroyRef);
 
   private user = signal<User | undefined>(undefined);
+
   private manufacturer = signal<Manufacturer | undefined>(undefined);
   public isManufacturer = computed(() => this.user()?.manufacturerId !== undefined);
 
@@ -25,20 +26,21 @@ export class CurrentUserService {
 
   public setCurrentUser(user: User | undefined) {
     this.user.set(user);
+    if (user && user.manufacturerId) {
+      this.searchManufacturer(user.manufacturerId);
+    } else {
+      this.manufacturer.set(undefined);
+    }
   }
 
-  constructor() {
-    effect(() => {
-      if (this.user()) {
-        const manufacturerId = this.user()?.manufacturerId;
-        if (manufacturerId) {
-          this.manufacturerService.getManufacturer(manufacturerId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(manufacturer => {
-            this.manufacturer.set(manufacturer);
-          });
-        }
-      }else{
-        this.manufacturer.set(undefined);
-      }
+  public clearCurrentUser() {
+    this.user.set(undefined);
+    this.manufacturer.set(undefined);
+  }
+
+  private searchManufacturer(manufacturerId: string) {
+    this.manufacturerService.getManufacturer(manufacturerId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe(manufacturer => {
+      this.manufacturer.set(manufacturer);
     });
   }
 
