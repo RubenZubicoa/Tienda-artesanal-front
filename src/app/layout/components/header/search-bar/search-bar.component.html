@@ -1,1 +1,2 @@
-<input type="text" class="search-bar-input" placeholder="{{ 'layout.location' | translate }}" #addressInput (keyup.enter)="changeLocation(addressInput.value)" />
+<input type="text" class="search-bar-input" placeholder="{{ 'layout.location' | translate }}"
+    [formControl]="addressFormControl" />
