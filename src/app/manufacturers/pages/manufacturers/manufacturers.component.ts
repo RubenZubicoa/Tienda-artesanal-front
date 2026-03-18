@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   computed,
   inject,
@@ -60,7 +61,9 @@ export class ManufacturersComponent implements OnInit {
   public readonly views = ManufacturerPageViews;
 
   ngOnInit(): void {
-    this.locationService.getManufacturers();
+    if (!this.locationService.location()) {
+      this.locationService.getCurrentLocationAndSearchManufacturers();
+    }
   }
 
   public goToManufacturersDetails(manufacturerId: string) {

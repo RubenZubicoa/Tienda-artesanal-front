@@ -36,7 +36,7 @@ export class LocationService {
   }
 
   constructor() {
-    this.getCurrentLocation();
+    this.getCurrentLocationAndSearchManufacturers();
   }
 
   public getManufacturersIds(){
@@ -51,18 +51,18 @@ export class LocationService {
     });
   }
 
-  private getCurrentLocation() {
+  public getCurrentLocationAndSearchManufacturers() {
     this.startLoading();
     getCurrentLocation().then((location) => {
       this.setLocation(location);
       this.getManufacturers();
     }).catch((error) => {
       this.stopLoading();
-      this.toastService.showMessage(ToastTypes.ERROR, 'Error al obtener la ubicación', error.message);
+      this.toastService.showMessage(ToastTypes.WARNING, 'No hemos podido obtener tu ubicación', 'Por favor, introduce una ubicación manualmente para poder ver los artesanos cercanos');
     });
   }
 
-  public getManufacturers() {
+  private getManufacturers() {
     this.manufacturerService.getManufacturers().subscribe((manufacturers) => {
       this.getManufacturerLocations(manufacturers);
     });
@@ -87,6 +87,7 @@ export class LocationService {
             lng: location?.lng ?? 0,
             isClickable: true,
           };
+          
           this._manufacturersLocations.update((manufacturers) => [
             ...manufacturers!,
             {
