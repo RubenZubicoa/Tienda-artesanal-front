@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
+  effect,
   inject,
   OnInit,
   signal,
@@ -61,10 +62,7 @@ export class ManufacturersComponent implements OnInit {
   public readonly views = ManufacturerPageViews;
 
   ngOnInit(): void {
-    const locations = this.manufacturersLocations();
-    if (!this.locationService.location() || locations === undefined || locations.length === 0) {
-      this.locationService.getCurrentLocationAndSearchManufacturers();
-    }
+    this.locationService.getManufacturersByLocation();
   }
 
   public goToManufacturersDetails(manufacturerId: string) {

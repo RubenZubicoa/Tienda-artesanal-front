@@ -39,6 +39,15 @@ export class LocationService {
     return this._manufacturersLocations()?.map((manufacturer) => manufacturer.uuid) ?? [];
   }
 
+  public getManufacturersByLocation() {
+    const location = this.location();
+    if (location) {
+      this.getManufacturers();
+    }else{
+      this.getCurrentLocationAndSearchManufacturers();
+    }
+  }
+
   public changeLocationAndGetManufacturers(address: string) {
     getLocationFromAddress(address).then((location) => {
       this.setLocation(location);

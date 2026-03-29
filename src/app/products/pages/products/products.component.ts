@@ -37,10 +37,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const locations = this.manufacturersLocations();
-    if (!this.locationService.location() || locations === undefined || locations.length === 0) {
-      this.locationService.getCurrentLocationAndSearchManufacturers();
-    }
+    this.locationService.getManufacturersByLocation();
   }
 
   public applyFilters(filters: ProductFilters) {
