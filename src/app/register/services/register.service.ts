@@ -1,6 +1,6 @@
 import { DestroyRef, inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, forkJoin, Observable, of, switchMap, throwError } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { API_CONFIG } from '../../core/config/api.config';
 import { UpdateUserDB, User, UserDB } from '../../core/models/User';
 import { AddManufacturerDB, Manufacturer, UpdateManufacturerDB } from '../../core/models/Manufacturer';
@@ -22,6 +22,8 @@ export type RegisterData = {
     address: string;
     description?: string;
     image?: string;
+    latitude?: number;
+    longitude?: number;
   };
 }
 
@@ -92,7 +94,9 @@ export class RegisterService {
         email: registerData.manufacturer.email,
         address: registerData.manufacturer.address,
         description: registerData.manufacturer.description,
-        image: registerData.manufacturer.image
+        image: registerData.manufacturer.image,
+        latitude: registerData.manufacturer.latitude,
+        longitude: registerData.manufacturer.longitude,
       };
       this.manufacturerService.createManufacturer(manufacturer).subscribe((rowInserted: InsertOneResult) => {
         if (imageFile) {

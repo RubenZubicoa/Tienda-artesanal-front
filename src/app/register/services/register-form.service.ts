@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { IServiceForm } from '../../core/models/IServiceForm';
+import { getLocationFromAddress } from '../../shared/utils/geocoder';
+import { Location } from '../../core/models/Locations';
 
 export type RegisterFormInput = {
   // Usuario
@@ -42,6 +44,8 @@ export type RegisterForm = FormGroup<RegisterFormContent>;
   providedIn: 'root'
 })
 export class RegisterFormService implements IServiceForm<RegisterFormInput, RegisterForm, RegisterFormInput> {
+
+  public manufacturerLocation: Location | undefined = undefined;
 
   crearFormulario(): RegisterForm {
     const form = new FormGroup<RegisterFormContent>({
@@ -99,6 +103,14 @@ export class RegisterFormService implements IServiceForm<RegisterFormInput, Regi
 
   reset(form: RegisterForm): void {
     form.reset();
+  }
+
+  setManufacturerLocationFromAddress(address: string): void {
+    getLocationFromAddress(address).then(location => {
+      if (location) {
+        this.manufacturerLocation = location;
+      }
+    });
   }
 }
 

@@ -35,7 +35,7 @@ export class LocationService {
     this._location.set(location);
   }
 
-  public getManufacturersIds(){
+  public getManufacturersIds() {
     return this._manufacturersLocations()?.map((manufacturer) => manufacturer.uuid) ?? [];
   }
 
@@ -43,7 +43,7 @@ export class LocationService {
     const location = this.location();
     if (location) {
       this.getManufacturers();
-    }else{
+    } else {
       this.getCurrentLocationAndSearchManufacturers();
     }
   }
@@ -78,33 +78,30 @@ export class LocationService {
     const mapLocation = this.location();
     this._manufacturersLocations.set([]);
     manufacturers.forEach((manufacturer, index, array) => {
-      getLocationFromAddress(manufacturer.address ?? '').then((location) => {
-        const distance = getDistanceBetweenCoordinates(
-          mapLocation ?? { lat: 0, lng: 0 },
-          location ?? { lat: 0, lng: 0 }
-        );
-        if (distance <= maxDistance) {
-          manufacturer.latitude = location?.lat;
-          manufacturer.longitude = location?.lng;
-          const marker: MapMarker = {
-            id: manufacturer.uuid,
-            lat: location?.lat ?? 0,
-            lng: location?.lng ?? 0,
-            isClickable: true,
-          };
-          
-          this._manufacturersLocations.update((manufacturers) => [
-            ...manufacturers!,
-            {
-              ...manufacturer,
-              marker,
-            },
-          ]);
-        }
-        if (index === array.length - 1) {
-          this.stopLoading();
-        }
-      });
+      const manufacturerLocation = { lat: manufacturer.latitude ?? 0, lng: manufacturer.longitude ?? 0 };
+      const distance = getDistanceBetweenCoordinates(
+        mapLocation ?? { lat: 0, lng: 0 },
+        manufacturerLocation
+      );
+      if (distance <= maxDistance) {
+        const marker: MapMarker = {
+          id: manufacturer.uuid,
+          lat: manufacturerLocation.lat,
+          lng: manufacturerLocation.lng,
+          isClickable: true,
+        };
+
+        this._manufacturersLocations.update((manufacturers) => [
+          ...manufacturers!,
+          {
+            ...manufacturer,
+            marker,
+          },
+        ]);
+      }
+      if (index === array.length - 1) {
+        this.stopLoading();
+      }
     });
   }
 

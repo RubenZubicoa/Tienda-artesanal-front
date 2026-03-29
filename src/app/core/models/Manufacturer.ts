@@ -1,4 +1,3 @@
-import { getLocationFromAddress } from "../../shared/utils/geocoder";
 import { MapMarker } from "../../shared/components/map/map.models";
 import { mapMeetingPointToMeetingPoint, MeetingPoint, MeetingPointDB } from "./MeetingPoint";
 
@@ -18,12 +17,13 @@ export type ManufacturerDB = {
     _id?: string;
     name: string;
     address: string;
+    latitude?: number;
+    longitude?: number;
     phone: string;
     email: string;
     description?: string;
     website?: string;
-    image?: string;
-    // meetingPoints?: MeetingPoint[];
+    image?: string;    
     createdAt: number;
     updatedAt?: number;
     isDeleted?: boolean;
@@ -63,6 +63,8 @@ export const mapManufacturerToManufacturer = (manufacturerDB: ManufacturerDB): M
         email: manufacturerDB.email,
         image: manufacturerDB.image,
         address: manufacturerDB.address,
+        latitude: manufacturerDB.latitude,
+        longitude: manufacturerDB.longitude,
         description: manufacturerDB.description,
     }
 }

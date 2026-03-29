@@ -15,7 +15,6 @@ import { CurrentUserService } from '../../../core/services/current-user.service'
 import { Manufacturer } from '../../../core/models/Manufacturer';
 import { User } from '../../../core/models/User';
 import { CarruselComponent } from '../../../shared/components/carrusel/carrusel.component';
-import { InsertOneResult } from '../../../core/models/InsertOneResult';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -57,6 +56,11 @@ export class RegisterComponent {
   }
 
   constructor() {
+    this.form.get('manufacturerAddress')?.valueChanges.subscribe(address => {
+      if (address) {
+        this.registerFormService.setManufacturerLocationFromAddress(address);
+      }
+    });
     effect(() => {
       const user = this.user();
       const manufacturer = this.manufacturer();
@@ -115,7 +119,9 @@ export class RegisterComponent {
         email: formData.email!,
         address: formData.manufacturerAddress!,
         description: formData.manufacturerDescription,
-        image: formData.manufacturerImage
+        image: formData.manufacturerImage,
+        latitude: this.registerFormService.manufacturerLocation?.lat ?? undefined,
+        longitude: this.registerFormService.manufacturerLocation?.lng ?? undefined,
       } : undefined
     };
 
