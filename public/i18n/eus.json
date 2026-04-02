@@ -3,7 +3,8 @@
     "home": {
         "title": "Ongi etorri eskualdeko artisau dendarik handienera",
         "subtitle": "Aurkitu artisau produktu onenak ",
-        "text": "Hemen zure inguruko artisau produktu eta saltzaile onenak aurkituko dituzu."
+        "text": "Hemen zure kokapenetik gertu dauden produktu onenak aurki ditzakezu. Bilatzen ari zarena aurkitzen ez baduzu, zure kokapena alda dezakezu eta beste eremu bateko produktuak bilatu.",
+        "register-text": "Produktu bat duzu edukitzeko, erregistratu artisau gisa eta hasi produktuak saltzen."
     },
     "sections": {
         "artesanos": {

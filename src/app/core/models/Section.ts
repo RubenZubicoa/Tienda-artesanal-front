@@ -5,6 +5,7 @@ export type Section = {
   badge?: number;
   menu?: boolean;
   disabled?: boolean;
+  displayBadge?: boolean;
 };
 
 export const SIDENAV_SECTIONS: Section[] = [
@@ -36,6 +37,7 @@ export const HEADER_SECTIONS: Section[] = [
     title: 'layout.cart',
     icon: 'shopping_cart',
     route: '/carrito',
+    displayBadge: true,
   },
 ]
 

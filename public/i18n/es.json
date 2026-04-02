@@ -3,7 +3,8 @@
     "home": {
         "title": "Bienvenido a la tienda artesanal más grande de la región",
         "subtitle": "Encuentra los mejores productos artesanales",
-        "text": "Aquí podrás encontrar los mejores productos y vendedores artesanales de tu zona."
+        "text": "Aquí podrás encontrar los mejores productos y que esten cerca de tu ubicación, en caso de que no encuentres lo que buscas, puedes cambiar la ubicación y buscar productos en otra zona.",
+        "register-text": "Si tienes un producto que deseas vender, puedes registrarte como artesano y empezar a vender tus productos."
     },
     "sections": {
         "artesanos": {

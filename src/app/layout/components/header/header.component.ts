@@ -27,12 +27,7 @@ export class HeaderComponent {
   public readonly manufacturerImage = computed(() => this.currentUserService.currentManufacturer()?.image);
   public readonly productsSelected = computed(() => this.carritoService.carrito().length);
   
-  public readonly headerSections = computed(() => HEADER_SECTIONS.map((section) => {
-    if (section.title === 'Carrito') {
-      section.badge = this.productsSelected();
-    }
-    return section;
-  }));
+  public readonly headerSections = HEADER_SECTIONS;
   
   
 

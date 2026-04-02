@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, input } from '@angular/core';
+import { Component, computed, DestroyRef, inject, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -12,6 +12,7 @@ import { ToastTypes } from '../toast/toastData';
 import { ToastService } from '../toast/toast.service';
 import { TranslatePipe } from '@ngx-translate/core';
 import { TokenService } from '../../../core/services/token.service';
+import { CarritoService } from '../../../carrito/services/carrito.service';
 
 
 @Component({
@@ -27,11 +28,15 @@ export class SectionButtonComponent {
   private readonly toastService = inject(ToastService);
   private readonly router = inject(Router);
   private readonly tokenService = inject(TokenService);
+  private readonly carritoService = inject(CarritoService);
 
   public currentUser = this.currentUserService.currentUser;
 
   public section = input.required<Section>();
   public displayMenu = input<boolean>(false);
+  public displayBadge = input<boolean>(false);
+
+  public readonly productsSelected = computed(() => this.carritoService.carrito().length);
 
   public openMenu() {
     this.dialog.open(LoginDialogComponent, {

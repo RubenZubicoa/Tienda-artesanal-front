@@ -5,8 +5,6 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
 import { loadingInterceptor } from './core/interceptors/loading.interceptor';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideTranslateService } from "@ngx-translate/core";
@@ -20,9 +18,9 @@ import { provideTranslateHttpLoader } from "@ngx-translate/http-loader";
  */
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideAnimations(),
-    importProvidersFrom(BrowserModule),
-    importProvidersFrom(BrowserAnimationsModule),
+    // provideAnimations(),
+    // importProvidersFrom(BrowserModule),
+    // importProvidersFrom(BrowserAnimationsModule),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withComponentInputBinding()),
     provideHttpClient(withInterceptors([errorInterceptor, loadingInterceptor])),

@@ -82,6 +82,14 @@
   }
 }
 
+.register-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
 @media screen and (width > 768px) {
     .section-header-container {
         display: flex;

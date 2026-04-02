@@ -12,24 +12,34 @@
         {{ 'home.text' | translate }}
     </p>
 
+    <p class="tienda-text">
+        {{ 'home.register-text' | translate }}
+    </p>
+
+    <div class="register-button">
+        <button class="tienda-primary-button" >{{ 'layout.register' | translate }}</button>
+    </div>
+
     <div class="sections-list">
         @for (section of sections; track section.title) {
-            <div class="section" (click)="navigateToSection(section)">
-                <div class="section-image">
-                    <img [src]="section.image" [alt]="section.title" />
-                </div>
-                <div class="section-content">
-                    <h3 class="tienda-title">{{ section.title | translate }}</h3>
-                    <p class="tienda-text">{{ section.description | translate }}</p>
-                </div>
+        <div class="section" (click)="navigateToSection(section)">
+            <div class="section-image">
+                <img [src]="section.image" [alt]="section.title" />
             </div>
+            <div class="section-content">
+                <h3 class="tienda-title">{{ section.title | translate }}</h3>
+                <p class="tienda-text">{{ section.description | translate }}</p>
+            </div>
+        </div>
         }
     </div>
 </div>
 
 <ng-template #buttonToggleGroup>
     <div class="languages-container">
-      <img class="language-image" src="/assets/images/eus.png" alt="Euskera" (click)="currentLanguegeService.setCurrentLanguege('eus')" />
-      <img class="language-image" src="/assets/images/es.png" alt="Español" (click)="currentLanguegeService.setCurrentLanguege('es')" />
+        <img class="language-image" src="/assets/images/eus.png" alt="Euskera"
+            (click)="currentLanguegeService.setCurrentLanguege('eus')" />
+        <img class="language-image" src="/assets/images/es.png" alt="Español"
+            (click)="currentLanguegeService.setCurrentLanguege('es')" />
     </div>
-  </ng-template>
+</ng-template>

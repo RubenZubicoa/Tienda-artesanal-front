@@ -12,9 +12,9 @@
         <img [src]="manufacturerImage()" class="manufacturer-image" />
       }
     </div>
-    @let sections = headerSections();
+    @let sections = headerSections;
     @for (section of sections; track section.title) {
-      <app-section-button [section]="section" [displayMenu]="section.menu ?? false"></app-section-button>
+      <app-section-button [section]="section" [displayMenu]="section.menu ?? false" [displayBadge]="section.displayBadge ?? false"></app-section-button>
     }
   </div>
 </div>
