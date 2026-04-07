@@ -1,4 +1,4 @@
-import { Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
+import { Component, computed, DestroyRef, effect, inject, input, signal } from '@angular/core';
 import { Manufacturer } from '../../../core/models/Manufacturer';
 import { CardComponent } from '../../../shared/components/card/card.component';
 import { CommonModule } from '@angular/common';
@@ -9,24 +9,41 @@ import { CardData, mapProductToCardData } from '../../../shared/components/card/
 import { ProductsService } from '../../../products/services/products.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslatePipe } from '@ngx-translate/core';
+import { DataSectionComponent } from '../../../shared/components/data-section/data-section.component';
+import { DataSection } from '../../../shared/components/data-section/models';
 
 @Component({
   selector: 'app-manufacturers-details',
-  imports: [CardComponent, CommonModule, BreadcrumbsComponent, TranslatePipe],
+  imports: [CardComponent, CommonModule, BreadcrumbsComponent, TranslatePipe, DataSectionComponent],
   templateUrl: './manufacturers-details.component.html',
   styleUrl: './manufacturers-details.component.scss'
 })
 export class ManufacturersDetailsComponent {
   private readonly productsService = inject(ProductsService);
   private readonly destroyRef = inject(DestroyRef);
- 
+
   public manufacturer = input<Manufacturer>();
   public readonly router = inject(Router);
 
   public products: Product[] = [];
   public cards = signal<CardData[]>([]);
 
-  constructor(){
+  public data = computed<DataSection>(() => [
+    {
+      label: 'Telefono: ',
+      value: this.manufacturer()?.phone ?? ''
+    },
+    {
+      label: 'Pagina web: ',
+      value: 'https://www.azurmendigazta.com/productos.html'
+    },
+    {
+      label: 'instagram: ',
+      value: ''
+    }
+  ]);
+
+  constructor() {
     effect(() => {
       this.productsService.getProductsByManufacturer(this.manufacturer()?.uuid ?? '').pipe(takeUntilDestroyed(this.destroyRef)).subscribe(products => {
         this.products = products;

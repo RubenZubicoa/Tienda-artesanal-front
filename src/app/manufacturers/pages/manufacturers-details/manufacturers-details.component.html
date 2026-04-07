@@ -1,6 +1,9 @@
 <app-breadcrumbs></app-breadcrumbs>
 <div class="section-container">
     <h1 class="tienda-title">{{ 'manufacturers-details.title' | translate }} {{ manufacturer()?.name }}</h1>
+    <div class="data-section-container">
+        <app-data-section [data]="data()"></app-data-section>
+    </div>
     <p class="tienda-text">{{ manufacturer()?.description }}</p>
     <div class="products-list-container">
         @for (card of cards(); track card.uuid) {

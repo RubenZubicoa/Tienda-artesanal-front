@@ -1,4 +1,12 @@
-<div class="data-item">
-  <span class="data-label">{{ data().label }}</span>
-  <span class="data-value">{{ data().value }}</span>
-</div>
+@let dataTemplate = data();
+@if(dataTemplate.value) {
+  <div class="data-item">
+    <span class="data-label">{{ dataTemplate.label }}</span>
+    <span class="data-value">{{ dataTemplate.value }}</span>
+  </div>
+} @else {
+  <div class="data-item">
+    <span class="data-label">{{ dataTemplate.label }}</span>
+    <span class="data-value">No disponible</span>
+  </div>
+}
