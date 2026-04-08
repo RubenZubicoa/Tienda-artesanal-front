@@ -2,7 +2,11 @@
 @if(dataTemplate.value) {
   <div class="data-item">
     <span class="data-label">{{ dataTemplate.label }}</span>
-    <span class="data-value">{{ dataTemplate.value }}</span>
+    @if(dataTemplate.isLink) {
+      <a href="{{ dataTemplate.value }}" target="_blank" class="data-value">{{ dataTemplate.value }}</a>
+    } @else {
+      <span class="data-value">{{ dataTemplate.value }}</span>
+    }
   </div>
 } @else {
   <div class="data-item">

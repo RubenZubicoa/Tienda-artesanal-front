@@ -34,12 +34,17 @@ export class ManufacturersDetailsComponent {
       value: this.manufacturer()?.phone ?? ''
     },
     {
+      label: 'Email: ',
+      value: this.manufacturer()?.email ?? ''
+    },
+    {
       label: 'Pagina web: ',
-      value: 'https://www.azurmendigazta.com/productos.html'
+      value: this.manufacturer()?.website ?? '',
+      isLink: true
     },
     {
       label: 'instagram: ',
-      value: ''
+      value: this.manufacturer()?.socialMedia ?? ''
     }
   ]);
 

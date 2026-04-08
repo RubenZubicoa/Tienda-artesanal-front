@@ -17,6 +17,8 @@ export type RegisterFormInput = {
   manufacturerName?: string;
   manufacturerPhone?: string;
   manufacturerAddress?: string;
+  manufacturerWebsite?: string;
+  manufacturerSocialMedia?: string;
   manufacturerDescription?: string;
   manufacturerImage?: string;
 }
@@ -34,6 +36,8 @@ type RegisterFormContent = {
   manufacturerName: FormControl<string | null>;
   manufacturerPhone: FormControl<string | null>;
   manufacturerAddress: FormControl<string | null>;
+  manufacturerWebsite: FormControl<string | null>;
+  manufacturerSocialMedia: FormControl<string | null>;
   manufacturerDescription: FormControl<string | null>;
   manufacturerImage: FormControl<string | null>;
 };
@@ -60,6 +64,8 @@ export class RegisterFormService implements IServiceForm<RegisterFormInput, Regi
       manufacturerName: new FormControl(null),
       manufacturerPhone: new FormControl(null),
       manufacturerAddress: new FormControl(null),
+      manufacturerWebsite: new FormControl(null),
+      manufacturerSocialMedia: new FormControl(null),
       manufacturerDescription: new FormControl(null),
       manufacturerImage: new FormControl(null),
     });

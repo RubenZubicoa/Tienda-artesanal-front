@@ -194,6 +194,8 @@
             "manufacturer-phone" : "Teléfono del negocio",
             "manufacturer-address" : "Dirección del negocio",
             "manufacturer-address-required" : "La dirección del negocio es requerida",
+            "manufacturer-website" : "Sitio web del negocio",
+            "manufacturer-social-media" : "Instagram del negocio",
             "manufacturer-description" : "Descripción del negocio",
             "change-image" : "Cambiar imagen del negocio",
             "save" : "Guardar",

@@ -20,6 +20,8 @@ export type RegisterData = {
     phone: string;
     email: string;
     address: string;
+    website?: string;
+    socialMedia?: string;
     description?: string;
     image?: string;
     latitude?: number;
@@ -39,6 +41,7 @@ export class RegisterService {
   register(registerData: RegisterData, imageFile?: File) {
     const userData: Partial<UserDB> = {
       name: registerData.name,
+      phone: registerData.phone,
       email: registerData.email,
       password: registerData.password,
     };
@@ -55,9 +58,9 @@ export class RegisterService {
   update(userId: User['uuid'], manufacturerId: Manufacturer['uuid'], registerData: RegisterData, destroyRef: DestroyRef, imageFile?: File, oldImage?: string): void {
     const userData: UpdateUserDB = {
       name: registerData.name,
+      phone: registerData.phone,
       email: registerData.email,
       password: registerData.password,
-      phone: registerData.phone,
     };
     this.updateUser(userId, userData).pipe(
       takeUntilDestroyed(destroyRef),
@@ -70,6 +73,8 @@ export class RegisterService {
             email: manufacturerFormData.email,
             address: manufacturerFormData.address,
             description: manufacturerFormData.description,
+            website: manufacturerFormData.website,
+            socialMedia: manufacturerFormData.socialMedia,
             image: manufacturerFormData.image,
           };
           return this.manufacturerService.updateManufacturer(manufacturerId, manufacturerData);
@@ -93,6 +98,8 @@ export class RegisterService {
         phone: registerData.manufacturer.phone,
         email: registerData.manufacturer.email,
         address: registerData.manufacturer.address,
+        website: registerData.manufacturer.website,
+        socialMedia: registerData.manufacturer.socialMedia,
         description: registerData.manufacturer.description,
         image: registerData.manufacturer.image,
         latitude: registerData.manufacturer.latitude,
@@ -114,6 +121,7 @@ export class RegisterService {
         else {
           this.createUser({
             name: registerData.name,
+            phone: registerData.phone,
             email: registerData.email,
             password: registerData.password,
             manufacturerId: rowInserted.insertedId

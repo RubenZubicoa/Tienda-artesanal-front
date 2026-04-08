@@ -10,6 +10,8 @@ export type Manufacturer  = {
     latitude?: number;
     longitude?: number;
     address?: string;
+    website?: string;
+    socialMedia?: string;
     description?: string;
 }
 
@@ -23,6 +25,7 @@ export type ManufacturerDB = {
     email: string;
     description?: string;
     website?: string;
+    socialMedia?: string;
     image?: string;    
     createdAt: number;
     updatedAt?: number;
@@ -65,6 +68,8 @@ export const mapManufacturerToManufacturer = (manufacturerDB: ManufacturerDB): M
         address: manufacturerDB.address,
         latitude: manufacturerDB.latitude,
         longitude: manufacturerDB.longitude,
+        website: manufacturerDB.website,
+        socialMedia: manufacturerDB.socialMedia,
         description: manufacturerDB.description,
     }
 }

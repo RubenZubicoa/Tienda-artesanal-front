@@ -110,6 +110,18 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="tienda-f-width">
+          <mat-label>{{ 'profile.user-data.manufacturer-website' | translate }}</mat-label>
+          <input matInput type="url" [formControl]="form.controls.manufacturerWebsite"
+            placeholder="{{ 'profile.user-data.manufacturer-website' | translate }}" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="tienda-f-width">
+          <mat-label>{{ 'profile.user-data.manufacturer-social-media' | translate }}</mat-label>
+          <input matInput type="url" [formControl]="form.controls.manufacturerSocialMedia"
+            placeholder="{{ 'profile.user-data.manufacturer-social-media' | translate }}" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="tienda-f-width">
           <mat-label>{{ 'profile.user-data.manufacturer-description' | translate }}</mat-label>
           <textarea matInput [formControl]="form.controls.manufacturerDescription" placeholder="Describe tu negocio"
             rows="4"></textarea>

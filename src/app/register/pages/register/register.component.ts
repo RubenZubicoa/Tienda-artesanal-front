@@ -77,6 +77,8 @@ export class RegisterComponent {
           formInput.manufacturerName = manufacturer.name;
           formInput.manufacturerPhone = manufacturer.phone;
           formInput.manufacturerAddress = manufacturer.address;
+          formInput.manufacturerWebsite = manufacturer.website;
+          formInput.manufacturerSocialMedia = manufacturer.socialMedia;
           formInput.manufacturerDescription = manufacturer.description;
           formInput.manufacturerImage = manufacturer.image;
         }
@@ -118,6 +120,8 @@ export class RegisterComponent {
         phone: formData.manufacturerPhone!,
         email: formData.email!,
         address: formData.manufacturerAddress!,
+        website: formData.manufacturerWebsite,
+        socialMedia: formData.manufacturerSocialMedia,
         description: formData.manufacturerDescription,
         image: formData.manufacturerImage,
         latitude: this.registerFormService.manufacturerLocation?.lat ?? undefined,

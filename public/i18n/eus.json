@@ -192,6 +192,8 @@
             "manufacturer-phone" : "Negozioaren telefono zenbakia",
             "manufacturer-address" : "Negozioaren helbidea",
             "manufacturer-address-required" : "Negozioaren helbidea beharrezkoa da",
+            "manufacturer-website" : "Negozioaren webgunea",
+            "manufacturer-social-media" : "Negozioaren Instagrama",
             "manufacturer-description" : "Negozioaren deskribapena",
             "change-image" : "Negozioaren irudia aldatu",
             "save" : "Gorde",
