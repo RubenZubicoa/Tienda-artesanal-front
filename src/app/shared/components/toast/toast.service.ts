@@ -9,7 +9,7 @@ import { ToastComponent } from './toast.component';
 export class ToastService {
   private readonly snackBar = inject(MatSnackBar);
 
-  showMessage(type: ToastTypes, title: string, message: string, details?: string, duration = 5000) {
+  showMessage(type: ToastTypes, title: string, message: string, details?: string, duration = 2000) {
     this.snackBar.openFromComponent<ToastComponent, ToastData>(ToastComponent, {
       data: { title, message, type, details },
       duration: duration, 
