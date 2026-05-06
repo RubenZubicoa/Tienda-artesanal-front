@@ -5,11 +5,7 @@ import { CompleteOrderFormService, ICompleteOrderForm } from '../../services/com
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ToastService } from '../../../shared/components/toast/toast.service';
-import { CarritoService } from '../../services/carrito.service';
-import { OrdersService } from '../../../orders/services/orders.service';
 import { CurrentUserService } from '../../../core/services/current-user.service';
-import { Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -21,11 +17,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 export class CompleteOrderFormComponent implements OnInit {
 
   private readonly completeOrderFormService = inject(CompleteOrderFormService);
-  private readonly toasterService = inject(ToastService);
-  private readonly carritoService = inject(CarritoService);
-  private readonly ordersService = inject(OrdersService);
   private readonly currentUserService = inject(CurrentUserService);
-  private readonly router = inject(Router);
 
   public completeOrder = output<ICompleteOrderForm>();
 
@@ -39,7 +31,6 @@ export class CompleteOrderFormComponent implements OnInit {
         email: currentUser.email,
         phone: currentUser.phone,
       });
-      this.form.disable();
     }
   }
 
