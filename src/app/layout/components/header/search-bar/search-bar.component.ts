@@ -15,24 +15,6 @@ import { debounceTime } from 'rxjs';
   styleUrl: './search-bar.component.scss'
 })
 export class SearchBarComponent {
-  private readonly locationService = inject(LocationService);
-  private readonly destroyRef = inject(DestroyRef);
-
   public addressFormControl = new FormControl('');
-
-  constructor() {
-    this.addressFormControl.valueChanges.pipe(debounceTime(600), takeUntilDestroyed(this.destroyRef)).subscribe((value) => {
-      if (value) {
-        this.changeLocation(value);
-      }
-    });
-  }
-
-
-  public changeLocation(address: string) {
-    if (address) {
-      this.locationService.changeLocationAndGetManufacturers(address);
-    }
-  }
 
 }

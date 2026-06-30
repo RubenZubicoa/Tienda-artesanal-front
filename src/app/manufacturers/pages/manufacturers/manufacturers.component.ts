@@ -54,15 +54,12 @@ export class ManufacturersComponent implements OnInit {
   public manufacturersCards = computed(() =>
     this.manufacturersLocations()?.map(mapManufacturerToCardData)
   );
-  public currentLocation = this.locationService.location;
   public filters = signal<ManufacturerFilters>({ maxDistance: 20 });
-  public mapLocation = computed(
-    () => this.filters().location ?? this.currentLocation()
-  );
+  public mapLocation = { lat: 42.975783, lng: -2.290914 };
   public readonly views = ManufacturerPageViews;
 
   ngOnInit(): void {
-    this.locationService.getManufacturersByLocation();
+    this.locationService.getManufacturers();
   }
 
   public goToManufacturersDetails(manufacturerId: string) {

@@ -37,7 +37,7 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.locationService.getManufacturersByLocation();
+    this.locationService.getManufacturers();
   }
 
   public applyFilters(filters: ProductFilters) {
